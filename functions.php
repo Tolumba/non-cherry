@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
 
 	/*-----------------------------------------------------------------------------------*/
@@ -343,6 +342,3 @@
 
 	// enable shortcodes in sidebar
 	add_filter('widget_text', 'do_shortcode');
-
->>>>>>> origin/master
-?>
