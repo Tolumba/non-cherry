@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates dolores iusto sunt perferendis atque veritatis dolorum dignissimos numquam quo, officiis natus similique eveniet odit suscipit laudantium quae consectetur, velit vero a inventore at mollitia! Laudantium assumenda voluptatibus sint quis tempore. Explicabo voluptates provident dolorem facilis, est fugit sapiente magnam quidem quo eligendi et nihil, aperiam. Eius amet officia inventore neque adipisci maiores ex maxime est pariatur sunt vel accusantium molestiae, distinctio cumque enim, odit dolor id iste?
 
 Cum vel consectetur reprehenderit sequi perspiciatis, aliquam architecto, porro eaque exercitationem libero odio et, laborum blanditiis tenetur esse? Quam, quae nam suscipit itaque dolorum amet, necessitatibus eum nemo odit placeat vero architecto et fugiat aperiam veritatis inventore voluptatibus dolorem! Ad libero in assumenda ipsam magni dolore perspiciatis repellat laudantium maxime optio autem neque deleniti voluptatibus unde voluptates eius, necessitatibus placeat error!
@@ -6,4 +7,14 @@ Eligendi laboriosam neque numquam soluta optio quas, aut delectus, sit tenetur m
 
 Sapiente odio quis veniam cum dolorum ipsa tempore, repellat natus optio incidunt. Maxime similique iste excepturi, ea molestiae ad officiis earum eius dolorem amet ipsa accusamus libero, minus alias quisquam. Quae qui assumenda similique esse sit illum velit. Temporibus consequuntur minima animi cumque cupiditate unde nemo sint commodi, esse architecto, velit, vero reiciendis modi, hic.
 
+=======
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates dolores iusto sunt perferendis atque veritatis dolorum dignissimos numquam quo, officiis natus similique eveniet odit suscipit laudantium quae consectetur, velit vero a inventore at mollitia! Laudantium assumenda voluptatibus sint quis tempore. Explicabo voluptates provident dolorem facilis, est fugit sapiente magnam quidem quo eligendi et nihil, aperiam. Eius amet officia inventore neque adipisci maiores ex maxime est pariatur sunt vel accusantium molestiae, distinctio cumque enim, odit dolor id iste?
+
+Cum vel consectetur reprehenderit sequi perspiciatis, aliquam architecto, porro eaque exercitationem libero odio et, laborum blanditiis tenetur esse? Quam, quae nam suscipit itaque dolorum amet, necessitatibus eum nemo odit placeat vero architecto et fugiat aperiam veritatis inventore voluptatibus dolorem! Ad libero in assumenda ipsam magni dolore perspiciatis repellat laudantium maxime optio autem neque deleniti voluptatibus unde voluptates eius, necessitatibus placeat error!
+
+Eligendi laboriosam neque numquam soluta optio quas, aut delectus, sit tenetur molestiae doloremque corrupti, ea voluptas vero eos esse beatae nihil aspernatur voluptatibus non voluptates adipisci perferendis quos? Quas sunt id dolores commodi, dicta adipisci voluptatum quisquam, excepturi qui similique laborum est perspiciatis minima, omnis!
+
+Sapiente odio quis veniam cum dolorum ipsa tempore, repellat natus optio incidunt. Maxime similique iste excepturi, ea molestiae ad officiis earum eius dolorem amet ipsa accusamus libero, minus alias quisquam. Quae qui assumenda similique esse sit illum velit. Temporibus consequuntur minima animi cumque cupiditate unde nemo sint commodi, esse architecto, velit, vero reiciendis modi, hic.
+
+>>>>>>> origin/master
 Ipsum voluptatum molestiae repellendus soluta modi animi cum laboriosam, laborum corrupti ullam reiciendis commodi assumenda voluptates eligendi consequatur. Debitis libero earum tempore corporis deleniti nisi inventore ad dolorem veritatis doloribus sit, provident ducimus aliquam eaque officia magnam labore pariatur laborum modi. Nobis possimus, eveniet maxime a quia quidem aliquid totam cumque nihil itaque veniam, consequatur, rem? Eum saepe ea optio earum cupiditate.
