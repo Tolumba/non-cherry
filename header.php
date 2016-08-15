@@ -1,3 +1,10 @@
+<?php
+	/** 
+	*
+	*	Default header template
+	*
+	*/
+?>
 <!DOCTYPE html>
 <!--[if lt IE 7 ]><html class="ie ie6" <?php language_attributes();?>> <![endif]-->
 <!--[if IE 7 ]><html class="ie ie7" <?php language_attributes();?>> <![endif]-->

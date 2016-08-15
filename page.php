@@ -1,3 +1,10 @@
+<?php
+/**
+*
+*	Static page default Template
+*
+*/
+?>
 <?php get_header(); ?>
 
 	<?php do_action('before_loop') ?>
