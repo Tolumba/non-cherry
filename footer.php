@@ -1,3 +1,10 @@
+<?php
+	/** 
+	*
+	*	Default footer template
+	*
+	*/
+?>
 		<footer id="footer" class="<?php footer_classes(); ?>">
 			<div class="container">
 				<div class="row">
