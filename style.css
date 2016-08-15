@@ -1,0 +1,290 @@
+@charset utf-8;
+/*
+  Theme Name: non-cherry
+  Theme URI: http://www.templatetuning.com/wordpress-themes-type/
+  Description: A theme for Wordpress 4.4+ from Templatetuning.com Collection
+  Author: Templatetuning.com
+  Author URI: http://www.templatetuning.com
+  Author URL: http://www.templatetuning.com/
+  License: GNU General Public License v2 or later
+  License URI: http://www.gnu.org/licenses/gpl-2.0.html
+  Text Domain: non-cherry
+  Version: 1.0
+  Tags: one-column, two-columns, right-sidebar, custom-background, custom-colors, custom-header, custom-menu, featured-images, flexible-header, post-formats, sticky-post, threaded-comments
+*/
+/*
+* @section Components
+*
+* @subsection Brand
+*/
+.rd-navbar-brand {
+  margin-top: 100px;
+  display: block;
+  text-align: center;
+  color: #333333;
+}
+.rd-navbar-brand__name {
+  font-size: 55px;
+  font-family: "Six Caps", sans-serif;
+  letter-spacing: 5px;
+}
+.rd-navbar-brand__name a:hover {
+  color: inherit;
+}
+.rd-navbar-brand__name span {
+  font-size: 100px;
+  margin-top: -19px;
+  display: inline-block;
+}
+@media (min-width: 480px) {
+  .rd-navbar-brand__name span {
+    font-size: 160px;
+    margin-top: -31px;
+  }
+}
+@media (min-width: 768px) {
+  .rd-navbar-brand__name span {
+    margin-top: -41px;
+    font-size: 250px;
+    margin-left: 16px;
+  }
+}
+@media (min-width: 480px) {
+  .rd-navbar-brand__name {
+    font-size: 90px;
+  }
+}
+@media (min-width: 768px) {
+  .rd-navbar-brand__name {
+    font-size: 160px;
+  }
+}
+@media (min-width: 992px) {
+  .rd-navbar-brand__name {
+    letter-spacing: 16.7px;
+  }
+}
+.rd-navbar-brand__slogan {
+  font-size: 16px;
+  font-weight: 300;
+  text-transform: uppercase;
+  margin-top: 50px;
+}
+@media (min-width: 768px) {
+  .rd-navbar-brand__slogan {
+    font-size: 18px;
+    margin-top: 79px;
+  }
+}
+@media (min-width: 992px) {
+  .rd-navbar-brand__slogan {
+    font-size: 30px;
+  }
+}
+/**
+* @subsection RD Mobile Menu
+*
+* @description mobile navbar
+*
+* @author     Evgeniy Gusarov (Diversant)
+* @link     http://cms.devoffice.com/diversant/rd-navbar/
+*/
+.rd-mobilemenu {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 9999999;
+  text-align: left;
+  -webkit-transition: 0.3s all ease;
+  transition: 0.3s all ease;
+}
+.rd-mobilemenu.active {
+  right: 0;
+}
+
+.rd-mobilemenu_ul {
+  position: fixed;
+  top: -56px;
+  left: 0;
+  bottom: -56px;
+  width: 240px;
+  padding: 132px 0 76px;
+  color: #fff;
+  background: #ff7592;
+  font-size: 14px;
+  line-height: 20px;
+  overflow: auto;
+  box-shadow: 5px 0 5px 0 rgba(0, 0, 0, 0.1);
+  -ms-transform: translateX(-240px);
+  -webkit-transform: translateX(-240px);
+  transform: translateX(-240px);
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+  -webkit-transition: 0.3s cubic-bezier(0.55, 0, 0.1, 1);
+  transition: 0.3s cubic-bezier(0.55, 0, 0.1, 1);
+}
+.rd-mobilemenu.active .rd-mobilemenu_ul {
+  -ms-transform: translateY(-27px);
+  -webkit-transform: translateY(-27px);
+  transform: translateY(-27px);
+}
+.rd-mobilemenu_ul a {
+  display: block;
+  padding: 14px 25px 16px;
+}
+.rd-mobilemenu_ul a.active {
+  background: #333333;
+  color: #fff;
+}
+.rd-mobilemenu_ul a:hover {
+  background: #fff;
+  color: #333333;
+}
+.rd-mobilemenu_ul a .rd-submenu-toggle {
+  position: absolute;
+  top: 50%;
+  right: 11px;
+  margin-top: -17.5px;
+  width: 32px;
+  height: 32px;
+  font: 400 10px "FontAwesome";
+  line-height: 32px;
+  text-align: center;
+  border-radius: 50%;
+  -webkit-transition: 0.5s all ease;
+  transition: 0.5s all ease;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.1);
+}
+.rd-mobilemenu_ul a .rd-submenu-toggle:after {
+  content: '\f078';
+}
+.rd-mobilemenu_ul a .rd-submenu-toggle:hover {
+  background: #ff7592;
+  color: #fff;
+}
+.rd-mobilemenu_ul a.rd-with-ul {
+  position: relative;
+}
+.rd-mobilemenu_ul a.rd-with-ul.active .rd-submenu-toggle {
+  -ms-transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.rd-mobilemenu_ul ul a {
+  padding-left: 40px;
+}
+.rd-mobilemenu_ul ul ul a {
+  padding-left: 60px;
+}
+.rd-mobilemenu_ul:after {
+  content: '';
+  display: block;
+  height: 20px;
+}
+
+.rd-mobilepanel {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 56px;
+  background: #ff7592;
+  color: #fff;
+  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.1);
+  z-index: 99999991;
+}
+
+.rd-mobilepanel_title {
+  position: fixed;
+  top: 4px;
+  left: 56px;
+  right: 56px;
+  color: #fff;
+  font-size: 24px;
+  line-height: 48px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rd-mobilepanel_toggle {
+  position: fixed;
+  top: 4px;
+  left: 8px;
+  width: 48px;
+  height: 48px;
+}
+.rd-mobilepanel_toggle span {
+  position: relative;
+  display: block;
+  margin: auto;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.rd-mobilepanel_toggle span:after, .rd-mobilepanel_toggle span:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -8px;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.rd-mobilepanel_toggle span:after {
+  top: 8px;
+}
+.rd-mobilepanel_toggle span:after, .rd-mobilepanel_toggle span:before, .rd-mobilepanel_toggle span {
+  width: 24px;
+  height: 4px;
+  background-color: #fff;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  border-radius: 2px;
+}
+.rd-mobilepanel_toggle span {
+  -ms-transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.rd-mobilepanel_toggle span:before, .rd-mobilepanel_toggle span:after {
+  -ms-transform-origin: 1.71429px center;
+  -webkit-transform-origin: 1.71429px center;
+  transform-origin: 1.71429px center;
+  -ms-transform-origin: 1.71429px center;
+  -webkit-transform-origin: 1.71429px center;
+  transform-origin: 1.71429px center;
+}
+.rd-mobilepanel_toggle.active span {
+  -ms-transform: rotate(360deg);
+  -webkit-transform: rotate(360deg);
+  transform: rotate(360deg);
+}
+.rd-mobilepanel_toggle.active span:before, .rd-mobilepanel_toggle.active span:after {
+  top: 0;
+  width: 15px;
+}
+.rd-mobilepanel_toggle.active span:before {
+  -webkit-transform: rotate3d(0, 0, 1, -40deg);
+  transform: rotate3d(0, 0, 1, -40deg);
+}
+.rd-mobilepanel_toggle.active span:after {
+  -webkit-transform: rotate3d(0, 0, 1, 40deg);
+  transform: rotate3d(0, 0, 1, 40deg);
+}
+
+@media (max-width: 767px) {
+  body {
+    padding-top: 56px;
+  }
+
+  .rd-mobilemenu, .rd-mobilepanel {
+    display: block;
+  }
+}
+@media (max-width: 359px) {
+  .rd-mobilepanel_title {
+    font-size: 18px;
+  }
+}
