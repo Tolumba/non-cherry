@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AACC,+BAAW;EACV,OAAO,EAAE,IAAI",
+"sources": ["ui-ace-editor.scss"],
+"names": [],
+"file": "ui-ace-editor.css"
+}

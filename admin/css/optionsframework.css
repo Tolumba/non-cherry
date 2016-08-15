@@ -1,0 +1,225 @@
+/*-------------------------------------------------------------------------------------------*/
+/* Options Framework Admin Styles */
+/*-------------------------------------------------------------------------------------------*/
+.exclusion-check {
+  display: none !important;
+}
+
+.updated {
+  max-width: 764px;
+  margin-bottom: 0px !important;
+}
+
+#types-information-table {
+  display: none;
+}
+
+#optionsframework {
+  position: relative;
+  z-index: 0;
+  max-width: 780px;
+  background: #ffffff;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+#optionsframework h3 {
+  cursor: default;
+}
+#optionsframework p {
+  margin-bottom: 0;
+  padding-bottom: 10px;
+  line-height: 1.4em;
+}
+#optionsframework .section {
+  padding: 10px 10px 0;
+}
+#optionsframework .section .heading {
+  padding: 10px 0px;
+  margin: 0 0 15px;
+  border-bottom: 1px solid #dfdfdf;
+}
+#optionsframework .section .controls {
+  min-width: 350px;
+  padding-right: 2%;
+  float: left;
+  width: 58%;
+}
+#optionsframework .section .controls .of-typography-size {
+  width: 58px;
+  margin-left: 5px;
+  float: left;
+}
+#optionsframework .section .controls .of-typography-unit {
+  width: 50px;
+  margin-left: 5px;
+  float: left;
+}
+#optionsframework .section .controls .of-typography-face {
+  width: 90px;
+  margin-left: 5px;
+  float: left;
+}
+#optionsframework .section .controls .of-typography-style {
+  width: 70px;
+  margin-left: 5px;
+  margin-right: 5px;
+  float: left;
+}
+#optionsframework .section .controls .of-typography-weight {
+  width: 70px;
+  margin-left: 5px;
+  margin-right: 5px;
+  float: left;
+}
+#optionsframework .section .controls .wp-picker-container {
+  margin-left: 5px;
+  margin-right: 5px;
+  float: left;
+}
+#optionsframework .section .controls .of-typography-lineheight {
+  width: 56px;
+  margin-left: 5px;
+  margin-right: 5px;
+  float: left;
+}
+#optionsframework .section .controls .of-background-properties {
+  clear: both;
+  margin-top: 18px;
+  overflow: hidden;
+}
+#optionsframework .section .controls .of-background-repeat {
+  width: 125px;
+  margin-right: 5px;
+  float: left;
+}
+#optionsframework .section .controls .of-background-position {
+  width: 125px;
+  margin-right: 5px;
+  float: left;
+}
+#optionsframework .section .controls .of-background-attachment {
+  width: 125px;
+  margin-right: 5px;
+  float: left;
+}
+#optionsframework .section .controls .of-radio-img-img {
+  border: 3px solid #f9f9f9;
+  margin: 0 5px 10px 0;
+  display: none;
+  cursor: pointer;
+  float: left;
+}
+#optionsframework .section .controls .of-radio-img-selected {
+  border: 3px solid #cccccc;
+}
+#optionsframework .section .controls .of-radio-img-img:hover {
+  opacity: .8;
+}
+#optionsframework .section .controls .of-border-width {
+  width: 80px;
+  float: left;
+}
+#optionsframework .section .controls .of-border-style {
+  width: 120px;
+  float: left;
+}
+#optionsframework .section .controls .upload-wrap {
+  margin: 3px 0 18px 0;
+}
+#optionsframework .section .controls .upload-wrap fieldset {
+  display: block;
+  text-align: left;
+  font-size: 0;
+}
+#optionsframework .section .controls .upload-wrap fieldset > p {
+  display: inline-block;
+}
+#optionsframework .section .controls .upload-wrap fieldset > p + p {
+  padding-left: 4px;
+}
+#optionsframework .section .controls .upload-wrap figure {
+  margin: 10px 0 10px;
+}
+#optionsframework .section .controls .hide {
+  display: none;
+}
+#optionsframework .section .controls select, #optionsframework .section .controls textarea, #optionsframework .section .controls input[type="text"] {
+  width: 100%;
+  vertical-align: top;
+}
+#optionsframework .section .controls input.of-color {
+  width: 65px;
+}
+#optionsframework .section .explain {
+  max-width: 34%;
+  float: left;
+  font-size: 12px;
+  line-height: 16px;
+  color: #777;
+}
+#optionsframework .section-checkbox .controls {
+  width: 98%;
+}
+#optionsframework .section-checkbox .explain {
+  max-width: 94%;
+}
+#optionsframework .section-radio label, #optionsframework .section-multicheck label {
+  float: left;
+  max-width: 90%;
+  line-height: 16px;
+  margin-bottom: 5px;
+}
+#optionsframework .group {
+  padding-bottom: 40px;
+}
+#optionsframework input.checkbox, #optionsframework input.of-radio {
+  width: auto;
+  margin-top: 2px;
+  float: left;
+  clear: both;
+}
+#optionsframework .mini .controls {
+  min-width: 140px;
+  width: 140px;
+}
+#optionsframework .mini .controls select {
+  width: 140px;
+}
+#optionsframework .mini .controls input {
+  min-width: 140px;
+  width: 140px;
+}
+#optionsframework .mini .explain {
+  max-width: 74%;
+}
+#optionsframework .section .mini .controls {
+  width: 140px;
+}
+#optionsframework .section-editor .explain {
+  max-width: 98%;
+  float: none;
+  margin-bottom: 5px;
+}
+#optionsframework-button {
+  float: left;
+  cursor: pointer;
+}
+#optionsframework-submit {
+  padding: 7px 10px;
+  border-top: 1px solid #ECECEC;
+  background-color: #F1F1F1;
+  margin-left: -20px;
+  margin-right: -20px;
+}
+#optionsframework .button-primary {
+  float: right;
+}
+#optionsframework .section:before, #optionsframework .section:after {
+  content: "";
+  display: table;
+}
+#optionsframework .section:after {
+  clear: both;
+}
+
+/*# sourceMappingURL=optionsframework.css.map */

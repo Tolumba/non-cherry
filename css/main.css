@@ -1,0 +1,107 @@
+body {
+  font: normal 1em/normal sans-serif;
+}
+
+.admin-bar #stuck_container.isStuck {
+  margin-top: 32px !important;
+  padding: 20px 0;
+}
+
+header.header {
+  padding: 20px 0;
+}
+header.header .stuck_container {
+  position: relative;
+  margin-top: 0;
+  z-index: 2;
+}
+header.header .site-logo {
+  float: left;
+}
+
+nav.navigation {
+  display: block;
+  text-align: center;
+  z-index: 999;
+}
+header.header nav.navigation {
+  float: left;
+  margin-left: 2em;
+}
+nav.navigation .sf-menu {
+  position: relative;
+  display: inline-block;
+}
+nav.navigation .sf-menu a {
+  text-decoration: none;
+  padding: 0 0 0 1.5em;
+}
+nav.navigation .sf-menu > .menu-item {
+  display: inline-block;
+  background-color: transparent;
+}
+nav.navigation .sf-menu > .menu-item > a {
+  padding: .5em;
+  display: inherit;
+}
+nav.navigation .sf-menu > .menu-item + .menu-item {
+  margin-left: 1em;
+}
+nav.navigation .sf-menu > .menu-item.menu-item-has-children .sub-menu {
+  position: absolute;
+  min-width: 10em;
+  display: block;
+  background-color: #cccccc;
+  top: 100%;
+  left: 0;
+}
+nav.navigation .sf-menu > .menu-item.menu-item-has-children .sub-menu .menu-item {
+  text-align: left;
+  margin: .5em .1em;
+}
+nav.navigation .sf-menu > .menu-item.menu-item-has-children .sub-menu .menu-item a {
+  display: inherit;
+}
+nav.navigation .sf-menu > .menu-item.menu-item-has-children .sub-menu .sub-menu {
+  background-color: #eeeeee;
+  left: 100%;
+  top: 0;
+}
+nav.navigation .sf-menu > .menu-item:hover {
+  background-color: #bbbbbb;
+}
+
+form.search,
+.search-form-wrapp {
+  vertical-align: middle;
+  margin-top: 1em;
+}
+form.search .btn,
+form.search input,
+form.search button,
+.search-form-wrapp .btn,
+.search-form-wrapp input,
+.search-form-wrapp button {
+  padding: .3em;
+  border: none;
+  display: inline-block;
+}
+header.header form.search, header.header
+.search-form-wrapp {
+  float: right;
+}
+
+header.header .slider-wrapper {
+  margin-top: 20px;
+  margin-bottom: -20px;
+}
+
+.page-title {
+  margin: 1em 0;
+}
+
+.btn {
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=main.css.map */

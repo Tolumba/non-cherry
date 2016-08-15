@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,2BAA2B;EAC1B,KAAK,EAAE,IAAI;EACX,aAAa,EAAE,GAAG;EAClB,OAAO,EAAE,mBAAmB;EAC5B,UAAU,EAAE,IAAI",
+"sources": ["ui-textarea.scss"],
+"names": [],
+"file": "ui-textarea.css"
+}

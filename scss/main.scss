@@ -1,0 +1,118 @@
+body{
+	font: normal 1em/normal sans-serif;
+}
+#main{
+
+}
+.admin-bar #stuck_container.isStuck{
+	margin-top: 32px !important;
+	padding: 20px 0;
+}
+header.header{
+	padding: 20px 0;
+
+	.stuck_container{
+		position: relative;
+		margin-top: 0;
+		z-index: 2;
+	}
+	
+	.site-logo{
+		float: left;
+	}
+}
+nav.navigation{
+	display: block;
+	text-align: center;
+	z-index: 999;
+
+	header.header &{
+		float: left;
+		margin-left: 2em;
+	}
+	.sf-menu{
+		position: relative;
+		display: inline-block;
+
+		a{
+			text-decoration: none;
+			padding: 0 0 0 1.5em;
+		}
+
+		>.menu-item{
+			display: inline-block;
+			background-color: transparent;
+
+			>a{
+				padding: .5em;
+				display: inherit;
+			}
+			+ .menu-item{
+				margin-left: 1em;
+			}
+			&.menu-item-has-children{
+
+				.sub-menu{
+					position: absolute;
+					min-width: 10em;
+					display: block;
+					background-color: #cccccc;
+					top: 100%;
+					left: 0;
+
+					.menu-item{
+						text-align: left;
+						margin: .5em .1em;
+
+						a{
+							display: inherit;
+						}
+					}
+					.sub-menu{
+						background-color: #eeeeee;
+						left: 100%;
+						top: 0;
+					}
+				}
+			}
+			&:hover{
+				background-color: #bbbbbb
+			}
+		}
+	}
+}
+form.search,
+.search-form-wrapp{
+	vertical-align: middle;
+	margin-top: 1em;
+
+	.btn,
+	input,
+	button{
+		padding: .3em;
+		border: none;
+		display: inline-block;
+	}
+	header.header &{
+		float: right;
+	}
+}
+.slider-wrapper{
+	
+	header.header &{
+		margin-top: 20px;
+		margin-bottom: -20px;
+	}
+}
+
+.page-title{
+	margin: 1em 0;
+}
+
+.btn{
+	cursor: pointer;
+
+	.btn-default{
+		
+	}
+}

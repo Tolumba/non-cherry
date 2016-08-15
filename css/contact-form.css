@@ -1,0 +1,133 @@
+.wpcf7-form,
+#commentform {
+}
+.wpcf7-form-control-wrap{
+  overflow: hidden;
+  display: block;
+}
+#commentform .field,
+.wpcf7-form .field{
+  position: relative;
+  margin: 0 0 3px;
+  display: block;
+}
+#commentform input,
+#commentform .field textarea,
+.search input[type='text'],
+.wpcf7-form .field textarea,
+.wpcf7-form .field input[type='checkbox'],
+.wpcf7-form .field input[type='color'],
+.wpcf7-form .field input[type='date'],
+.wpcf7-form .field input[type='datetime'],
+.wpcf7-form .field input[type='datetime-local'],
+.wpcf7-form .field input[type='email'],
+.wpcf7-form .field input[type='file'],
+.wpcf7-form .field input[type='image'],
+.wpcf7-form .field input[type='month'],
+.wpcf7-form .field input[type='number'],
+.wpcf7-form .field input[type='password'],
+.wpcf7-form .field input[type='radio'],
+.wpcf7-form .field input[type='range'],
+.wpcf7-form .field input[type='reset'],
+.wpcf7-form .field input[type='search'],
+.wpcf7-form .field input[type='tel'],
+.wpcf7-form .field input[type='text'],
+.wpcf7-form .field input[type='time'],
+.wpcf7-form .field input[type='url'],
+.wpcf7-form .field input[type='week']{
+  border: 1px solid;
+  height: auto;
+  border: none;
+}
+#commentform input,
+.search input.searching,
+#commentform .field textarea{
+}
+form.search{
+  max-width: 570px;
+}
+.search input.searching{
+  margin: 0;
+}
+#commentform input:focus,
+#commentform input:hover,
+#commentform textarea:hover,
+#commentform textarea:focus,
+.search input[type='text']:focus,
+.wpcf7-form .field textarea:focus,
+.wpcf7-form .field input[type='checkbox']:focus,
+.wpcf7-form .field input[type='color']:focus,
+.wpcf7-form .field input[type='date']:focus,
+.wpcf7-form .field input[type='datetime']:focus,
+.wpcf7-form .field input[type='datetime-local']:focus,
+.wpcf7-form .field input[type='email']:focus,
+.wpcf7-form .field input[type='file']:focus,
+.wpcf7-form .field input[type='image']:focus,
+.wpcf7-form .field input[type='month']:focus,
+.wpcf7-form .field input[type='number']:focus,
+.wpcf7-form .field input[type='password']:focus,
+.wpcf7-form .field input[type='radio']:focus,
+.wpcf7-form .field input[type='range']:focus,
+.wpcf7-form .field input[type='reset']:focus,
+.wpcf7-form .field input[type='search']:focus,
+.wpcf7-form .field input[type='tel']:focus,
+.wpcf7-form .field input[type='text']:focus,
+.wpcf7-form .field input[type='time']:focus,
+.wpcf7-form .field input[type='url']:focus,
+.wpcf7-form .field input[type='week']:focus,
+.search input[type='text']:hover,
+.wpcf7-form .field textarea:hover,
+.wpcf7-form .field input[type='checkbox']:hover,
+.wpcf7-form .field input[type='color']:hover,
+.wpcf7-form .field input[type='date']:hover,
+.wpcf7-form .field input[type='datetime']:hover,
+.wpcf7-form .field input[type='datetime-local']:hover,
+.wpcf7-form .field input[type='email']:hover,
+.wpcf7-form .field input[type='file']:hover,
+.wpcf7-form .field input[type='image']:hover,
+.wpcf7-form .field input[type='month']:hover,
+.wpcf7-form .field input[type='number']:hover,
+.wpcf7-form .field input[type='password']:hover,
+.wpcf7-form .field input[type='radio']:hover,
+.wpcf7-form .field input[type='range']:hover,
+.wpcf7-form .field input[type='reset']:hover,
+.wpcf7-form .field input[type='search']:hover,
+.wpcf7-form .field input[type='tel']:hover,
+.wpcf7-form .field input[type='text']:hover,
+.wpcf7-form .field input[type='time']:hover,
+.wpcf7-form .field input[type='url']:hover,
+.wpcf7-form .field input[type='week']:hover{
+  text-transform: none;
+}
+.search button,
+.wpcf7-form button,
+#commentform input[type='button'],
+#commentform input[type='submit'],
+.wpcf7-form input[type='button'],
+.wpcf7-form input[type='submit']{
+  display: block;
+  border: none;
+}
+.search button:hover,
+.wpcf7-form button:hover,
+#commentform input[type='button']:hover,
+#commentform input[type='submit']:hover,
+.wpcf7-form input[type='button']:hover,
+.wpcf7-form input[type='submit']:hover{
+}
+.buttons-wrap{
+  position: relative;
+}
+.buttons-wrap .ajax-loader{
+  position: absolute;
+  transform: translatey(-50%);
+  z-index: 99;
+  right: 8px ;
+  top: 50%;
+}
+span.wpcf7-not-valid-tip{
+  position: absolute;
+  margin: 4px 4px 4px 0;
+  right: 0;
+  top: 0;
+}
