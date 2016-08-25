@@ -15,9 +15,10 @@ if ( !function_exists( 'non_cherry_setup' ) ):
 				'mobileMenu_defaultText' => __( 'Navigate to&hellip;', 'non-cherry' ),
 				'mobile_switch_point' => (int) of_get_option( 'mobile_switch_point', 768 ),
 				'sticky_header' => of_get_option( 'sticky_header' ),
+				'google_maps_key' => of_get_option( 'google_maps_key' ),
 			);
+			
 			wp_localize_script( 'custom', 'localize_data', $script_data );
-
 			wp_enqueue_script( 'custom' );
 		}
 

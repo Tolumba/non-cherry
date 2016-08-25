@@ -229,6 +229,14 @@ if(!function_exists('optionsframework_options')) {
 			"options" => $yes_no_arr
 		);
 
+		$options['google_maps_key'] = array(
+			"name" => __( "Google maps API key", 'non-cherry'),
+			"desc" => __('You can generate key on <a href="https://developers.google.com/maps/documentation/javascript/get-api-key">Get a Key page</a>', 'non-cherry'),
+			"id"   => "google_maps_key",
+			"std"  => "",
+			"type" => "text",
+		);
+
 		$options['g_search_box_id'] = array(
 			"name"    => __("Display search box?", 'non-cherry'),
 			"desc"    => __("Display search box in the header?", 'non-cherry'),
@@ -889,12 +897,27 @@ if(!function_exists('my_framework_register')) {
 					'settings' => 'non_cherry[links_color]'
 		) ) );
 
+		/* Google maps key */
+		$wp_customize->add_setting( 'non_cherry[google_maps_key]', array(
+				'default'           => $options['google_maps_key']['std'],
+				'sanitize_callback' => 'esc_attr',
+				'type'              => 'option'
+		) );
+
+		$wp_customize->add_control( 'non_cherry[google_maps_key]', array(
+				'label'    => $options['google_maps_key']['name'],
+				'section'  => 'my_framework_header',
+				'settings' => 'non_cherry[google_maps_key]',
+				'type'     => 'text'
+		) );
+
 		/* Search Box */
 		$wp_customize->add_setting( 'non_cherry[g_search_box_id]', array(
 				'default'           => $options['post_excerpt']['std'],
 				'sanitize_callback' => 'esc_attr',
 				'type'              => 'option'
 		) );
+
 		$wp_customize->add_control( 'my_framework_g_search_box_id', array(
 				'label'    => $options['g_search_box_id']['name'],
 				'section'  => 'my_framework_header',
@@ -1111,7 +1134,7 @@ if(!function_exists('my_framework_register')) {
 				'label'    => $options['footer_text']['name'],
 				'section'  => 'my_framework_footer',
 				'settings' => 'non_cherry[footer_text]',
-				'type'     => 'text'
+				'type'     => 'textarea'
 		) );
 	};
 }
