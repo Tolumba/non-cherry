@@ -12,7 +12,6 @@
 <!--[if IE 9 ]><html class="ie ie9" <?php language_attributes();?>> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!--><html <?php language_attributes();?>> <!--<![endif]-->
 <head>
-	<title><?php wp_title(); ?></title>
 	<meta name="description" content="<?php echo get_bloginfo().' | '.get_bloginfo( 'description' ); ?>" />
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 	<meta name="viewport" content="width=device-width,initial-scale=1.0">

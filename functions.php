@@ -127,7 +127,20 @@
 	add_theme_support( 'post-formats', $formats );
 	add_post_type_support( 'post', 'post-formats' );
 	
-	add_theme_support( 'title-tag' );
+	function theme_slug_setup() {
+	   add_theme_support( 'title-tag' );
+	}
+	add_action( 'after_setup_theme', 'theme_slug_setup' );
+
+	if ( ! function_exists( '_wp_render_title_tag' ) ) :
+		function theme_slug_render_title() { ?>
+
+			<title><?php wp_title( '|', true, 'right' ); ?></title>
+
+			<?php
+		}
+		add_action( 'wp_head', 'theme_slug_render_title' );
+	endif;
 
 	// Custom excerpt length
 	if(!function_exists('new_excerpt_length')) {
