@@ -28,6 +28,7 @@ function non_cherry_banner_buttons($buttons, $shortcode=''){
 		'value' => __( 'Types plugin field', 'non-cherry' ),
 		'open'  => '%%TYPES_FIELD="slug"%%',
 		'close' => '',
+		'title' => __( 'Set Toolset Types field "slug" value', 'non-cherry' ),
 	);
 
 	$buttons['custommeta'] = array(
@@ -117,14 +118,17 @@ function non_cherry_grid_shortcode_data_callbacks( $data, $atts=array() ){
 	return $data;
 }
 
-function non_cherry_title_text_callback( $params ){
+function non_cherry_title_text_callback( $params=null ){
 
-	if( 'banner' === Cherry_Shortcodes_Handler::get_shortcode_name());
+	if( 'banner' === Cherry_Shortcodes_Handler::get_shortcode_name()){
 		return '%%TITLE_TEXT%%';
+	}
 
 	$title = get_the_title();
-	if( !empty( $title ) )
+
+	if( !empty( $title ) ){
 		return $title;
+	}
 }
 
 // Callback function for %%IMAGEURL%% macros
@@ -307,7 +311,7 @@ if( class_exists('Cherry_Team_Templater') )
 
 // Modifying Cherry Portfolio query vars
 add_filter('cherry_the_portfolio_default_query_args', 'non_cherry_the_portfolio_default_query_args');
-function non_cherry_the_portfolio_default_query_args($params){
+function non_cherry_the_portfolio_default_query_args( $params=null ){
 
 	$params['posts_per_page'] = get_option( 'posts_per_page', 12 );
 	$params['offset'] = null;
