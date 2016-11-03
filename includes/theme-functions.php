@@ -516,4 +516,7 @@ if(! function_exists('get_post_meta_info')){
 
 require_once 'theme-filters.php';
 
+// Add Taxonomy List widget
+require_once( 'widgets/taxonomy-list.php' );
+
 ?>
