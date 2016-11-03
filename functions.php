@@ -10,12 +10,13 @@
 	/* Set Proper Parent/Child theme paths for inclusion
 	/*-----------------------------------------------------------------------------------*/
 
+	@define( 'CURRENT_THEME', wp_get_theme()->get('TextDomain') );
+
 	@define( 'PARENT_DIR', get_template_directory() );
 	@define( 'CHILD_DIR', get_stylesheet_directory() );
 
 	@define( 'PARENT_URL', get_template_directory_uri() );
 	@define( 'CHILD_URL', get_stylesheet_directory_uri() );
-
 
 	// Loading jQuery and Scripts
 	require_once PARENT_DIR . '/includes/theme-scripts.php';
@@ -39,8 +40,8 @@
 	include_once(PARENT_DIR . '/options.php');
 
 	// Required for CherryFramework4 components
-	@define('CHERRY_URI', PARENT_URL);
-	@define('CHERRY_VERSION', '1.0');
+	@define( 'CHERRY_URI', PARENT_URL );
+	@define( 'CHERRY_VERSION', '1.0' );
 
 	require_once( PARENT_DIR . '/admin/includes/ui-elements/ui-webfont/ui-webfont.php' );
 	require_once( PARENT_DIR . '/admin/includes/class-cherry-interface-builder.php' );
