@@ -49,111 +49,75 @@ function non_cherry_scripts() {
 }
 
 // Parsing options styles
-add_action( 'wp_enqueue_scripts', 'non_cherry_options_styles', 1 );
-function non_cherry_options_styles(){
+add_action( 'wp_enqueue_scripts', 'framework_dynamic_styles', 1 );
+function framework_dynamic_styles(){
+
+	$css_file = CHILD_DIR . '/css/dynamic-styles.css';
+
+	if( file_exists( $css_file ) ){
+		if( !class_exists( 'WP_Filesyste' ) ){
+			require_once( ABSPATH . 'wp-admin/includes/file.php' );
+		}
+
+		global $wp_filesystem;
+		if( !$wp_filesystem ){
+			WP_Filesystem();
+		}
+
+		$dynamic_css = $wp_filesystem->get_contents( $css_file );
+	}
+
+	if( !$dynamic_css ) {
+		return;
+	}
+
+	$pattern = '#(.+)\$([a-z_]+)(\[?([a-z_]*)\]?)(.+)#';
+	$dynamic_css = preg_replace_callback( $pattern, 'parse_option', $dynamic_css );
+
+	wp_add_inline_style ( 'reset', $dynamic_css );
+	//echo "<style type='text/css'>{$dynamic_css}</style>";
 	
-	/* Importing theme options values */
-	ob_start() ?>
-
-		<?php $background = of_get_option('body_background');
-
-		if ( is_array($background) ) :
-
-			if ( !empty($background['image']) ) : 
-
-				$image_url = wp_get_attachment_url( (int) $background['image'] );
-
-				?>
-
-
-				body {
-					background-image: url(<?php echo $image_url; ?>);
-					background-repeat: <?php echo $background['repeat']; ?>;
-					background-position: <?php echo $background['position']; ?>;
-					background-attachment: <?php echo $background['attachment']; ?>; 
-				}
-
-			<?php endif ?>
-
-			<?php if( !empty( $background['color']) ) : ?>
-
-				body {
-					background-color: <?php echo $background['color']; ?>;
-				}
-
-			<?php endif ?>
-
-		<?php endif; ?>
-		
-		<?php $header_styling = of_get_option('header_background'); ?>
-
-		<?php if( $header_styling ) :
-
-			if ( is_array($header_styling) ) :
-
-				if ( !empty($header_styling['image']) ) : 
-
-					$image_url = wp_get_attachment_url( (int) $header_styling['image'] );
-
-					?>
-
-					#stuck_container.isStuck,
-					#header {
-						background-image: url(<?php echo $image_url; ?>);
-						background-repeat: <?php echo $header_styling['repeat']; ?>;
-						background-position: <?php echo $header_styling['position']; ?>;
-						background-attachment: <?php echo $header_styling['attachment']; ?>;
-						background-color: <?php echo $header_styling['color']; ?>; 
-					}
-
-				<?php endif ?>
-
-				<?php if( !empty( $header_styling['color']) ) : ?>
-
-					#stuck_container.isStuck,
-					#header {
-						background-color: <?php echo $header_styling['color']; ?>;
-					}
-
-				<?php endif ?>
-
-			<?php endif; ?>
-
-		<?php endif; ?>
-		
-		<?php $links_styling = of_get_option('links_color'); ?>
-		<?php $links_styling_hover = of_get_option('links_color_hover'); ?>
-
-		<?php if( $links_styling ) : ?>
-
-			a{
-				color: <?php echo $links_styling; ?>;
-			}
-			a:hover{
-				color: <?php echo $links_styling_hover; ?>;
-			}
-			.btn {
-				color: <?php echo $links_styling_hover; ?>;
-				background-color: <?php echo $links_styling; ?>;
-			}
-			.btn:hover {
-				color: <?php echo $links_styling; ?>;
-				background-color: <?php echo $links_styling_hover; ?>;
-			}
-			.button {
-				color: <?php echo $links_styling_hover; ?>;
-				background-color: <?php echo $links_styling; ?>;
-			}
-			.button:hover {
-				color: <?php echo $links_styling; ?>;
-				background-color: <?php echo $links_styling_hover; ?>;
-			}
-
-		<?php endif; ?>
-	<?php $styles = ob_get_clean();
-	wp_add_inline_style ( 'reset', $styles );
 }
+function parse_option( $opts ){
 
+	$result = $opts[1];
+
+	$option = of_get_option( $opts[2], false );
+
+	//var_dump( $opts );
+
+	if( is_array( $option ) ){
+
+		switch( $opts[4] ){
+			case 'image':
+
+				$url = wp_get_attachment_url( (int) $option[ $opts[4] ] );
+
+				if( $url )
+					$result .= $url;
+				else
+					return	$result = '';
+				break;
+			default:
+
+				$result .= $option[ $opts[4] ];
+				
+				break;
+		}
+
+
+	}elseif( $option ){
+
+		$result .= $option;
+
+	}else{
+
+		return	$result = '';
+
+	}
+
+	return $result . $opts[5];
+}
 add_action('wp_enqueue_scripts', 'non_cherry_main_style', 999);
 function non_cherry_main_style(){
 

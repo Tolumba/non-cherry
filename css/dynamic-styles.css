@@ -1,0 +1,40 @@
+body {
+	background-image: url( $body_background[image] );
+	background-color: $body_background[color];
+	background-repeat: $body_background[repeat];
+	background-position: $body_background[position];
+	background-attachment: $body_background[attachment]; 
+}
+#stuck_container.isStuck,
+#header {
+	background-image: url( $header_background[image] );
+	background-repeat: $header_background[repeat];
+	background-position: $header_background[position];
+	background-attachment: $header_background[attachment];
+	background-color: $header_background[color];
+}
+a{
+	color: $links_color;
+}
+a:hover{
+	color: $links_color_hover;
+}
+.btn {
+	color: $links_color_hover;
+	background-color: $links_color;
+}
+.btn:hover {
+	color: $links_color;
+	background-color: $links_color_hover;
+}
+.button {
+	color: $links_color_hover;
+	background-color: $links_color;
+}
+.button:hover {
+	color: $links_color;
+	background-color: $links_color_hover;
+}
+#logo > img{
+	background-color: $links_color;
+}
