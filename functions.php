@@ -10,13 +10,17 @@
 	/* Set Proper Parent/Child theme paths for inclusion
 	/*-----------------------------------------------------------------------------------*/
 
-	@define( 'CURRENT_THEME', wp_get_theme()->get('TextDomain') );
 
 	@define( 'PARENT_DIR', get_template_directory() );
 	@define( 'CHILD_DIR', get_stylesheet_directory() );
 
 	@define( 'PARENT_URL', get_template_directory_uri() );
 	@define( 'CHILD_URL', get_stylesheet_directory_uri() );
+
+	// Loading theme textdomain
+	load_theme_textdomain( 'non-cherry', PARENT_DIR . '/languages' );
+	
+	@define( 'CURRENT_THEME', wp_get_theme()->get('TextDomain') );
 
 	// Loading jQuery and Scripts
 	require_once PARENT_DIR . '/includes/theme-scripts.php';
@@ -32,9 +36,6 @@
 
 	//Import/export data functions and actions
 	require_once PARENT_DIR . '/includes/theme-import-export-setup.php';
-
-	// Loading theme textdomain
-	load_theme_textdomain( 'non-cherry', PARENT_DIR . '/languages' );
 
 	// Loading options.php for theme customizer
 	include_once(PARENT_DIR . '/options.php');

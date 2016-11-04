@@ -4,7 +4,7 @@ class Taxomomy_List extends WP_Widget {
 
 	/** constructor */
 	function __construct() {
-		parent::__construct( false, $name = __( 'Taxonomy List', CURRENT_THEME ) );
+		parent::__construct( false, $name = __( 'Taxonomy List', 'non-cherry' ) );
 	}
 
 	/** @see WP_Widget::widget */
@@ -85,14 +85,14 @@ class Taxomomy_List extends WP_Widget {
 
 		?>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title', CURRENT_THEME  ); ?>
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title', 'non-cherry'  ); ?>
 				<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo $title; ?>" />
 			</label>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id('taxonomy'); ?>"><?php _e( 'Taxonomy', CURRENT_THEME ); ?>:
+			<label for="<?php echo $this->get_field_id('taxonomy'); ?>"><?php _e( 'Taxonomy', 'non-cherry' ); ?>:
 				<select class="widefat" id="<?php echo $this->get_field_id('taxonomy'); ?>" name="<?php echo $this->get_field_name('taxonomy'); ?>">
-					<option value="none" <?php self::selected( $taxonomy, 'none'); ?>><?php _e( 'None', CURRENT_THEME ); ?></option>
+					<option value="none" <?php self::selected( $taxonomy, 'none'); ?>><?php _e( 'None', 'non-cherry' ); ?></option>
 				<?php foreach ( $taxonomies as $slug => $tax ): ?>
 					<option value="<?php echo $slug ?>" <?php self::selected( $taxonomy, $slug ); ?>><?php echo $tax->labels->singular_name; ?></option>
 				<?php endforeach; ?>
@@ -100,25 +100,25 @@ class Taxomomy_List extends WP_Widget {
 			</label>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id('hide_empty'); ?>"><?php _e( 'Hide empty', CURRENT_THEME ); ?>:
+			<label for="<?php echo $this->get_field_id('hide_empty'); ?>"><?php _e( 'Hide empty', 'non-cherry' ); ?>:
 				<select class="widefat" id="<?php echo $this->get_field_id('hide_empty'); ?>" name="<?php echo $this->get_field_name('hide_empty'); ?>">
-					<option value="true" <?php self::selected( $hide_empty, 'true'); ?>><?php _e( 'Yes', CURRENT_THEME ); ?></option>
-					<option value="false" <?php self::selected( $hide_empty, 'false'); ?>><?php _e( 'No', CURRENT_THEME ); ?></option>
+					<option value="true" <?php self::selected( $hide_empty, 'true'); ?>><?php _e( 'Yes', 'non-cherry' ); ?></option>
+					<option value="false" <?php self::selected( $hide_empty, 'false'); ?>><?php _e( 'No', 'non-cherry' ); ?></option>
 				</select>
 			</label>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id('sort_by'); ?>"><?php _e( 'Sort terms by', CURRENT_THEME ); ?>:<br />
+			<label for="<?php echo $this->get_field_id('sort_by'); ?>"><?php _e( 'Sort terms by', 'non-cherry' ); ?>:<br />
 				<select  class="widefat" id="<?php echo $this->get_field_id('sort_by'); ?>" name="<?php echo $this->get_field_name('sort_by'); ?>">
-					<option value="name" <?php self::selected( $sort_by, 'name'); ?>><?php _e( 'Name', CURRENT_THEME ); ?></option>
-					<option value="slug" <?php self::selected( $sort_by, 'slug'); ?>><?php _e( 'Slug', CURRENT_THEME ); ?></option>
-					<option value="none" <?php self::selected( $sort_by, 'none'); ?>><?php _e( 'None', CURRENT_THEME ); ?></option>
-					<option value="term_id" <?php self::selected( $sort_by, 'term_id'); ?>><?php _e( 'Term ID', CURRENT_THEME ); ?></option>
+					<option value="name" <?php self::selected( $sort_by, 'name'); ?>><?php _e( 'Name', 'non-cherry' ); ?></option>
+					<option value="slug" <?php self::selected( $sort_by, 'slug'); ?>><?php _e( 'Slug', 'non-cherry' ); ?></option>
+					<option value="none" <?php self::selected( $sort_by, 'none'); ?>><?php _e( 'None', 'non-cherry' ); ?></option>
+					<option value="term_id" <?php self::selected( $sort_by, 'term_id'); ?>><?php _e( 'Term ID', 'non-cherry' ); ?></option>
 				</select>
 			</label>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'number' ); ?>"><?php _e( 'Number of terms to display', CURRENT_THEME  ); ?>
+			<label for="<?php echo $this->get_field_id( 'number' ); ?>"><?php _e( 'Number of terms to display', 'non-cherry'  ); ?>
 				<input class="widefat" id="<?php echo $this->get_field_id( 'number' ); ?>" name="<?php echo $this->get_field_name( 'number' ); ?>" type="text" value="<?php echo $number; ?>" />
 			</label>
 		</p>
