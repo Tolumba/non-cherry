@@ -513,6 +513,7 @@ function optionsframework_fields() {
 				$btn_name = esc_attr( 'upload[' . $value['id'] . '][image]' );
 
 				ob_start();?>
+				<div class="clear"></div>
 				<div class="upload-wrap" >
 					<fieldset>
 						<p>

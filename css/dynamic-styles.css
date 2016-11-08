@@ -3,7 +3,14 @@ body {
 	background-color: $body_background[color];
 	background-repeat: $body_background[repeat];
 	background-position: $body_background[position];
-	background-attachment: $body_background[attachment]; 
+	background-attachment: $body_background[attachment];
+
+	font-family: $google_mixed_3[face];
+	font-weight: $google_mixed_3[weight];
+	font-style: $google_mixed_3[style];
+	font-size: $google_mixed_3[size];
+	line-height: $google_mixed_3[lineheight];
+	color: $google_mixed_3[color];
 }
 #stuck_container.isStuck,
 #header {
@@ -12,6 +19,54 @@ body {
 	background-position: $header_background[position];
 	background-attachment: $header_background[attachment];
 	background-color: $header_background[color];
+}
+h1, .h1{
+	font-family: $h1_heading[face];
+	font-weight: $h1_heading[weight];
+	font-style: $h1_heading[style];
+	font-size: $h1_heading[size];
+	line-height: $h1_heading[lineheight];
+	color: $h1_heading[color];
+}
+h2, .h2{
+	font-family: $h2_heading[face];
+	font-weight: $h2_heading[weight];
+	font-style: $h2_heading[style];
+	font-size: $h2_heading[size];
+	line-height: $h2_heading[lineheight];
+	color: $h2_heading[color];
+}
+h3, .h3{
+	font-family: $h3_heading[face];
+	font-weight: $h3_heading[weight];
+	font-style: $h3_heading[style];
+	font-size: $h3_heading[size];
+	line-height: $h3_heading[lineheight];
+	color: $h3_heading[color];
+}
+h4, .h4{
+	font-family: $h4_heading[face];
+	font-weight: $h4_heading[weight];
+	font-style: $h4_heading[style];
+	font-size: $h4_heading[size];
+	line-height: $h4_heading[lineheight];
+	color: $h4_heading[color];
+}
+h5, .h5{
+	font-family: $h5_heading[face];
+	font-weight: $h5_heading[weight];
+	font-style: $h5_heading[style];
+	font-size: $h5_heading[size];
+	line-height: $h5_heading[lineheight];
+	color: $h5_heading[color];
+}
+h6, .h6{
+	font-family: $h6_heading[face];
+	font-weight: $h6_heading[weight];
+	font-style: $h6_heading[style];
+	font-size: $h6_heading[size];
+	line-height: $h6_heading[lineheight];
+	color: $h6_heading[color];
 }
 a{
 	color: $links_color;

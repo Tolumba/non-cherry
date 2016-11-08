@@ -283,10 +283,6 @@
     font-size: 18px;
   }
 }
-body {
-  font: normal 1em/normal sans-serif;
-}
-
 .admin-bar #stuck_container.isStuck {
   margin-top: 32px !important;
   padding: 20px 0;

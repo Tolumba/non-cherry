@@ -71,7 +71,7 @@ function framework_dynamic_styles(){
 		return;
 	}
 
-	$pattern = '#(.+)\$([a-z_]+)(\[?([a-z_]*)\]?)(.+)#';
+	$pattern = '#(.+)\$([a-z_0-9]+)(\[?([a-z_]*)\]?)(.+)#';
 	$dynamic_css = preg_replace_callback( $pattern, 'parse_option', $dynamic_css );
 
 	wp_add_inline_style ( 'reset', $dynamic_css );
