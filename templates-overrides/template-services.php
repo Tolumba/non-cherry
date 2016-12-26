@@ -11,24 +11,15 @@
  */
 ?>
 <?php get_header(); ?>
-
 	<?php do_action('before_loop') ?>
-			
 		<?php get_template_part('template-parts/title-page');?>
-
 		<?php if ( have_posts() ) :
-
 			while ( have_posts() ) :
-
 					the_post(); ?>
-
 					<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-
 						<?php
-
 							// Display a page content.
 							the_content();
-
 							$args = array(
 								'template'     => 'page-services.tmpl',
 								'before_title' => '<h4 class="cherry-services_title">',
@@ -46,15 +37,9 @@
 							$data = new Cherry_Services_Data;
 							$data->the_services( $args );
 						?>
-
 					</article>
-
 			<?php endwhile;
-
 		endif; ?>
-
 		<?php get_template_part('template-parts/page-nav'); ?>
-
 	<?php do_action('after_loop') ?>
-
 <?php get_footer(); ?>

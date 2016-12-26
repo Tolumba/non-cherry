@@ -9,18 +9,13 @@
  * @copyright 2015 Cherry Team
  */
 get_header(); ?>
-
 	<?php do_action('before_loop') ?>
-			
 		<?php get_template_part('template-parts/title-page'); 
-
 		while ( have_posts() ) :
-
 				the_post(); ?>
 				<br><br>
 				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 				<?php
-
 					$args = array(
 						'id'           => get_the_ID(),
 						'template'     => 'single-team.tmpl',
@@ -32,14 +27,9 @@ get_header(); ?>
 					$data = new Cherry_Team_Data;
 					$data->the_team( $args );
 					$data->microdata_markup();
-
 				?>
 				</article>
-
 		<?php endwhile;
-
 		get_template_part('includes/post-formats/post-nav'); ?>
-
 	<?php do_action('after_loop') ?>
-
 <?php get_footer(); ?>

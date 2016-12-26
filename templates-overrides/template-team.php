@@ -9,27 +9,16 @@
  * @link      http://www.cherryframework.com/
  * @copyright 2015 Cherry Team
  */
-?>
-<?php get_header(); ?>
-
+get_header(); ?>
 	<?php do_action('before_loop') ?>
-			
 		<?php get_template_part('template-parts/title-page');?>
-		
-		<?php 
-			if ( have_posts() ) :
-
+		<?php if ( have_posts() ) :
 				while ( have_posts() ) :
-
 						the_post(); ?>
-
 						<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-
 							<?php
-
 								// Display a page content.
 								the_content();
-
 								$args = array(
 									'template'     => 'default.tmpl',
 									'limit'        => 3,
@@ -44,20 +33,12 @@
 									'pager'        => true,
 									'limit'        => Cherry_Team_Templater::get_posts_per_archive_page(),
 								);
-
 								$data = new Cherry_Team_Data;
 								$data->the_team( $args );
 							?>
-
 						</article>
-
 				<?php endwhile;
-
-			endif;
-		 ?>
-
+			endif; ?>
 		<?php get_template_part('template-parts/page-nav'); ?>
-
 	<?php do_action('after_loop') ?>
-
 <?php get_footer(); ?>
