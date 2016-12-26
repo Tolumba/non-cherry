@@ -1,4 +1,5 @@
 /* Do not edit main.css edit styles.css or main.scss insted */
+/* RD Navbar */
 .rd-navbar-brand {
   margin-top: 100px;
   display: block;
@@ -283,6 +284,179 @@
     font-size: 18px;
   }
 }
+/* Social menu */
+#social-menu li {
+  display: inline-block;
+}
+#social-menu li a {
+  display: block;
+  text-decoration: none;
+  text-align: center;
+}
+#social-menu li a:hover {
+  text-decoration: none;
+}
+#social-menu li a:focus {
+  outline: none;
+}
+#social-menu li a[href*="codepen.io"]::before {
+  content: '\f1cb';
+}
+#social-menu li a[href*="digg.com"]::before {
+  content: '\f1a6';
+}
+#social-menu li a[href*="dribbble.com"]::before {
+  content: '\f17d';
+}
+#social-menu li a[href*="dropbox.com"]::before {
+  content: '\f16b';
+}
+#social-menu li a[href*="facebook.com"]::before {
+  content: '\f09a';
+}
+#social-menu li a[href*="flickr.com"]::before {
+  content: '\f16e';
+}
+#social-menu li a[href*="plus.google.com"]::before {
+  content: '\f0d5';
+}
+#social-menu li a[href*="github.com"]::before {
+  content: '\f09b';
+}
+#social-menu li a[href*="instagram.com"]::before {
+  content: '\f16d';
+}
+#social-menu li a[href*="linkedin.com"]::before {
+  content: '\f0e1';
+}
+#social-menu li a[href*="pinterest.com"]::before {
+  content: '\f0d2';
+}
+#social-menu li a[href*="getpocket.com"]::before {
+  content: '\f265';
+}
+#social-menu li a[href*="reddit.com"]::before {
+  content: '\f1a1';
+}
+#social-menu li a[href*="skype.com"]::before, #social-menu li a[href*="skype:"]::before {
+  content: '\f17e';
+}
+#social-menu li a[href*="stumbleupon.com"]::before {
+  content: '\f1a4';
+}
+#social-menu li a[href*="tumblr.com"]::before {
+  content: '\f173';
+}
+#social-menu li a[href*="twitter.com"]::before {
+  content: '\f099';
+}
+#social-menu li a[href*="vimeo.com"]::before {
+  content: '\f27d';
+}
+#social-menu li a[href*="wordpress.org"]::before, #social-menu li a[href*="wordpress.com"]::before {
+  content: '\f19a';
+}
+#social-menu li a[href*="youtube.com"]::before {
+  content: '\f167';
+}
+#social-menu li a[href*="amazon.com"]::before {
+  content: '\f270';
+}
+#social-menu li a[href*="tripadvisor"]::before {
+  content: '\f262';
+}
+#social-menu li a[href*="ycombinator.com"]::before {
+  content: '\f23b';
+}
+#social-menu li a[href*="xing.com"]::before {
+  content: '\f168';
+}
+#social-menu li a[href*="yahoo."]::before {
+  content: '\f19e';
+}
+#social-menu li a[href*="vine.co"]::before {
+  content: '\f1ca';
+}
+#social-menu li a[href*="weibo.com"]::before {
+  content: '\f18a';
+}
+#social-menu li a[href*="trello.com"]::before {
+  content: '\f181';
+}
+#social-menu li a[href*="steampowered.com"]::before {
+  content: '\f1b6';
+}
+#social-menu li a[href*="soundcloud.com"]::before {
+  content: '\f1be';
+}
+#social-menu li a[href*="spotify.com"]::before {
+  content: '\f1bc';
+}
+#social-menu li a[href*="stackexchange.com"]::before {
+  content: '\f18d';
+}
+#social-menu li a[href*="stackoverflow.com"]::before {
+  content: '\f16c';
+}
+#social-menu li a[href*="slideshare.net"]::before {
+  content: '\f1e7';
+}
+#social-menu li a[href*="slack.com"]::before {
+  content: '\f198';
+}
+#social-menu li a[href*="skyatlas.com"]::before {
+  content: '\f216';
+}
+#social-menu li a[href*="last.fm"]::before {
+  content: '\f202';
+}
+#social-menu li a[href*="jsfiddle.net"]::before {
+  content: '\f1cc';
+}
+#social-menu li a[href*="behance.net"]::before {
+  content: '\f1b4';
+}
+#social-menu li a[href*="bitbucket.org"]::before {
+  content: '\f171';
+}
+#social-menu li a[href*="codepen.io"]::before {
+  content: '\f1cb';
+}
+#social-menu li a[href*="codiepie.com"]::before {
+  content: '\f284';
+}
+#social-menu li a[href*="connectdevelop.com"]::before {
+  content: '\f20e';
+}
+#social-menu li a[href*="dashcube.com"]::before {
+  content: '\f210';
+}
+#social-menu li a[href*="contao.org"]::before {
+  content: '\f26d';
+}
+#social-menu li a[href*="delicious.com"]::before {
+  content: '\f1a5';
+}
+#social-menu li a[href*="deviantart.com"]::before {
+  content: '\f1bd';
+}
+#social-menu li a[href*="vk.com"]::before {
+  content: '\f189';
+}
+#social-menu li a::before {
+  font-family: FontAwesome;
+  font-size: 15px;
+  display: block;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  margin: auto;
+  border-radius: 50%;
+}
+.social-list--text #social-menu li a::before {
+  display: none;
+}
+
 .admin-bar #stuck_container.isStuck {
   margin-top: 32px !important;
   padding: 20px 0;

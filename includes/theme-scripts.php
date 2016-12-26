@@ -19,7 +19,7 @@ function non_cherry_scripts() {
 	wp_enqueue_style( 'ui', CHILD_URL.'/css/ui.totop.css' );
 
 	wp_enqueue_style('contact-form', CHILD_URL.'/css/contact-form.css' );
-	wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css');
+	wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 
 	// Scripts
 	wp_enqueue_script('simplr-smoothscroll', CHILD_URL.'/js/jquery.simplr.smoothscroll.min.js', array('jquery'));
