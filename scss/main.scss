@@ -1,5 +1,7 @@
 /* Do not edit main.css edit styles.css or main.scss insted */
-@import '_includes/_rd-navbar.scss';
+@import 'includes/rd-navbar';
+@import 'includes/social_menu';
+
 body{
 	//font: normal 1em/normal sans-serif;
 }
