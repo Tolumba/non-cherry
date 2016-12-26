@@ -17,6 +17,8 @@
 
 				    	<?php get_template_part('template-parts/footer-logo') ?>
 						<?php get_template_part('template-parts/footer-text') ?>
+						<?php if( 'yes' == of_get_option( 'footer_social_menu', 'yes' ) )
+								get_template_part('template-parts/social-menu'); ?>
 						
 					</div>
 				</div>

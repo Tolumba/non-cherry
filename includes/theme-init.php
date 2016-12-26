@@ -34,6 +34,7 @@ if ( !function_exists( 'non_cherry_setup' ) ):
 			register_nav_menus(
 				array(
 					'header_menu' => __( 'Header Menu', 'non-cherry' ),
+					'social_menu' => __( 'Social Menu', 'non-cherry' ),
 				)
 			);
 		}

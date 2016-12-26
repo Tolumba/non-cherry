@@ -437,6 +437,24 @@ if(!function_exists('optionsframework_options')) {
 			"type" => "text",
 		);
 
+		$options['header_social_menu'] = array(
+			"name"    => __("Display social in header?", 'non-cherry'),
+			"desc"    => __("Display social in header.", 'non-cherry'),
+			"id"      => "header_social_menu",
+			"type"    => "radio",
+			"std"     => "no",
+			"options" => $yes_no_arr
+		);
+
+		$options['footer_social_menu'] = array(
+			"name"    => __("Display social in footer?", 'non-cherry'),
+			"desc"    => __("Display social in footer.", 'non-cherry'),
+			"id"      => "footer_social_menu",
+			"type"    => "radio",
+			"std"     => "yes",
+			"options" => $yes_no_arr
+		);
+
 	/*
 	*	Tab Slider
 	*/
