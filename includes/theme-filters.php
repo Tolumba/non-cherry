@@ -213,21 +213,26 @@ function theme_template_redirect(){
 	$types = array( '404', 'archive', 'author', 'category', 'tag', 'taxonomy', 'date', 'home', 'front_page', 'paged', 'search', 'single', 'singular', 'attachment');
 
 	foreach ( $types as $type ) {
+		add_filter( "{$type}_template_hierarchy", 'theme_templates_hierarchy_quene' );
 		add_filter( "{$type}_template", 'theme_templates_quene' );
 	}
+
 }
 
-// Updating default templates include quene
-function theme_templates_quene( $template ){
+function theme_templates_hierarchy_quene( $templates ){
 
-	$file = preg_replace( "#_template#", '', current_filter() );
-	$templates = array();
+	$current_filter =  current_filter();
+	$file = preg_replace( "#_template_hierarchy#", '', $current_filter );
 
 	$templates[] = "templates/{$file}.php";
 	$templates[] = "templates-overrides/{$file}.php";
 
-	if( $template_override = locate_template( $templates ) )
-		return $template_override;
+	return $templates;
+}
+
+
+// Updating default templates include quene
+function theme_templates_quene( $template ){
 
 	return $template;
 }
