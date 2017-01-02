@@ -62,7 +62,7 @@
 			<?php get_template_part('template-parts/header-logo') ?>
 			<?php get_template_part('template-parts/nav-menu-primary') ?>
 			<?php get_template_part('template-parts/search') ?>
-			<?php if( 'yes' == of_get_option( 'footer_social_menu', 'yes' ) )
+			<?php if( 'yes' == of_get_option( 'header_social_menu', 'yes' ) )
 				get_template_part('template-parts/social-menu'); ?>
 			
 		<?php do_action('after_header'); ?>
