@@ -3,6 +3,22 @@
 *	Cherry Shortcodes Plugin filters
 */
 
+/**
+* 
+*    Google API-key integration for cherry shortcodes plugin
+*
+*/
+add_filter( 'cherry_shortcodes_google_map_url_query', 'non_cherry_map_api_key' );
+function non_cherry_map_api_key( $args=array() ){
+
+	$key = of_get_option( 'google_maps_key', false );
+	if( $key ){
+		$args['key'] = $key;
+	}
+
+	return $args;
+}
+
 // Registering custom buttons for shortcode templater
 add_filter( 'cherry_templater_macros_buttons', 'non_cherry_banner_buttons', 10 , 2 );
 function non_cherry_banner_buttons($buttons, $shortcode=''){
@@ -65,7 +81,7 @@ function non_cherry_banner_shortcode( $result, $atts=array(), $shortcode='' ){
 
 		if( $atts['style'] === 'primary' ){
 
-			$format = '<a href="%1$s" class="%2$s">%3$s</a>';
+			$format = '</*a*/ href="%1$s" class="%2$s">%3$s</a>';
 
 			$result = sprintf( $format, $atts['url'], $atts['class'], $atts['text'] );
 
