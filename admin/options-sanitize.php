@@ -559,7 +559,7 @@ function options_typography_get_google_fonts() {
         'Yanone Kaffeesatz, sans-serif' 	=> 'Yanone Kaffeesatz *',
     );
 
-    return $google_faces;
+    return apply_filters( 'of_google_fonts_list', $google_faces );
 
 }
 
@@ -573,19 +573,25 @@ if ( !function_exists( 'options_typography_google_fonts' ) ) {
 
     function options_typography_google_fonts() {
 
-        $all_google_fonts = array_keys( options_typography_get_google_fonts() );
+        $fonts_list = options_typography_get_google_fonts();
+        $fonts = array();
 
-        // Define all the options that possibly have a unique Google font
-        $h1_heading = of_get_option('h1_heading', 'inherit');
-		$h2_heading = of_get_option('h2_heading', 'inherit');
-		$h3_heading = of_get_option('h3_heading', 'inherit');
-		$h4_heading = of_get_option('h4_heading', 'inherit');
-		$h5_heading = of_get_option('h5_heading', 'inherit');
-		$h6_heading = of_get_option('h6_heading', 'inherit');
-		$google_mixed_3 = of_get_option('google_mixed_3', 'inherit');
+        // Collect fonts from typography settings
+        $fonts[] = of_get_option('h1_heading', 'inherit');
+		$fonts[] = of_get_option('h2_heading', 'inherit');
+		$fonts[] = of_get_option('h3_heading', 'inherit');
+		$fonts[] = of_get_option('h4_heading', 'inherit');
+		$fonts[] = of_get_option('h5_heading', 'inherit');
+		$fonts[] = of_get_option('h6_heading', 'inherit');
+		$fonts[] = of_get_option('google_mixed_3', 'inherit');
 
-        // Get the font face for each option and put it in an array
-
+        // Enqueue requested fonts
+		foreach ($fonts as $index => $font) {
+			if( is_array( $font )
+				&& isset( $font['face'] )
+				&& array_key_exists( $font['face'], $fonts_list ) )
+				options_typography_enqueue_google_font( $font['face'] );
+		}
     }
 }
 
@@ -642,7 +648,6 @@ function of_validate_hex( $hex ) {
 		return true;
 
 	}
-
 }
 
 if ( ! function_exists( 'sanitize_hex_color' ) ) {
