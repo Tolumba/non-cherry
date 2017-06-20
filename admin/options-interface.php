@@ -559,9 +559,9 @@ function optionsframework_fields() {
 							$('#<?php echo esc_attr( $value['id'] ) . '_image'; ?>').on('change', function(e){
 
 								if( '' == $(this).val() ){
-									$('.of-background-properties').addClass('hide');
+									$(this).closest('controls').find('.of-background-properties').addClass('hide');
 								}else{
-									$('.of-background-properties').removeClass('hide');
+									$(this).closest('controls').find('.of-background-properties').removeClass('hide');
 								}
 
 								$.post(
