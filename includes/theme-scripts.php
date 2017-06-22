@@ -71,7 +71,7 @@ function framework_dynamic_styles(){
 		return;
 	}
 
-	$pattern = '#(.+)\$([a-z_0-9]+)(\[?([a-z_]*)\]?)(.+)#';
+	$pattern = '#(.+)\$([a-z_0-9]+)(\[?([a-z_]*)\]?)(\{(.+)\})?(.+)#';
 	$dynamic_css = preg_replace_callback( $pattern, 'parse_option', $dynamic_css );
 
 	wp_add_inline_style ( 'reset', $dynamic_css );
@@ -83,8 +83,6 @@ function parse_option( $opts ){
 	$result = $opts[1];
 
 	$option = of_get_option( $opts[2], false );
-
-	//var_dump( $opts );
 
 	if( is_array( $option ) ){
 
@@ -116,7 +114,7 @@ function parse_option( $opts ){
 
 	}
 
-	return $result . $opts[5];
+	return $result . $opts[6] . $opts[7];
 }
 add_action('wp_enqueue_scripts', 'non_cherry_main_style', 999);
 function non_cherry_main_style(){
