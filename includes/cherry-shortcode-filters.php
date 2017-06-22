@@ -19,6 +19,16 @@ function non_cherry_map_api_key( $args=array() ){
 	return $args;
 }
 
+//List shortcode filter
+add_filter( 'cherry_shortcodes_list_classes', 'theme_shortcodes_list_classes' );
+function theme_shortcodes_list_classes( $classes=array(), $atts=array() ){
+
+	if( empty($atts) )
+		unset( $classes[1] );
+
+	return $classes;
+}
+
 // Registering custom buttons for shortcode templater
 add_filter( 'cherry_templater_macros_buttons', 'non_cherry_banner_buttons', 10 , 2 );
 function non_cherry_banner_buttons($buttons, $shortcode=''){
