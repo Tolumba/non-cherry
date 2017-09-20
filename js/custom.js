@@ -95,32 +95,22 @@ var localize_data = localize_data||{};
 		/* SFMENU & MOBILEMENU */
 		$(function(){
 			var _menu = $('.sf-menu').superfish();
-
-			/*_menu.mobileMenu({
-				defaultText: localize_data['mobileMenu_defaultText'] ? localize_data['mobileMenu_defaultText'] : 'Navigate to...',
-			});*/
-
-			var _mobile_menu = $('.select-menu');
-
-			jQuery(document).ready(function () {
-			    RDMobilemenu_autoinit('#primary.sf-menu');
-			});
-
+			
+			RDMobilemenu_autoinit('#primary.sf-menu');
 
 			$(window).on( 'load resize', function(e){
-				var _ww = $(window).width(),
+				var _mobile_menu = $('.rd-mobilemenu, .rd-mobilepanel'),
+				    _ww = $(window).width(),
 					_switch_point = parseInt( localize_data['mobile_switch_point']||768 );
 
 				if( _ww > _switch_point ){
 
 					_menu.removeClass('hidden');
 					_mobile_menu.addClass('hidden');
-
 				}else{
 
 					_menu.addClass('hidden');
 					_mobile_menu.removeClass('hidden');
-					
 				}
 			}).resize();
 		});
