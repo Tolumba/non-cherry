@@ -6,7 +6,7 @@ $toggle-color: $text-color-brand-alt;
 $menu-font-family: "Arial", sans-serif;
 
 .rd-mobilemenu {
-	display: none;
+	//display: none;
 	position: fixed;
 	overflow: hidden;
 	bottom: 0;
@@ -109,7 +109,7 @@ $menu-font-family: "Arial", sans-serif;
 	}
 }
 .rd-mobilepanel {
-	display: none;
+	//display: none;
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -246,12 +246,6 @@ $menu-font-family: "Arial", sans-serif;
 @media (max-width: 767px) {
 	body {
 		padding-top: 56px;
-	}
-	.rd-mobilemenu {
-		display: block;
-	}
-	.rd-mobilepanel {
-		display: block;
 	}
 }
 @media (max-width: 359px) {
