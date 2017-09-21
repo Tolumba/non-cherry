@@ -84,22 +84,28 @@ function non_cherry_banner_shortcode( $result, $atts=array(), $shortcode='' ){
 		$pattern = '/%%TITLE_TEXT%%/';
 		$result = preg_replace( $pattern, $atts['title'], $result );
 	}
-
+	
 	if( $shortcode === 'button' ){
 
-		$style = isset( $atts['style'] )? $atts['style']: '';
+        $style = isset( $atts['style'] )? $atts['style']: '';
+        $fluid = isset( $atts['fluid'] )? 'yes' == $atts['fluid']: false;
+        $fluid_position = isset( $atts['fluid_position'] )? $atts['fluid_position']: 'left';
 
-		if( $atts['style'] === 'primary' ){
+        if( $style === 'primary' ){
 
-			$format = '</*a*/ href="%1$s" class="%2$s">%3$s</a>';
+            $format = '<a href="%1$s" class="%2$s">%3$s</a>';
 
-			$result = sprintf( $format, $atts['url'], $atts['class'], $atts['text'] );
+            if( $fluid ){
+                $format = "<div class=\"fluid-button-{$fluid_position}\">{$format}</div>";
+            }
 
-		}
-	}
+            $result = sprintf( $format, $atts['url'], $atts['class'], $atts['text'] );
+        }
+    }
 
 	return $result;
 }
+
 
 if(class_exists('Cherry_Shortcodes_Handler')){
 	Cherry_Shortcodes_Handler::$macros_pattern = '/%%([a-zA-Z_]+) *([a-zA-Z0-9\-_]*=[\'\"](.*)[\'\"])?%%/';
