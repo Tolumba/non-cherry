@@ -86,17 +86,19 @@ function non_cherry_banner_shortcode( $result, $atts=array(), $shortcode='' ){
 	}
 
 	if( $shortcode === 'button' ){
-
-		$style = isset( $atts['style'] )? $atts['style']: '';
-
-		if( $atts['style'] === 'primary' ){
-
-			$format = '</*a*/ href="%1$s" class="%2$s">%3$s</a>';
-
-			$result = sprintf( $format, $atts['url'], $atts['class'], $atts['text'] );
-
-		}
-	}
+        $style = isset( $atts['style'] )? $atts['style']: '';
+        $fluid = isset( $atts['fluid'] )? 'yes' == $atts['fluid']: false;
+        $fluid_position = isset( $atts['fluid_position'] )? $atts['fluid_position']: 'left';
+		
+        if( $style === 'primary' ){
+            $format = '<a href="%1$s" class="%2$s">%3$s</a>';
+			
+            if( $fluid ){
+                $format = "<div class=\"fluid-button-{$fluid_position}\">{$format}</div>";
+            }
+            $result = sprintf( $format, $atts['url'], $atts['class'], $atts['text'] );
+        }
+    }
 
 	return $result;
 }
