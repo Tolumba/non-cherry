@@ -22,7 +22,6 @@ function non_cherry_scripts() {
 	wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 
 	// Scripts
-	wp_enqueue_script('simplr-smoothscroll', CHILD_URL.'/js/jquery.simplr.smoothscroll.min.js', array('jquery'));
 	wp_enqueue_script('theme-mousewheel', CHILD_URL.'/js/jquery.mousewheel.min.js', array('jquery'));
 	wp_enqueue_script('easing', CHILD_URL.'/js/jquery.easing.1.3.js', array('jquery'), '1.3');
 	wp_enqueue_script('totop', CHILD_URL.'/js/jquery.ui.totop.js', array('jquery'));
@@ -39,7 +38,6 @@ function non_cherry_scripts() {
 	wp_enqueue_script('wow', CHILD_URL.'/js/wow/wow.js', array('jquery'));
 	
 	wp_enqueue_script('superfish',	CHILD_URL.'/js/superfish.js', array('jquery'), '1.4.8');
-	//wp_enqueue_script('mobilemenu', CHILD_URL.'/js/jquery.mobilemenu.js', array('jquery'));
 	wp_enqueue_script('rd-navbar', CHILD_URL.'/js/jquery.rd-navbar.js', array('jquery'));
 
 	wp_enqueue_script('camera', CHILD_URL.'/js/camera.js', array('jquery'));
