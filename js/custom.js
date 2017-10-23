@@ -130,15 +130,7 @@ var localize_data = localize_data||{};
 		    $(".maxheight3").each(function () {
 		        $(this).contents().wrapAll("<div class='box_inner'></div>");
 		    })
-		})
-
-		/* SMOOTHSCROLL */
-		if ($('html').hasClass('desktop')) {
-		    $.srSmoothscroll({
-		        step: 150,
-		        speed: 800
-		    });
-		}
+		});
 
 		/* LAZY-LOAD */
 		$(".lazy-img").find('img').unveil(200, function () {
