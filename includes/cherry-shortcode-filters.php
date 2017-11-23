@@ -104,7 +104,7 @@ function non_cherry_banner_shortcode( $result, $atts=array(), $shortcode='' ){
 }
 
 if(class_exists('Cherry_Shortcodes_Handler')){
-	Cherry_Shortcodes_Handler::$macros_pattern = '/%%([a-zA-Z_]+) *([a-zA-Z0-9\-_]*=[\'\"](.*)[\'\"])?%%/';
+	Cherry_Shortcodes_Handler::$macros_pattern = '/%%([a-zA-Z_]+)(\s)?([^%]+)?%%/';
 }
 
 add_filter( 'cherry-shortcode-swiper-carousel-postdata', 'non_cherry_shortcode_postdata', 10, 3 );
@@ -310,27 +310,34 @@ function non_cherry_render_types_field( $params=null ){
 	if( !$params )
 		return;
 
-	$params_array = preg_split('#[\'\"][ ,;]{1,2}#', $params);
+	$meta_tag_pattern = '#^=[\'\"]([a-z_-]+)[\'\"][,;]?#';
+	preg_match( $meta_tag_pattern, $params, $maches );
+	$meta_tag = count($maches)?$maches[1]:'';
 
-	$meta_tag = preg_replace( '/[\'\"]/', '', $params_array[0] );
-	unset($params_array[0]);
-
+	$params = preg_replace( $meta_tag_pattern, '', $params );
+	$params_array = preg_split('#[\'\"][,;] #', $params);
 	$args = array();
+
 	foreach ($params_array as $key => $value) {
-		$str = preg_replace( '/[\'\"]/', '', $value );
-		$pair = preg_split( '/=/', $str );
+		$pair = preg_split( '/=/', $value );
 
 		if( 2 == count($pair) ){
-			$args[$pair[0]] = $pair[1];
+			$args[trim($pair[0])] = trim( $pair[1], '\'"' );
 		}else{
 			continue;
 		}
 	}
 
-	//var_dump( $args );
+	//var_dump(array( 'meta_tag' => $meta_tag, 'args' => $args ));
 
+	$before = isset($args['before'])?$args['before']:'';
+	$after = isset($args['after'])?$args['after']:'';
+	$field = types_render_field( $meta_tag, $args );
 
-	return types_render_field( $meta_tag, $args );
+	if( empty($field) )
+		return;
+
+	return $before . $field . $after;
 }
 
 // Setting 'posts_per_archive_page' value for Cherry Team plugin
