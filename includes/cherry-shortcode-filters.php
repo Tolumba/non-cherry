@@ -104,7 +104,7 @@ function non_cherry_banner_shortcode( $result, $atts=array(), $shortcode='' ){
 }
 
 if(class_exists('Cherry_Shortcodes_Handler')){
-	Cherry_Shortcodes_Handler::$macros_pattern = '/%%([a-zA-Z_]+)(\s)?([^%]+)?%%/';
+	Cherry_Shortcodes_Handler::$macros_pattern = '/%%([a-zA-Z_]+)(=[\'\"]([a-zA-Z0-9-_,\/\s]+)[\'\"])?(\s)?([^%]+)?%%/';
 }
 
 add_filter( 'cherry-shortcode-swiper-carousel-postdata', 'non_cherry_shortcode_postdata', 10, 3 );
