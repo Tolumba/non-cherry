@@ -427,7 +427,7 @@ class Cherry_Shortcodes_Template_Callbacks_Adapter{
 
 	public function button( $params=null ) {
 
-		$classes_pattern = '#^=[\'\"]([\w\s]+)[\'\"][,;]?#';
+		$classes_pattern = '#^=[\'\"]([a-z_\- ]+)[\'\"][,;]?#';
 		preg_match( $classes_pattern, $params, $maches );
 		$classes = count($maches)? $maches[1]: '';
 
