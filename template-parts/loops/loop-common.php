@@ -27,9 +27,7 @@
 		endwhile;
 
 	else: ?>
-
 		<div class="no-results">
 			<?php get_template_part( 'includes/post-formats/none' ); ?>
 		</div>
-	
 <?php endif; ?>

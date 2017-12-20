@@ -76,7 +76,7 @@ if ( !function_exists( 'non_cherry_setup' ) ):
 			echo '<div class="col-md-12">';
 		}
 		function non_cherry_after_title_page(){
-			echo '</div>';
+			echo '</div><div class="clear"></div>';
 		}
 
 		// Loop container wrappers
