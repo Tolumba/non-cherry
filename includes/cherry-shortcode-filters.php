@@ -103,6 +103,7 @@ function non_cherry_banner_shortcode( $result, $atts=array(), $shortcode='' ){
 	return $result;
 }
 
+
 if( class_exists('Cherry_Shortcodes_Handler') ){
 	Cherry_Shortcodes_Handler::$macros_pattern = '/%%([a-zA-Z_]+)(\s)?([^%]+)?%%/';
 }
@@ -236,9 +237,9 @@ function non_cherry_grid_image_callback( $params='post-thumbnail' ){
 	return sprintf( $format, $image, get_the_permalink(get_the_ID()) );
 }
 
-function non_cherry_custom_meta_callback( $meta_tag=null ){
+function non_cherry_custom_meta_callback( $params=null ){
 
-	if( !$meta_tag )
+	if( !$params )
 		return;
 
 	$meta_tag_pattern = '#^=[\'\"]([a-z_\-, ;]+)[\'\"][,;]?#';
@@ -284,9 +285,9 @@ function non_cherry_custom_meta_callback( $meta_tag=null ){
 	}
 }
 
-function non_cherry_custom_meta_value_callback( $meta_tag=null ){
+function non_cherry_custom_meta_value_callback( $params=null ){
 
-	if( !$meta_tag )
+	if( !$params )
 		return;
 
 	$meta_tag_pattern = '#^=[\'\"]([a-z_\-, ;]+)[\'\"][,;]?#';
@@ -426,7 +427,7 @@ class Cherry_Shortcodes_Template_Callbacks_Adapter{
 
 	public function button( $params=null ) {
 
-		$classes_pattern = '#^=[\'\"]([\w\s]+)[\'\"][,;]?#';
+		$classes_pattern = '#^=[\'\"]([a-z_\- ]+)[\'\"][,;]?#';
 		preg_match( $classes_pattern, $params, $maches );
 		$classes = count($maches)? $maches[1]: '';
 
