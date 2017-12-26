@@ -267,7 +267,7 @@ if(!function_exists('optionsframework_options')) {
 			'name'    => __('Body Text', 'non-cherry'),
 			'desc'    => __('Choose your prefered font for body text. <em>Note: fonts marked with <strong>*</strong> symbol are uploaded from the <a href="http://www.google.com/webfonts">Google Web Fonts</a> library.</em>', 'non-cherry'),
 			'id'      => 'google_mixed_3',
-			'std'     => array( 'size' => '14px', 'lineheight' => '24px', 'face' => 'Arial', 'color' => '#2d2d2d'),
+			'std'     => array( 'size' => '14px', 'lineheight' => '24px', 'face' => 'Arial, Helvetica, sans-serif', 'color' => '#2d2d2d'),
 			'type'    => 'typography',
 			'options' => $font_faces,
 		);
@@ -276,7 +276,7 @@ if(!function_exists('optionsframework_options')) {
 			'name'    => __('H1 Heading', 'non-cherry'),
 			'desc'    => __('Choose your prefered font for H1 heading and titles. <em>Note: fonts marked with <strong>*</strong> symbol are uploaded from the <a href="http://www.google.com/webfonts">Google Web Fonts</a> library.</em>', 'non-cherry'),
 			'id'      => 'h1_heading',
-			'std'     => array( 'size' => '32px', 'lineheight' => '36px', 'face' => 'Arial', 'color' => '#2d2d2d'),
+			'std'     => array( 'size' => '32px', 'lineheight' => '36px', 'face' => 'Arial, Helvetica, sans-serif', 'color' => '#2d2d2d'),
 			'type'    => 'typography',
 			'options' => $font_faces,
 		);
@@ -285,7 +285,7 @@ if(!function_exists('optionsframework_options')) {
 			'name'    => __('H2 Heading', 'non-cherry'),
 			'desc'    => __('Choose your prefered font for H2 heading and titles. <em>Note: fonts marked with <strong>*</strong> symbol are uploaded from the <a href="http://www.google.com/webfonts">Google Web Fonts</a> library.</em>', 'non-cherry'),
 			'id'      => 'h2_heading',
-			'std'     => array( 'size' => '32px', 'lineheight' => '36px', 'face' => 'Arial', 'color' => '#2d2d2d'),
+			'std'     => array( 'size' => '32px', 'lineheight' => '36px', 'face' => 'Arial, Helvetica, sans-serif', 'color' => '#2d2d2d'),
 			'type'    => 'typography',
 			'options' => $font_faces,
 		);
@@ -294,7 +294,7 @@ if(!function_exists('optionsframework_options')) {
 			'name'    => __('H3 Heading', 'non-cherry'),
 			'desc'    => __('Choose your prefered font for H3 heading and titles. <em>Note: fonts marked with <strong>*</strong> symbol are uploaded from the <a href="http://www.google.com/webfonts">Google Web Fonts</a> library.</em>', 'non-cherry'),
 			'id'      => 'h3_heading',
-			'std'     => array( 'size' => '17px', 'lineheight' => '24px', 'face' => 'Arial', 'color' => '#2d2d2d'),
+			'std'     => array( 'size' => '17px', 'lineheight' => '24px', 'face' => 'Arial, Helvetica, sans-serif', 'color' => '#2d2d2d'),
 			'type'    => 'typography',
 			'options' => $font_faces,
 		);
@@ -303,7 +303,7 @@ if(!function_exists('optionsframework_options')) {
 			'name'    => __('H4 Heading', 'non-cherry'),
 			'desc'    => __('Choose your prefered font for H4 heading and titles. <em>Note: fonts marked with <strong>*</strong> symbol are uploaded from the <a href="http://www.google.com/webfonts">Google Web Fonts</a> library.</em>', 'non-cherry'),
 			'id'      => 'h4_heading',
-			'std'     => array( 'size' => '20px', 'lineheight' => '25px', 'face' => 'Arial', 'color' => '#2d2d2d'),
+			'std'     => array( 'size' => '20px', 'lineheight' => '25px', 'face' => 'Arial, Helvetica, sans-serif', 'color' => '#2d2d2d'),
 			'type'    => 'typography',
 			'options' => $font_faces,
 		);
@@ -312,7 +312,7 @@ if(!function_exists('optionsframework_options')) {
 			'name'    => __('H5 Heading', 'non-cherry'),
 			'desc'    => __('Choose your prefered font for H5 heading and titles. <em>Note: fonts marked with <strong>*</strong> symbol are uploaded from the <a href="http://www.google.com/webfonts">Google Web Fonts</a> library.</em>', 'non-cherry'),
 			'id'      => 'h5_heading',
-			'std'     => array( 'size' => '14px', 'lineheight' => '22px', 'face' => 'Arial', 'color' => '#2d2d2d'),
+			'std'     => array( 'size' => '14px', 'lineheight' => '22px', 'face' => 'Arial, Helvetica, sans-serif', 'color' => '#2d2d2d'),
 			'type'    => 'typography',
 			'options' => $font_faces,
 		);
@@ -321,7 +321,7 @@ if(!function_exists('optionsframework_options')) {
 			'name'    => __('H6 Heading', 'non-cherry'),
 			'desc'    => __('Choose your prefered font for H6 heading and titles. <em>Note: fonts marked with <strong>*</strong> symbol are uploaded from the <a href="http://www.google.com/webfonts">Google Web Fonts</a> library.</em>', 'non-cherry'),
 			'id'      => 'h6_heading',
-			'std'     => array( 'size' => '10px', 'lineheight' => '18px', 'face' => 'Arial', 'color' => '#2d2d2d'),
+			'std'     => array( 'size' => '10px', 'lineheight' => '18px', 'face' => 'Arial, Helvetica, sans-serif', 'color' => '#2d2d2d'),
 			'type'    => 'typography',
 			'options' => $font_faces,
 		);
