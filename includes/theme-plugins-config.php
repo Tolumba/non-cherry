@@ -9,6 +9,58 @@ function cherryone_register_plugins() {
 	 * Array of plugin arrays. Required keys are name and slug.
 	 */
 	$plugins = array(
+
+		/*Uncomment if need PB*/
+
+		array(
+			'name'         => 'Power Builder',
+			'slug'         => 'power-builder',
+			'source'       => 'cherry-free',
+			'required'     => true,
+			'source' => PARENT_DIR . '/includes/plugins/power-builder.zip',
+		),		
+
+		array(
+			'name'         => 'Power Builder Integrator',
+			'slug'         => 'power-builder-integrator',
+			'source'       => 'cherry-free',
+			'required'     => true,
+			'source' => PARENT_DIR . '/includes/plugins/power-builder-integrator.zip',
+		),
+
+		array(
+			'name'         => 'Mailchimp For WordPress',
+			'slug'         => 'mailchimp-for-wp',
+			'required'     => true,
+		),		
+		array(
+			'name'         => 'Cherry Testimonials',
+			'slug'         => 'cherry-testi',
+			'required'     => true,
+		),		
+		array(
+			'name'         => 'Cherry Team Members',
+			'slug'         => 'cherry-team-members',
+			'required'     => true,
+		),		
+		array(
+			'name'         => 'Cherry Sidebars',
+			'slug'         => 'cherry-sidebars',
+			'required'     => true,
+		),		
+		array(
+			'name'         => 'Cherry Services List',
+			'slug'         => 'cherry-services-list',
+			'required'     => true,
+		),		
+		array(
+			'name'         => 'Cherry Projects',
+			'slug'         => 'cherry-projects',
+			'required'     => true,
+		),
+
+		/*End*/
+
 		array(
 			'name'         => 'Cherry Shortcodes Templater',
 			'slug'         => 'cherry-shortcodes-templater',

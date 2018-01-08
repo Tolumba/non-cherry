@@ -127,37 +127,41 @@ function non_cherry_main_style(){
 
 /*	Register and load admin styles & javascript
 /*-----------------------------------------------------------------------------------*/
-add_action('admin_enqueue_scripts', 'non_cherry_admin_assets');
-function non_cherry_admin_assets( $hook ) {
-	
-	wp_enqueue_style( 'theme-admin-styles',  CHILD_URL.'/admin/css/admin-styles.css' );
 
-	if('post.php' === $hook || 'post-new.php' === $hook ){
-		UI_Text::enqueue_assets();
-		UI_Textarea::enqueue_assets();
-		UI_Select::enqueue_assets();
-		UI_Checkbox::enqueue_assets();
-		UI_Radio::enqueue_assets();
-		UI_Switcher::enqueue_assets();
-		UI_Colorpicker::enqueue_assets();
-		UI_Repeater::enqueue_assets();
-		UI_Media::enqueue_assets();
-		UI_Stepper::enqueue_assets();
-		UI_Slider::enqueue_assets();
-		UI_Range_Slider::enqueue_assets();
-		UI_Background::enqueue_assets();
-		UI_Typography::enqueue_assets();
-		UI_Ace_Editor::enqueue_assets();
-		UI_Layout_Editor::enqueue_assets();
-		UI_Tooltip::enqueue_assets();
-		UI_Webfont::enqueue_assets();
+if( !class_exists('Tm_Builder_Plugin')){
 
-		wp_enqueue_script( 'editor');
-		wp_enqueue_script( 'jquery-ui-dialog' );
+	add_action('admin_enqueue_scripts', 'non_cherry_admin_assets');
+	function non_cherry_admin_assets( $hook ) {
+		
+		wp_enqueue_style( 'theme-admin-styles',  CHILD_URL.'/admin/css/admin-styles.css' );
 
-		wp_enqueue_script( 'interface-builder', trailingslashit( CHERRY_URI ) . 'admin/assets/js/interface-builder.js', array( 'jquery' ), CHERRY_VERSION, true );
+		if('post.php' === $hook || 'post-new.php' === $hook ){
+			UI_Text::enqueue_assets();
+			UI_Textarea::enqueue_assets();
+			UI_Select::enqueue_assets();
+			UI_Checkbox::enqueue_assets();
+			UI_Radio::enqueue_assets();
+			UI_Switcher::enqueue_assets();
+			UI_Colorpicker::enqueue_assets();
+			UI_Repeater::enqueue_assets();
+			UI_Media::enqueue_assets();
+			UI_Stepper::enqueue_assets();
+			UI_Slider::enqueue_assets();
+			UI_Range_Slider::enqueue_assets();
+			UI_Background::enqueue_assets();
+			UI_Typography::enqueue_assets();
+			UI_Ace_Editor::enqueue_assets();
+			UI_Layout_Editor::enqueue_assets();
+			UI_Tooltip::enqueue_assets();
+			UI_Webfont::enqueue_assets();
 
-		wp_enqueue_style( 'interface-builder', trailingslashit( CHERRY_URI ) . 'admin/assets/css/interface-builder.css', array(), CHERRY_VERSION );
+			wp_enqueue_script( 'editor');
+			wp_enqueue_script( 'jquery-ui-dialog' );
+
+			wp_enqueue_script( 'interface-builder', trailingslashit( CHERRY_URI ) . 'admin/assets/js/interface-builder.js', array( 'jquery' ), CHERRY_VERSION, true );
+
+			wp_enqueue_style( 'interface-builder', trailingslashit( CHERRY_URI ) . 'admin/assets/css/interface-builder.css', array(), CHERRY_VERSION );
+		}
 	}
 }
 
