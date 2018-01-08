@@ -26,3 +26,5 @@ gulp.task('css', () => {
 gulp.task('watch', () => {
 	gulp.watch('./scss/**', ['css']);
 });
+
+gulp.task('default', ['watch']);
