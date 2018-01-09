@@ -1,6 +1,6 @@
 <?php
 /**
- * 
+ *
  * The template for displaying CPT Portfolio.
  *
  * @package Cherry_Portfolio
@@ -9,7 +9,6 @@
 ?>
 <?php get_header(); ?>
 	<?php do_action('before_loop') ?>
-			
 		<?php get_template_part('template-parts/title-page');?>
 				<?php if ( have_posts() ) :
 					while ( have_posts() ) :
@@ -34,7 +33,6 @@
 									Cherry_Portfolio_Data::$default_options['template'] = 'theme-list-default.tmpl';
 									$data->the_portfolio();
 								?>
-					
 								<div class="clear"></div>
 							</article>
 					<?php endwhile; endif; ?>

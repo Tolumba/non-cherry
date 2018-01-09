@@ -10,7 +10,7 @@
  */
 get_header(); ?>
 	<?php do_action('before_loop') ?>
-		<?php get_template_part('template-parts/title-page'); 
+		<?php get_template_part('template-parts/title-page');
 		while ( have_posts() ) :
 				the_post(); ?>
 				<br><br>

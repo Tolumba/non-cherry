@@ -1,5 +1,5 @@
 <?php
-	/** 
+	/**
 	*
 	*	Default header template
 	*
@@ -19,7 +19,6 @@
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 	<link rel="alternate" type="application/rss+xml" title="<?php bloginfo( 'name' ); ?>" href="<?php bloginfo( 'rss2_url' ); ?>" />
 	<link rel="alternate" type="application/atom+xml" title="<?php bloginfo( 'name' ); ?>" href="<?php bloginfo( 'atom_url' ); ?>" />
-
 	<!--[if lt IE 9]>
 	<html class="lt-ie9">
 	<div id="ie6-alert" style="width: 100%; text-align:center; background: #232323;">
@@ -39,11 +38,9 @@
 	              alt="Download Google Chrome"/>
 	    </map>
 	</div>
-
 	<script src="<?php echo get_stylesheet_directory(); ?>/js/html5shiv.js"></script>
 	<link rel="stylesheet" type="text/css" media="screen" href="<?php echo get_stylesheet_directory(); ?>/css/ie.css">
 	<![endif]-->
-
     <?php
 		/* Always have wp_head() just before the closing </head>
 		 * tag of your theme, or you will break many plugins, which
@@ -54,15 +51,11 @@
 	?>
 </head>
 <body <?php body_class(); ?>>
-
 	<section id="main" class="site-main">
-		
 		<?php do_action('before_header'); ?>
-
 			<?php get_template_part('template-parts/header-logo') ?>
 			<?php get_template_part('template-parts/nav-menu-primary') ?>
 			<?php get_template_part('template-parts/search') ?>
 			<?php if( 'yes' == of_get_option( 'header_social_menu', 'yes' ) )
 				get_template_part('template-parts/social-menu'); ?>
-			
 		<?php do_action('after_header'); ?>

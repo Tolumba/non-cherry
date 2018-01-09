@@ -1,30 +1,23 @@
 <?php
 // =============================== Taxonomy List (Categories and Tags) ======================================
 class Taxomomy_List extends WP_Widget {
-
 	/** constructor */
 	function __construct() {
 		parent::__construct( false, $name = __( 'Taxonomy List', 'non-cherry' ) );
 	}
-
 	/** @see WP_Widget::widget */
 	function widget( $args, $instance ) {
 		extract( $args );
-
 		$title         = apply_filters( 'widget_title', empty( $instance['title'] ) ? '' : $instance['title'], $instance );
 		$taxonomy      = apply_filters( 'widget_taxonomy', $instance['taxonomy'] );
 		$hide_empty    = apply_filters( 'widget_hide_empty', $instance['hide_empty'] );
 		$sort_by       = apply_filters( 'widget_sort_by', $instance['sort_by'] );
 		$number        = apply_filters( 'widget_number', $instance['number'] );
-
 		$hide_empty = $hide_empty == 'true';
-
 		echo $before_widget;
-
 		if ( $title ){
 			echo $before_title . $title . $after_title;
 		}
-
 		$terms = get_terms(
 			array(
 				'taxonomy' => $taxonomy,
@@ -34,55 +27,35 @@ class Taxomomy_List extends WP_Widget {
 				'number' => $number,
 			)
 		);
-
-
 		?>
-
 		<ul class="term-list unstyled">
-
 		<?php if( ! is_wp_error( $terms ) && count( $terms ) ){
-
 			$format = '<li class="list-item term %3$s"><a href="%1$s">%2$s</a></li>';
-
 			foreach ( $terms as $id => $name ) {
-
 			 	$term_permalink = get_term_link( (int)$id, $taxonomy );
-
 			 	if( is_wp_error( $term_permalink ) )
 			 		continue;
-
 			 	printf( $format, esc_attr( $term_permalink ), esc_html( $name ), esc_attr( $taxonomy ) );
-
 			}
-
 		} ?>
-
 		</ul>
-
 		<?php echo $after_widget;
 	}
-
 	/** @see WP_Widget::update */
 	function update($new_instance, $old_instance) {
 		return $new_instance;
 	}
-
 	/** @see WP_Widget::form */
 	function form($instance) {
-
 		/* Set up some default widget settings. */
-
 		$defaults = array( 'title' => '', 'post_type' => '', 'taxonomy' => '', 'sort_by' => 'name', 'hide_empty' => 'true', 'number' => '0' );
 		$instance = wp_parse_args( (array) $instance, $defaults );
-
 		$title         = esc_attr( $instance['title'] );
 		$taxonomy      = esc_attr( $instance['taxonomy'] );
 		$hide_empty    = esc_attr( $instance['hide_empty'] );
 		$sort_by       = esc_attr( $instance['sort_by'] );
 		$number        = esc_attr( $instance['number'] );
-
 		$taxonomies = get_taxonomies( array( 'public' => true ), 'objects' );
-
 		?>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title', 'non-cherry'  ); ?>
@@ -124,11 +97,8 @@ class Taxomomy_List extends WP_Widget {
 		</p>
 		<?php
 	}
-
 	static function selected( $val, $test, $return=false ){
-
 		$result = ( $val === $test )? ' selected="selected"': '';
-
 		if( $return ){
 			return $result;
 		}

@@ -9,15 +9,12 @@
  * @link       http://www.cherryframework.com/
  * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
-
 // If this file is called directly, abort.
 if ( !defined( 'WPINC' ) ) {
 	die;
 }
-
 if ( ! class_exists( 'UI_Background' ) ) {
 	class UI_Background {
-
 		private $settings = array();
 		private $defaults_settings = array(
 			'id'			=> 'cherry-ui-background-id',
@@ -36,7 +33,6 @@ if ( ! class_exists( 'UI_Background' ) ) {
 			),
 			'class'			=> '',
 		);
-
 		/**
 		 * Constructor method for the UI_Background class.
 		 *
@@ -46,10 +42,8 @@ if ( ! class_exists( 'UI_Background' ) ) {
 			$this->defaults_settings['id'] = 'cherry-ui-background-'.uniqid();
 			$this->settings = wp_parse_args( $args, $this->defaults_settings );
 			add_action( 'admin_enqueue_scripts', array( __CLASS__, 'enqueue_assets' ) );
-
 			self::enqueue_assets();
 		}
-
 		/**
 		 * Render html UI_Background.
 		 *
@@ -99,7 +93,6 @@ if ( ! class_exists( 'UI_Background' ) ) {
 						'content-box'	=> __( 'Content box', 'non-cherry' )
 				)
 			);
-
 			$ui_media = new UI_Media(
 				array(
 					'id'			=> $this->settings['id'].'-image',
@@ -116,13 +109,11 @@ if ( ! class_exists( 'UI_Background' ) ) {
 					'value'			=> $this->settings['value']['color'],
 				)
 			);
-
 			$html .= '<div class="cherry-ui-background-wrap">';
 				$html .= '<div class="cherry-ui-background-media">';
 					$html .= $ui_media->render();
 				$html .= '</div>';
 				$html .= '<div class="cherry-ui-background-settings">';
-
 					$html .= '<label for="' . $this->settings['id'] . '-settings">' . __( 'Background Settings', 'non-cherry' ) . '</label> ';
 					$html .= '<div class="cherry-ui-background-color">';
 						$html .= '<label for="' . $this->settings['id'] . '-color">' . __( 'Background Color', 'non-cherry' ) . '</label> ';
@@ -147,12 +138,9 @@ if ( ! class_exists( 'UI_Background' ) ) {
 					}
 					$html .= '<div class="clear"></div>';
 				$html .= '</div>';
-
 			$html .= '</div>';
-
 			return $html;
 		}
-
 		/**
 		 * Get current file URL
 		 *
@@ -163,10 +151,8 @@ if ( ! class_exists( 'UI_Background' ) ) {
 			$site_url = site_url();
 			$assets_url = str_replace( untrailingslashit( ABSPATH ), $site_url, $assets_url );
 			$assets_url = str_replace( '\\', '/', $assets_url );
-
 			return $assets_url;
 		}
-
 		/**
 		 * Enqueue javascript and stylesheet UI_Background
 		 *

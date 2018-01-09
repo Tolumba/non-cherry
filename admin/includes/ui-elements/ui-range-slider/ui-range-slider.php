@@ -9,15 +9,12 @@
  * @link       http://www.cherryframework.com/
  * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
-
 // If this file is called directly, abort.
 if ( !defined( 'WPINC' ) ) {
 	die;
 }
-
 if ( ! class_exists( 'UI_Range_Slider' ) ) {
 	class UI_Range_Slider {
-
 		private $settings = array();
 		private $defaults_settings = array(
 			'id'			=> 'cherry-ui-range-slider-id',
@@ -31,7 +28,6 @@ if ( ! class_exists( 'UI_Range_Slider' ) ) {
 			'step_value'	=> 1,
 			'class'			=> '',
 		);
-
 		/**
 		 * Constructor method for the UI_Range_Slider class.
 		 *
@@ -41,10 +37,8 @@ if ( ! class_exists( 'UI_Range_Slider' ) ) {
 			$this->defaults_settings['id'] = 'cherry-ui-range-slider-'.uniqid();
 			$this->settings = wp_parse_args( $args, $this->defaults_settings );
 			add_action( 'admin_enqueue_scripts', array( __CLASS__, 'enqueue_assets' ) );
-
 			self::enqueue_assets();
 		}
-
 		/**
 		 * Render html UI_Range_Slider.
 		 *
@@ -74,7 +68,6 @@ if ( ! class_exists( 'UI_Range_Slider' ) ) {
 					'class'			=> 'range-slider-right-stepper'
 				)
 			);
-
 			$html .= '<div class="cherry-range-slider-wrap">';
 				$html .= '<div class="cherry-range-slider-left-input">';
 					$html .= $ui_left_stepper->render();
@@ -87,10 +80,8 @@ if ( ! class_exists( 'UI_Range_Slider' ) ) {
 				$html .= '</div>';
 				$html .= '<div class="clear"></div>';
 			$html .= '</div>';
-
 			return $html;
 		}
-
 		/**
 		 * Get current file URL
 		 *
@@ -101,10 +92,8 @@ if ( ! class_exists( 'UI_Range_Slider' ) ) {
 			$site_url = site_url();
 			$assets_url = str_replace( untrailingslashit( ABSPATH ), $site_url, $assets_url );
 			$assets_url = str_replace( '\\', '/', $assets_url );
-
 			return $assets_url;
 		}
-
 		/**
 		 * Enqueue javascript and stylesheet UI_Range_Slider.
 		 *
@@ -133,6 +122,5 @@ if ( ! class_exists( 'UI_Range_Slider' ) ) {
 				'all'
 			);
 		}
-
 	}
 }

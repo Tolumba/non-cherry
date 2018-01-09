@@ -9,15 +9,12 @@
  * @link       http://www.cherryframework.com/
  * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
-
 // If this file is called directly, abort.
 if ( !defined( 'WPINC' ) ) {
 	die;
 }
-
 if ( ! class_exists( 'UI_Radio' ) ) {
 	class UI_Radio {
-
 		private $settings = array();
 		private $defaults_settings = array(
 			'id'				=> 'cherry-ui-radio-id',
@@ -43,22 +40,17 @@ if ( ! class_exists( 'UI_Radio' ) ) {
 			'slave'				=> array(),
 			'class'				=> '',
 		);
-
 		/**
 		 * Constructor method for the UI_Radio class.
 		 *
 		 * @since  4.0.0
 		 */
 		function __construct( $args = array() ) {
-
 			$this->defaults_settings['id'] = 'cherry-ui-radio-'.uniqid();
 			$this->settings = wp_parse_args( $args, $this->defaults_settings );
-
 			add_action( 'admin_enqueue_scripts', array( __CLASS__, 'enqueue_assets' ) );
-
 			self::enqueue_assets();
 		}
-
 		/**
 		 * Render html UI_Radio.
 		 *
@@ -66,7 +58,6 @@ if ( ! class_exists( 'UI_Radio' ) ) {
 		 */
 		public function render() {
 			$html = '';
-
 			if ( $this->settings['options'] && !empty( $this->settings['options'] ) && is_array( $this->settings['options']) ) {
 				$html .= '<div class="cherry-radio-group">';
 					foreach ( $this->settings['options'] as $option => $option_value ) {
@@ -75,10 +66,8 @@ if ( ! class_exists( 'UI_Radio' ) ) {
 						$img = isset( $option_value['img_src'] ) && !empty( $option_value['img_src'] ) ? '<img src="' . esc_url( $option_value['img_src'] ) . '" alt="' . esc_html( $option_value['label'] ) . '"><span class="check"><i class="dashicons dashicons-yes"></i></span>' : '<span class="cherry-radio-item"><i></i></span>';
 						$data_slave = isset( $option_value['slave'] ) && !empty( $option_value['slave'] ) ? ' data-slave="' . $option_value['slave'] . '"' : '';
 						$class_box = isset( $option_value['img_src'] ) && !empty( $option_value['img_src'] ) ? ' cherry-radio-img' . $checked : ' cherry-radio-item' . $checked;
-
 						$html .= '<div class="' . $class_box . '">';
 						$html .= '<input type="radio" id="' . esc_attr( $radio_id ) . '" class="cherry-radio-input ' . sanitize_html_class( $this->settings['class'] ) . '" name="' . esc_attr( $this->settings['name'] ) . '" ' . checked( $option, $this->settings['value'], false ) . ' value="' . esc_attr( $option ) . '"' . $data_slave . '>';
-
 							$label_content = $img . $option_value['label'];
 						$html .= '<label for="' . $radio_id . '">' . $label_content . '</label> ';
 						$html .= '</div>';
@@ -86,10 +75,8 @@ if ( ! class_exists( 'UI_Radio' ) ) {
 					$html .= '<div class="clear"></div>';
 				$html .= '</div>';
 			}
-
 			return $html;
 		}
-
 		/**
 		 * Get current file URL
 		 *
@@ -100,10 +87,8 @@ if ( ! class_exists( 'UI_Radio' ) ) {
 			$site_url = site_url();
 			$assets_url = str_replace( untrailingslashit( ABSPATH ), $site_url, $assets_url );
 			$assets_url = str_replace( '\\', '/', $assets_url );
-
 			return $assets_url;
 		}
-
 		/**
 		 * Enqueue javascript and stylesheet UI_Radio
 		 *
@@ -117,7 +102,6 @@ if ( ! class_exists( 'UI_Radio' ) ) {
 				'1.0.0',
 				true
 			);
-
 			wp_enqueue_style(
 				'ui-radio-min',
 				self::get_current_file_url() . '/assets/min/ui-radio.min.css',
@@ -126,6 +110,5 @@ if ( ! class_exists( 'UI_Radio' ) ) {
 				'all'
 			);
 		}
-
 	}
 }

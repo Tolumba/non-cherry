@@ -8,14 +8,11 @@
  * @link      http://www.cherryframework.com/
  * @copyright 2015 Cherry Team
  */
-
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
-
 get_header( 'team' );
 ?>
-
 	<?php
 		/**
 		 * Fires before main content output started
@@ -27,11 +24,8 @@ get_header( 'team' );
 	<?php endif; ?>
 	<div class="team-container">
 	<?php
-
 		global $wp_query;
-
 		$cols = cherry_team_members_tools()->get_cols();
-
 		$args = array(
 			'template'   => cherry_team_members_tools()->get_template( 'listing' ),
 			'wrap_class' => 'team-wrap cherry-team-container',
@@ -47,7 +41,6 @@ get_header( 'team' );
 			'limit'      => cherry_team_members()->get_option( 'posts-per-page', 10 ),
 			'group'      => ! empty( $wp_query->query_vars['term'] ) ? $wp_query->query_vars['term'] : '',
 		);
-
 		$data = new Cherry_Team_Members_Data;
 		$data->the_team( $args );
 	?>
@@ -58,12 +51,10 @@ get_header( 'team' );
 		 */
 		do_action( 'cherry_team_after_main_content' );
 	?>
-
 	<?php
 		/**
 		 * Hook for placing page sidebar
 		 */
 		do_action( 'cherry_team_sidebar' );
 	?>
-
 <?php get_footer( 'team' );

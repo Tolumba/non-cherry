@@ -9,15 +9,12 @@
  * @link       http://www.cherryframework.com/
  * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
-
 // If this file is called directly, abort.
 if ( !defined( 'WPINC' ) ) {
 	die;
 }
-
 if ( ! class_exists( 'UI_Colorpicker' ) ) {
 	class UI_Colorpicker {
-
 		private $settings = array();
 		private $defaults_settings = array(
 			'id'				=> 'cherry-ui-colorpicker-id',
@@ -25,22 +22,17 @@ if ( ! class_exists( 'UI_Colorpicker' ) ) {
 			'value'				=> '',
 			'class'				=> '',
 		);
-
 		/**
 		 * Constructor method for the UI_Colorpicker class.
 		 *
 		 * @since  4.0.0
 		 */
 		function __construct( $args = array() ) {
-
 			$this->defaults_settings['id'] = 'cherry-ui-colorpicker-'.uniqid();
 			$this->settings = wp_parse_args( $args, $this->defaults_settings );
-
 			add_action( 'admin_enqueue_scripts', array( __CLASS__, 'enqueue_assets' ) );
-
 			self::enqueue_assets();
 		}
-
 		/**
 		 * Render html UI_Colorpicker.
 		 *
@@ -53,7 +45,6 @@ if ( ! class_exists( 'UI_Colorpicker' ) ) {
 			$html .= '</div>';
 			return $html;
 		}
-
 		/**
 		 * Get current file URL
 		 *
@@ -64,10 +55,8 @@ if ( ! class_exists( 'UI_Colorpicker' ) ) {
 			$site_url = site_url();
 			$assets_url = str_replace( untrailingslashit( ABSPATH ), $site_url, $assets_url );
 			$assets_url = str_replace( '\\', '/', $assets_url );
-
 			return $assets_url;
 		}
-
 		/**
 		 * Enqueue javascript and stylesheet UI_Colorpicker
 		 *
@@ -81,7 +70,6 @@ if ( ! class_exists( 'UI_Colorpicker' ) ) {
 				'1.0.0',
 				true
 			);
-
 			wp_enqueue_style(
 				'ui-colorpicker-min',
 				self::get_current_file_url() . '/assets/min/ui-colorpicker.min.css',
@@ -90,6 +78,5 @@ if ( ! class_exists( 'UI_Colorpicker' ) ) {
 				'all'
 			);
 		}
-
 	}
 }

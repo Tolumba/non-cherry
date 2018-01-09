@@ -1,47 +1,33 @@
-<?php 
-
+<?php
 /**
 *
 *   Template part: Slider
 *
 */
-
  ?>
-
-<?php 
-
+<?php
     if( of_get_option('home_slider', false) ):
-
         $tax_query = array();
         $taxonomy = of_get_option('sl_posts_taxonomy', false);
         $term = of_get_option('sl_posts_term', false);
         $rule = array();
-
         if( $taxonomy && $term ){
-
             $rule['taxonomy'] = $taxonomy;
             $rule['field'] = 'slug';
             $rule['terms'] = explode( ', ', $term );
-
             $tax_query['relation'] = 'AND';
             $tax_query[] = $rule;
-
         }
-
         $args = array(
             'post_type' => of_get_option('sl_posts', 'post'),
             'posts_per_page' => (int)of_get_option('sl_posts_number', '-1'),
             'post_status' => 'publish',
             'tax_query' =>  $tax_query,
         );
-        
         query_posts( $args );
-        
         if( have_posts() ): ?>
-
         <script>
             jQuery(document).ready(function () {
-
                 jQuery('#camera_wrap').camera({
                     loader: 'none',
                     minHeight: '280px',
@@ -63,12 +49,10 @@
         <div class="slider-wrapper <?php slider_wrapper_classes(); ?>">
             <div id="camera_wrap">
         		<?php while ( have_posts() ): ?>
-
                     <?php the_post();?>
             		<?php $caption = apply_filters( 'the_content', strip_shortcodes( get_the_content() ) ); ?>
                     <?php $sl_image_obj = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'full'); ?>
             		<?php $sl_image_url = is_array($sl_image_obj)? $sl_image_obj[0]: CHILD_URL.'/images/blank.gif'; ?>
-
                     <div data-src="<?php echo $sl_image_url; ?>">
                         <div class="camera_caption fadeIn">
                             <div><?php echo $caption; ?></div>
@@ -77,16 +61,10 @@
         		<?php endwhile; ?>
             </div>
             <div class="clearfix"></div>
-        </div><?php 
-
+        </div><?php
         else: ?>
-
         <div class="no-slides"></div><?php
-
-        endif; 
-
+        endif;
         wp_reset_query();
-
     endif;
-    
 ?>

@@ -9,15 +9,12 @@
  * @link       http://www.cherryframework.com/
  * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
-
 // If this file is called directly, abort.
 if ( !defined( 'WPINC' ) ) {
 	die;
 }
-
 if ( ! class_exists( 'UI_Slider' ) ) {
 	class UI_Slider {
-
 		private $settings = array();
 		private $defaults_settings = array(
 			'id'			=> 'cherry-ui-slider-id',
@@ -28,7 +25,6 @@ if ( ! class_exists( 'UI_Slider' ) ) {
 			'step_value'	=> 1,
 			'class'			=> '',
 		);
-
 		/**
 		 * Constructor method for the UI_Slider class.
 		 *
@@ -38,10 +34,8 @@ if ( ! class_exists( 'UI_Slider' ) ) {
 			$this->defaults_settings['id'] = 'cherry-ui-slider-'.uniqid();
 			$this->settings = wp_parse_args( $args, $this->defaults_settings );
 			add_action( 'admin_enqueue_scripts', array( __CLASS__, 'enqueue_assets' ) );
-
 			self::enqueue_assets();
 		}
-
 		/**
 		 * Render html UI_Slider.
 		 *
@@ -49,7 +43,6 @@ if ( ! class_exists( 'UI_Slider' ) ) {
 		 */
 		public function render() {
 			$html = '';
-
 			$ui_stepper = new UI_Stepper(
 				array(
 					'id' => $this->settings['id'] . '-stepper',
@@ -61,7 +54,6 @@ if ( ! class_exists( 'UI_Slider' ) ) {
 				)
 			);
 			$ui_stepper_html = $ui_stepper->render();
-
 			$html .= '<div class="cherry-slider-wrap">';
 				$html .= '<div class="cherry-slider-input">';
 					$html .= $ui_stepper_html;
@@ -71,10 +63,8 @@ if ( ! class_exists( 'UI_Slider' ) ) {
 				$html .= '</div>';
 				$html .= '<div class="clear"></div>';
 			$html .=  '</div>';
-
 			return $html;
 		}
-
 		/**
 		 * Get current file URL
 		 *
@@ -85,17 +75,14 @@ if ( ! class_exists( 'UI_Slider' ) ) {
 			$site_url = site_url();
 			$assets_url = str_replace( untrailingslashit( ABSPATH ), $site_url, $assets_url );
 			$assets_url = str_replace( '\\', '/', $assets_url );
-
 			return $assets_url;
 		}
-
 		/**
 		 * Enqueue javascript and stylesheet UI_Slider.
 		 *
 		 * @since  4.0.0
 		 */
 		public static function enqueue_assets(){
-
 			wp_enqueue_script(
 				'ui-slider-min',
 				self::get_current_file_url() . '/assets/min/ui-slider.min.js',
@@ -103,7 +90,6 @@ if ( ! class_exists( 'UI_Slider' ) ) {
 				CHERRY_VERSION,
 				true
 			);
-
 			wp_enqueue_style(
 				'jquery-ui',
 				self::get_current_file_url() . '/assets/jquery-ui.css',
@@ -111,7 +97,6 @@ if ( ! class_exists( 'UI_Slider' ) ) {
 				CHERRY_VERSION,
 				'all'
 			);
-
 			wp_enqueue_style(
 				'ui-slider-min',
 				self::get_current_file_url() . '/assets/min/ui-slider.min.css',
@@ -119,7 +104,6 @@ if ( ! class_exists( 'UI_Slider' ) ) {
 				CHERRY_VERSION,
 				'all'
 			);
-
 		}
 	}
 }

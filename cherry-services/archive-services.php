@@ -8,14 +8,11 @@
  * @link      http://www.cherryframework.com/
  * @copyright 2015 Cherry Team
  */
-
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
-
 get_header( 'services' );
 ?>
-
 	<?php
 		/**
 		 * Fires before main content output started
@@ -27,11 +24,8 @@ get_header( 'services' );
 	<?php endif; ?>
 	<div class="services-container">
 	<?php
-
 		global $wp_query;
-
 		$cols = cherry_services_tools()->get_cols();
-
 		$args = array(
 			'template'   => cherry_services_tools()->get_template( 'listing' ),
 			'wrap_class' => 'services-wrap cherry-services-container',
@@ -47,7 +41,6 @@ get_header( 'services' );
 			'limit'      => cherry_services_list()->get_option( 'posts-per-page', 10 ),
 			'category'   => ! empty( $wp_query->query_vars['term'] ) ? $wp_query->query_vars['term'] : '',
 		);
-
 		$data = new Cherry_Services_List_Data( $args );
 		$data->the_services();
 	?>
@@ -58,12 +51,10 @@ get_header( 'services' );
 		 */
 		do_action( 'cherry_services_after_main_content' );
 	?>
-
 	<?php
 		/**
 		 * Hook for placing page sidebar
 		 */
 		do_action( 'cherry_services_sidebar' );
 	?>
-
 <?php get_footer( 'services' );

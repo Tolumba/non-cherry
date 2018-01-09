@@ -9,15 +9,12 @@
  * @link       http://www.cherryframework.com/
  * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
-
 // If this file is called directly, abort.
 if ( !defined( 'WPINC' ) ) {
 	die;
 }
-
 if ( ! class_exists( 'UI_Notice' ) ) {
 	class UI_Notice {
-
 		private static $settings = array(
 				'id'				=> '',
 				'type'				=> 'error', //error, info, warning
@@ -27,7 +24,6 @@ if ( ! class_exists( 'UI_Notice' ) ) {
 				'button_close'		=> true,
 				'display_on_page'	=> array(),
 		);
-
 		/**
 		 * Constructor method for the UI_Notice class.
 		 *
@@ -35,13 +31,10 @@ if ( ! class_exists( 'UI_Notice' ) ) {
 		 */
 		function __construct( $args = array() ) {
 			self::$settings = wp_parse_args( $args, self::$settings );
-
 			add_action( 'admin_enqueue_scripts',  array( __CLASS__ , 'enqueue_assets' ) );
-
 			add_action( 'admin_notices', array( __CLASS__ , 'add_notice' ), 1 );
 			add_action( 'admin_init', array( __CLASS__ , 'hide_notice' ), 1 );
 		}
-
 		/**
 		 * Action show notice.
 		 *
@@ -52,10 +45,8 @@ if ( ! class_exists( 'UI_Notice' ) ) {
 			if ( is_admin()
 				 && !get_user_meta( get_current_user_id(), '_wp_hide_notice', true )
 				 && in_array( $pagenow, self::$settings['display_on_page'] ) ){
-
 				$id = self::$settings['id'];
 				$class = self::$settings['type'] . ' notice hidden ' . self::$settings['class'];
-
 				$html = '<div id="' . $id . '" class="' . $class . '">';
 					if(self::$settings['button_close']){
 						$html .= '<a href = "' . esc_url( add_query_arg( $id, wp_create_nonce( $id ) ) ) . '" title = "' . __( self::$settings['button_text'], 'non-cherry' ) . '">';
@@ -67,7 +58,6 @@ if ( ! class_exists( 'UI_Notice' ) ) {
 				echo  $html;
 			}
 		}
-
 		/**
 		 * Action hide notice.
 		 *
@@ -75,15 +65,12 @@ if ( ! class_exists( 'UI_Notice' ) ) {
 		 */
 		public static function hide_notice() {
 			$id = self::$settings['id'];
-
 			if ( ! isset( $_GET[$id] ) ) {
 				return;
 			}
-
 			check_admin_referer( $id, $id );
 			update_user_meta( get_current_user_id(), '_wp_hide_notice', 1 );
 		}
-
 		/**
 		 * Enqueue javascript and stylesheet UI_Notice.
 		 *
