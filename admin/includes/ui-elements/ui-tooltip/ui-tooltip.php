@@ -9,15 +9,12 @@
  * @link       http://www.cherryframework.com/
  * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
-
 // If this file is called directly, abort.
 if ( !defined( 'WPINC' ) ) {
 	die;
 }
-
 if ( ! class_exists( 'UI_Tooltip' ) ) {
 	class UI_Tooltip {
-
 		private $settings = array();
 		private $defaults_settings = array(
 			'id'			=> 'cherry-ui-tooltip-id',
@@ -27,7 +24,6 @@ if ( ! class_exists( 'UI_Tooltip' ) ) {
 			),
 			'class'			=> '',
 		);
-
 		/**
 		 * Constructor method for the UI_Tooltip class.
 		 *
@@ -37,10 +33,8 @@ if ( ! class_exists( 'UI_Tooltip' ) ) {
 			$this->defaults_settings['id'] = 'cherry-ui-tooltip-'.uniqid();
 			$this->settings = wp_parse_args( $args, $this->defaults_settings );
 			add_action( 'admin_enqueue_scripts', array( __CLASS__, 'enqueue_assets' ) );
-
 			self::enqueue_assets();
 		}
-
 		/**
 		 * Render html UI_Tooltip.
 		 *
@@ -48,7 +42,6 @@ if ( ! class_exists( 'UI_Tooltip' ) ) {
 		 */
 		public function render() {
 			$html = '';
-
 			$type_hint = $this->settings['hint']['type'];
 			switch ($type_hint) {
 				case 'image':
@@ -62,10 +55,8 @@ if ( ! class_exists( 'UI_Tooltip' ) ) {
 					$html = '<div id="' . $this->settings['id'] . '" class="hint-text" title="' . esc_html( $this->settings['hint']['content'] ) .'"><span class="dashicons dashicons-editor-help"></span></div>';
 					break;
 			}
-
 			return $html;
 		}
-
 		/**
 		 * Get current file URL
 		 *
@@ -76,10 +67,8 @@ if ( ! class_exists( 'UI_Tooltip' ) ) {
 			$site_url = site_url();
 			$assets_url = str_replace( untrailingslashit( ABSPATH ), $site_url, $assets_url );
 			$assets_url = str_replace( '\\', '/', $assets_url );
-
 			return $assets_url;
 		}
-
 		/**
 		 * Enqueue javascript and stylesheet UI_Tooltip
 		 *
@@ -93,7 +82,6 @@ if ( ! class_exists( 'UI_Tooltip' ) ) {
 				CHERRY_VERSION,
 				true
 			);
-
 			wp_enqueue_style(
 				'ui-tooltip-min',
 				self::get_current_file_url() . '/assets/min/ui-tooltip.min.css',
@@ -102,6 +90,5 @@ if ( ! class_exists( 'UI_Tooltip' ) ) {
 				'all'
 			);
 		}
-
 	}
 }

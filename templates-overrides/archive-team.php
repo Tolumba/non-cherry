@@ -8,9 +8,7 @@
  * @link      http://www.cherryframework.com/
  * @copyright 2015 Cherry Team
  */
-
 global $wp_query;
-
 get_header(); ?>
 	<?php do_action('before_loop') ?>
 		<?php get_template_part('template-parts/title-page');

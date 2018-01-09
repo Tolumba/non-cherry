@@ -9,15 +9,12 @@
  * @link       http://www.cherryframework.com/
  * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
-
 // If this file is called directly, abort.
 if ( !defined( 'WPINC' ) ) {
 	die;
 }
-
 if ( ! class_exists( 'UI_Layout_Editor' ) ) {
 	class UI_Layout_Editor {
-
 		private $settings = array();
 		private $defaults_settings = array(
 			'id'				=> 'cherry-ui-layout-editor-id',
@@ -57,7 +54,6 @@ if ( ! class_exists( 'UI_Layout_Editor' ) ) {
 			),
 			'class'			=> '',
 		);
-
 		/**
 		 * Constructor method for the UI_Layout_Editor class.
 		 *
@@ -67,10 +63,8 @@ if ( ! class_exists( 'UI_Layout_Editor' ) ) {
 			$this->defaults_settings['id'] = 'cherry-ui-layout-editor-'.uniqid();
 			$this->settings = wp_parse_args( $args, $this->defaults_settings );
 			add_action( 'admin_enqueue_scripts', array( __CLASS__, 'enqueue_assets' ) );
-
 			self::enqueue_assets();
 		}
-
 		/**
 		 * Render html UI_Layout_Editor.
 		 *
@@ -78,7 +72,6 @@ if ( ! class_exists( 'UI_Layout_Editor' ) ) {
 		 */
 		public function render() {
 			$html = '';
-
 			$html .= '<div id="' . $this->settings['id'] . '" class="cherry-layout-editor-wrap ' . $this->settings['class'] . '">';
 				$html .= '<div class="cherry-layout-editor-inner">';
 					$html .= '<input class="ui-layout-editor-input input-top" name="' . $this->settings['name'] . '[position][top]" type="text" placeholder="-" value="' . esc_html( $this->settings['value']['position']['top'] ) . '">';
@@ -128,7 +121,6 @@ if ( ! class_exists( 'UI_Layout_Editor' ) ) {
 							'outset'	=> __( 'outset', 'non-cherry' ),
 							'none'		=> __( 'none', 'non-cherry' ),
 						);
-
 						$html .= '<label for="' . $this->settings['id'] . '-border-style">' . __( 'Border style', 'non-cherry' ) . '</label> ';
 						if($border_styles && !empty($border_styles) && is_array($border_styles)){
 							$ui_border_style_select = new UI_Select(
@@ -170,10 +162,8 @@ if ( ! class_exists( 'UI_Layout_Editor' ) ) {
 				$html .= '</div>';
 				$html .= '<div class="clear"></div>';
 			$html .= '</div>';
-
 			return $html;
 		}
-
 		/**
 		 * Get current file URL
 		 *
@@ -184,17 +174,14 @@ if ( ! class_exists( 'UI_Layout_Editor' ) ) {
 			$site_url = site_url();
 			$assets_url = str_replace( untrailingslashit( ABSPATH ), $site_url, $assets_url );
 			$assets_url = str_replace( '\\', '/', $assets_url );
-
 			return $assets_url;
 		}
-
 		/**
 		 * Enqueue javascript and stylesheet UI_Layout_Editor
 		 *
 		 * @since  4.0.0
 		 */
 		public static function enqueue_assets(){
-
 			wp_enqueue_script(
 				'ui-layout-editor-min',
 				self::get_current_file_url() . '/assets/min/ui-layout-editor.min.js',
@@ -202,7 +189,6 @@ if ( ! class_exists( 'UI_Layout_Editor' ) ) {
 				CHERRY_VERSION,
 				true
 			);
-
 			wp_enqueue_style(
 				'ui-layout-editor-min',
 				self::get_current_file_url() . '/assets/min/ui-layout-editor.min.css',
@@ -211,6 +197,5 @@ if ( ! class_exists( 'UI_Layout_Editor' ) ) {
 				'all'
 			);
 		}
-
 	}
 }

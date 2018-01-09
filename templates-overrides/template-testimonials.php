@@ -1,6 +1,6 @@
 <?php
 /**
- * 
+ *
  * The template for displaying CPT Testimonials.
  *
  * @package Cherry_Testimonials
@@ -19,7 +19,6 @@
 						'template'     => 'page.tmpl',
 						'custom_class' => 'testimonials-page',
 					);
-					
 					$data = new Cherry_Testimonials_Data;
 					$data->the_testimonials( $args );
 				endwhile;

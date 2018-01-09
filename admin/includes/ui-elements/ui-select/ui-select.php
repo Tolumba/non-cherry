@@ -9,15 +9,12 @@
  * @link       http://www.cherryframework.com/
  * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
-
 // If this file is called directly, abort.
 if ( !defined( 'WPINC' ) ) {
 	die;
 }
-
 if ( ! class_exists( 'UI_Select' ) ) {
 	class UI_Select {
-
 		private $settings = array();
 		private $defaults_settings = array(
 			'id'			=> 'cherry-ui-select-id',
@@ -51,34 +48,26 @@ if ( ! class_exists( 'UI_Select' ) ) {
 			),
 			'class'			=> '',
 		);
-
 		/**
 		 * Constructor method for the UI_Select class.
 		 *
 		 * @since  4.0.0
 		 */
 		function __construct( $args = array() ) {
-
 			$this->defaults_settings['id'] = 'cherry-ui-select-'.uniqid();
 			$this->settings = wp_parse_args( $args, $this->defaults_settings );
-
 			add_action( 'admin_enqueue_scripts', array( __CLASS__, 'enqueue_assets' ) );
-
 			self::enqueue_assets();
 		}
-
 		/**
 		 * Render html UI_Select.
 		 *
 		 * @since  4.0.0
 		 */
 		public function render() {
-
 			$html = '';
-
 			( $this->settings['multiple'] ) ? $multi_state = 'multiple="multiple"' : $multi_state = '' ;
 			( $this->settings['multiple'] ) ? $name = $this->settings['name'] . '[]' : $name = $this->settings['name'] ;
-
 			$html .= '<select id="' . $this->settings['id']  . '" class="cherry-ui-select ' . $this->settings['class'] . '" name="' . $name . '" size="' . $this->settings['size'] . '" ' . $multi_state. ' style="width: 100%">';
 			if( $this->settings['options'] && !empty( $this->settings['options'] ) && is_array( $this->settings['options'] ) ){
 				if( ( $this->settings['multiple'] ) ){
@@ -116,10 +105,8 @@ if ( ! class_exists( 'UI_Select' ) ) {
 				}
 			}
 			$html .= '</select>';
-
 			return $html;
 		}
-
 		/**
 		 * Get current file URL
 		 *
@@ -130,10 +117,8 @@ if ( ! class_exists( 'UI_Select' ) ) {
 			$site_url = site_url();
 			$assets_url = str_replace( untrailingslashit( ABSPATH ), $site_url, $assets_url );
 			$assets_url = str_replace( '\\', '/', $assets_url );
-
 			return $assets_url;
 		}
-
 		/**
 		 * Enqueue javascript and stylesheet UI_Select
 		 *

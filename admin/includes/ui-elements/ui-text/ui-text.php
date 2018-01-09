@@ -9,15 +9,12 @@
  * @link       http://www.cherryframework.com/
  * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
-
 // If this file is called directly, abort.
 if ( !defined( 'WPINC' ) ) {
 	die;
 }
-
 if ( ! class_exists( 'UI_Text' ) ) {
 	class UI_Text {
-
 		private $settings = array();
 		private $defaults_settings = array(
 			'type'			=> 'text',// text, email, password, search
@@ -28,7 +25,6 @@ if ( ! class_exists( 'UI_Text' ) ) {
 			'label'			=> '',
 			'class'			=> '',
 		);
-
 		/**
 		 * Constructor method for the UI_Text class.
 		 *
@@ -38,10 +34,8 @@ if ( ! class_exists( 'UI_Text' ) ) {
 			$this->defaults_settings['id'] = 'cherry-ui-input-text-'.uniqid();
 			$this->settings = wp_parse_args( $args, $this->defaults_settings );
 			add_action( 'admin_enqueue_scripts', array( __CLASS__, 'enqueue_assets' ) );
-
 			self::enqueue_assets();
 		}
-
 		/**
 		 * Render html UI_Text.
 		 *
@@ -53,10 +47,8 @@ if ( ! class_exists( 'UI_Text' ) ) {
 				$html .= '<label for="' . $this->settings['id'] . '">' . $this->settings['label'] . '</label> ';
 			}
 			$html .= '<input type="' . $this->settings['type'] . '" id="' . $this->settings['id']  . '" class="widefat cherry-ui-text ' . $this->settings['class'] . '"  name="' . $this->settings['name'] . '"  value="' . esc_html( $this->settings['value'] ) . '" placeholder="' . $this->settings['placeholder'] . '">';
-
 			return $html;
 		}
-
 		/**
 		 * Get current file URL
 		 *
@@ -68,23 +60,18 @@ if ( ! class_exists( 'UI_Text' ) ) {
 			$assets_url = str_replace( $abs_path, '', $assets_url );
 			$assets_url = site_url().'/'.$assets_url;
 			$assets_url = str_replace( '\\', '/', $assets_url );*/
-
-
 			$assets_url = dirname( __FILE__ );
 			$site_url = site_url();
 			$assets_url = str_replace( untrailingslashit( ABSPATH ), $site_url, $assets_url );
 			$assets_url = str_replace( '\\', '/', $assets_url );
-
 			return $assets_url;
 		}
-
 		/**
 		 * Enqueue javascript and stylesheet UI_Text
 		 *
 		 * @since  4.0.0
 		 */
 		public static function enqueue_assets(){
-
 			wp_enqueue_style(
 				'ui-text',
 				self::get_current_file_url() . '/assets/ui-text.css',
@@ -93,6 +80,5 @@ if ( ! class_exists( 'UI_Text' ) ) {
 				'all'
 			);
 		}
-
 	}
 }

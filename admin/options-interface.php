@@ -2,13 +2,10 @@
 /**
  * Generates the tabs that are used in the options menu
  */
-
 function optionsframework_tabs() {
-
 	$optionsframework_settings = get_option('optionsframework');
 	$options = optionsframework_options();
 	$menu = '';
-
 	foreach ($options as $value) {
 		// Heading for Navigation
 		if ($value['type'] == "heading") {
@@ -17,27 +14,21 @@ function optionsframework_tabs() {
 			$menu .= '<a id="'.  esc_attr( $jquery_click_hook ) . '-tab" class="nav-tab" title="' . esc_attr( $value['name'] ) . '" href="' . esc_attr( '#'.  $jquery_click_hook ) . '">' . esc_html( $value['name'] ) . '</a>';
 		}
 	}
-
 	return $menu;
 }
-
 /**
  * Generate upload field preview
  */
 add_action('wp_ajax_generate_thumb', 'of_generate_thumb');
 //add_action('wp_ajax_nopriv_generate_thumb', 'of_generate_thumb');
 function of_generate_thumb(){
-
 	if( isset( $_POST['attachment'] ) ){
-
 		$image_id = $_POST['attachment'];
 		$post = get_post($image_id);
-
 		if ( $post ) {
 			echo get_image_tag( $post->ID, esc_html( $post->post_excerpt ), get_the_title( $post ), 'none', 'thumbnail' );
 		}
 	}
-
 	die();
 }
 /**
@@ -45,37 +36,24 @@ function of_generate_thumb(){
  */
 add_action('wp_ajax_generate_tax_list', 'of_generate_tax_list');
 function of_generate_tax_list(){
-
 	if( isset( $_POST['val'] ) ){
-
 		$args = array(
 			'public'   => true,
 			'object_type'=> array($_POST['val']),
 		);
-
 		$output = 'objects';
 		$operator = 'and';
 		$taxonomies = get_taxonomies( $args, $output, $operator );
-
 		$option_format = '<option value="%1$s">%2$s</option>';
-
 		$html = '';
-
 		if ( $taxonomies ) {
-
 			$html .= sprintf( $option_format, '0', __( 'Any', 'non-cherry' ) );
-
 			foreach ( $taxonomies  as $taxonomy ) {
-
 				$html .= sprintf( $option_format, $taxonomy->name, $taxonomy->labels->name );
-				
 			}
-
 		}
-
 		echo $html;
 	}
-
 	die();
 }
 /**
@@ -83,48 +61,30 @@ function of_generate_tax_list(){
  */
 add_action('wp_ajax_generate_terms_list', 'of_generate_terms_list');
 function of_generate_terms_list(){
-
 	//var_dump($_POST);
-
 	if( isset( $_POST['val'] ) ){
-
 		$args = array(
 			'taxonomy'=> array($_POST['val']),
 			'hide_empty'   => true,
 		);
-
 		$terms = get_terms( $args );
-
 		$option_format = '<option value="%1$s">%2$s</option>';
-
 		$html = '';
-
 		if ( is_array($terms) ) {
-
 			foreach ( $terms  as $term ) {
-
 				$html .= sprintf( $option_format, $term->slug, $term->name );
-				
 			}
-
 		}
-
 		echo $html;
 	}
-
 	die();
 }
-
 /**
  * Generates the options fields that are used in the form.
  */
-
 function optionsframework_fields() {
-
 	global $allowedtags;
-
 	$optionsframework_settings = get_option('optionsframework');
-
 	// Gets the unique option id
 	if ( isset( $optionsframework_settings['id'] ) ) {
 		$option_name = $optionsframework_settings['id'];
@@ -132,29 +92,21 @@ function optionsframework_fields() {
 	else {
 		$option_name = 'optionsframework';
 	};
-
 	$settings = get_option($option_name);
 	$options = optionsframework_options();
-
 	$counter = 0;
 	$menu = '';
-
 	foreach ( $options as $value ) {
-
 		$counter++;
 		$val = '';
 		$select_value = '';
 		$checked = '';
 		$output = '';
-
 		// Wrap all options
 		if ( ( $value['type'] != "heading" ) && ( $value['type'] != "info" ) ) {
-
 			// Keep all ids lowercase with no spaces
 			$value['id'] = preg_replace('/[^a-zA-Z0-9._\-]/', '', strtolower($value['id']) );
-
 			$id = 'section-' . $value['id'];
-
 			$class = 'section ';
 			if ( isset( $value['type'] ) ) {
 				$class .= ' section-' . $value['type'];
@@ -162,7 +114,6 @@ function optionsframework_fields() {
 			if ( isset( $value['class'] ) ) {
 				$class .= ' ' . $value['class'];
 			}
-
 			$output .= '<div id="' . esc_attr( $id ) .'" class="' . esc_attr( $class ) . '">'."\n";
 			if ( isset( $value['name'] ) ) {
 				$output .= '<h4 class="heading">' . esc_html( $value['name'] ) . '</h4>' . "\n";
@@ -174,12 +125,10 @@ function optionsframework_fields() {
 				$output .= '<div class="option">' . "\n" . '<div>' . "\n";
 			}
 		}
-
 		// Set default value to $val
 		if ( isset( $value['std'] ) ) {
 			$val = $value['std'];
 		}
-
 		// If the option is already saved, ovveride $val
 		if ( ( $value['type'] != 'heading' ) && ( $value['type'] != 'info') ) {
 			if ( isset( $settings[($value['id'])]) ) {
@@ -190,80 +139,56 @@ function optionsframework_fields() {
 				}
 			}
 		}
-
 		// If there is a description save it for labels
 		$explain_value = '';
 		if ( isset( $value['desc'] ) ) {
 			$explain_value = $value['desc'];
 		}
 		$multiselect = '';
-
 		switch ( $value['type'] ) {
-
 			// Basic text input
 			case 'text':
 				$output .= '<input id="' . esc_attr( $value['id'] ) . '" class="of-input" name="' . esc_attr( $option_name . '[' . $value['id'] . ']' ) . '" type="text" value="' . esc_attr( $val ) . '" />';
 				break;
-
 			// Textarea
 			case 'textarea':
 				$rows = '8';
-
 				if ( isset( $value['settings']['rows'] ) ) {
 					$custom_rows = $value['settings']['rows'];
 					if ( is_numeric( $custom_rows ) ) {
 						$rows = $custom_rows;
 					}
 				}
-
 				$val = stripslashes( $val );
 				$output .= '<textarea id="' . esc_attr( $value['id'] ) . '" class="of-input" name="' . esc_attr( $option_name . '[' . $value['id'] . ']' ) . '" rows="' . $rows . '">' . esc_textarea( $val ) . '</textarea>';
 				break;
-
 			// Select Box
 			case 'multiselect':
-
 				$multiselect = 'multiple';
-
-
 			case 'select':
-
-
 				$field_name = esc_attr( $option_name . '[' . $value['id'] . ']' );
-
 				if( 'multiple' === $multiselect )
 					$field_name .= '[]';
-
 				$disabled = '';
 				$options = '';
-
 				if( 0 == count($value['options']) ){
-
 					$disabled = 'disabled';
-
 				}else{
-
 					foreach ($value['options'] as $key => $option ) {
 						$selected = '';
 						if ( $val != '' && $key != '' ) {
-
 							$opts = explode(', ', $val);
-
 							if ( in_array( $key, $opts ) ) {
 								$selected = ' selected="selected"';
 							}
 						}
 						$options .= '<option'. $selected .' value="' . esc_attr( $key ) . '">' . esc_html( $option ) . '</option>';
 					}
-
 				}
-
 				$output .= '<select class="of-input" name="' . $field_name . '" id="' . esc_attr( $value['id'] ) . '" ' . $disabled . ' ' . $multiselect . '>';
 				$output .= $options;
 				$output .= '</select>';
-
 				break;
-
 			// Radio Box
 			case "radio":
 				$name = $option_name .'['. $value['id'] .']';
@@ -272,7 +197,6 @@ function optionsframework_fields() {
 					$output .= '<input class="of-input of-radio" type="radio" name="' . esc_attr( $name ) . '" id="' . esc_attr( $id ) . '" value="'. esc_attr( $key ) . '" '. checked( $val, $key, false) .' /><label for="' . esc_attr( $id ) . '">' . esc_html( $option ) . '</label>';
 				}
 				break;
-
 			// Image Selectors
 			case "images":
 				$name = $option_name .'['. $value['id'] .']';
@@ -290,36 +214,29 @@ function optionsframework_fields() {
 					$output .= '<img src="' . esc_url( $option ) . '" alt="' . $option .'" class="of-radio-img-img' . $selected .'" onclick="document.getElementById(\''. esc_attr($value['id'] .'_'. $key) .'\').checked=true;" />';
 				}
 				break;
-
 			// Checkbox
 			case "checkbox":
 				$output .= '<input id="' . esc_attr( $value['id'] ) . '" class="checkbox of-input" type="checkbox" name="' . esc_attr( $option_name . '[' . $value['id'] . ']' ) . '" '. checked( $val, 1, false) .' />';
 				$output .= '<label class="explain" for="' . esc_attr( $value['id'] ) . '">' . wp_kses( $explain_value, $allowedtags) . '</label>';
 				break;
-
 			// Multicheck
 			case "multicheck":
 				foreach ($value['options'] as $key => $option) {
 					$checked = '';
 					$label = $option;
 					$option = preg_replace('/[^a-zA-Z0-9._\-]/', '', strtolower($key));
-
 					$id = $option_name . '-' . $value['id'] . '-'. $option;
 					$name = $option_name . '[' . $value['id'] . '][' . $option .']';
-
 					if ( isset($val[$option]) ) {
 						$checked = checked($val[$option], 1, false);
 					}
-
 					$output .= '<input id="' . esc_attr( $id ) . '" class="checkbox of-input" type="checkbox" name="' . esc_attr( $name ) . '" ' . $checked . ' /><label for="' . esc_attr( $id ) . '">' . esc_html( $label ) . '</label>';
 				}
 				break;
-
 			// Color picker
 			case "color":
 				$output .= '<input class="of-color" name="' . esc_attr( $option_name . '[' . $value['id'] . ']' ) . '" id="' . esc_attr( $value['id'] ) . '" type="text" value="' . esc_attr( $val ) . '" />';
 				break;
-
 			// Uploader
 			case "upload":
 				$output .= '';
@@ -327,7 +244,6 @@ function optionsframework_fields() {
 				$btn_delete_txt = __( 'Remove', 'non-cherry' );
 				$input_name = esc_attr( $option_name . '[' . $value['id'] . ']' );
 				$btn_name = esc_attr( 'upload[' . $value['id'] . ']' );
-
 				ob_start();?>
 				<div class="upload-wrap" >
 					<fieldset>
@@ -344,34 +260,27 @@ function optionsframework_fields() {
 					<figure id="<?php echo esc_attr( $value['id'] ); ?>-preview"></figure>
 					<script type="text/javascript">
 						jQuery(document).ready(function($){
-
 							var image;
-
 							$('#btn-<?php echo esc_attr( $value['id'] ); ?>').click(function(e) {
 								e.preventDefault();
 								if(!image){
-									image = wp.media({ 
+									image = wp.media({
 										title: 'Upload Image',
 										multiple: false
 									}).on('select', function(e){
-
 										var uploaded_image = image.state().get('selection').first();
 										var image_id = uploaded_image.toJSON().id;
-										
 										$('#<?php echo esc_attr( $value['id'] ); ?>').val(image_id).change();
-
 										image.close();
 									});
 								}
 								image.open();
 							});
-
 							$('#btn-<?php echo esc_attr( $value['id'] ); ?>-remove').click(function(e){
 								e.preventDefault();
 								$('#<?php echo esc_attr( $value['id'] ); ?>').val('').change();
 								$('figure#<?php echo esc_attr( $value['id'] ); ?>-preview').html('');
 							});
-
 							$('#<?php echo esc_attr( $value['id'] ); ?>').change(function(e){
 								$.post(
 									ajaxurl,
@@ -380,9 +289,7 @@ function optionsframework_fields() {
 										'attachment': $(this).val(),
 									},
 									function( data, status, jqXHR ){
-										
 										var holder = $('figure#<?php echo esc_attr( $value['id'] ); ?>-preview');
-
 										if(data){
 											holder.html(data);
 										}else{
@@ -391,18 +298,14 @@ function optionsframework_fields() {
 									}
 								);
 							}).change();
-
 						});
 					</script>
 				</div>
 				<?php $output .= ob_get_clean();
 				break;
-
 			// Typography
 			case 'typography':
-			
 				unset( $font_size, $font_lineheight, $font_style, $font_face, $font_color );
-			
 				$typography_defaults = array(
 					'size' => '',
 					'face' => '',
@@ -410,9 +313,7 @@ function optionsframework_fields() {
 					'lineheight' => '',
 					'color' => ''
 				);
-				
 				$typography_stored = wp_parse_args( $val, $typography_defaults );
-				
 				$typography_options = array(
 					'sizes' => of_recognized_font_sizes(),
 					'faces' => of_recognized_font_faces(),
@@ -421,11 +322,9 @@ function optionsframework_fields() {
 					'lineheight' => of_recognized_font_sizes(),
 					'color' => true
 				);
-				
 				if ( isset( $value['options'] ) ) {
 					$typography_options = wp_parse_args( $value['options'], $typography_options );
 				}
-
 				// Font Size
 				if ( $typography_options['sizes'] ) {
 					$font_size = '<select class="of-typography of-typography-size" name="' . esc_attr( $option_name . '[' . $value['id'] . '][size]' ) . '" id="' . esc_attr( $value['id'] . '_size' ) . '">';
@@ -436,20 +335,16 @@ function optionsframework_fields() {
 					}
 					$font_size .= '</select>';
 				}
-				
 				// Lineheights
 				if ( $typography_options['lineheight'] ) {
 					$font_lineheight = '<select class="of-typography of-typography-lineheight" name="'.$option_name.'['.$value['id'].'][lineheight]" id="'. $value['id'].'_style">';
 					$lineheights = $typography_options['lineheight'];
-
 					foreach ( $lineheights as $i ) {
 						$lineheight = $i . 'px';
 						$font_lineheight .= '<option value="' . esc_attr( $lineheight ) . '" ' . selected( $typography_stored['lineheight'], $lineheight, false ) . '>' . esc_html( $lineheight ) . '</option>';
 					}
-
 					$font_lineheight .= '</select>';
 				}
-
 				// Font Face
 				if ( $typography_options['faces'] ) {
 					$font_face = '<select class="of-typography of-typography-face" name="' . esc_attr( $option_name . '[' . $value['id'] . '][face]' ) . '" id="' . esc_attr( $value['id'] . '_face' ) . '">';
@@ -459,7 +354,6 @@ function optionsframework_fields() {
 					}
 					$font_face .= '</select>';
 				}
-
 				// Font Styles
 				if ( $typography_options['styles'] ) {
 					$font_style = '<select class="of-typography of-typography-style" name="'.$option_name.'['.$value['id'].'][style]" id="'. $value['id'].'_style">';
@@ -469,7 +363,6 @@ function optionsframework_fields() {
 					}
 					$font_style .= '</select>';
 				}
-
 				// Font Weight
 				if ( $typography_options['weights'] ) {
 					$font_weight = '<select class="of-typography of-typography-weight" name="'.$option_name.'['.$value['id'].'][weight]" id="'. $value['id'].'_weight">';
@@ -479,39 +372,29 @@ function optionsframework_fields() {
 					}
 					$font_weight .= '</select>';
 				}
-
 				// Font Color
 				if ( $typography_options['color'] ) {
 					$font_color = '<input class="of-color of-typography of-typography-color" name="' . esc_attr( $option_name . '[' . $value['id'] . '][color]' ) . '" id="' . esc_attr( $value['id'] . '_color' ) . '" type="text" value="' . esc_attr( $typography_stored['color'] ) . '" />';
 					$font_color .= '<div class="clear"></div>';
 				}
-		
 				// Allow modification/injection of typography fields
 				$typography_fields = compact(  'font_color', 'font_size', 'font_lineheight', 'font_face', 'font_style', 'font_weight' );
 				$typography_fields = apply_filters( 'of_typography_fields', $typography_fields, $typography_stored, $option_name, $value );
 				$output .= implode( '', $typography_fields );
-				
 				break;
-
 			// Background
 			case 'background':
-
 				$background = $val;
-
 				// Background Color
 				$output .= '<input class="of-color of-background of-background-color" name="' . esc_attr( $option_name . '[' . $value['id'] . '][color]' ) . '" id="' . esc_attr( $value['id'] . '_color' ) . '" type="text" value="' . esc_attr( $background['color'] ) . '" />';
-
 				// Background Image - New AJAX Uploader using Media Library
-				
 				if (!isset($background['image'])) {
 					$background['image'] = '';
 				}
-				
 				$btn_upload_txt = __( 'Upload', 'non-cherry' );
 				$btn_delete_txt = __( 'Remove', 'non-cherry' );
 				$input_name = esc_attr( $option_name . '[' . $value['id'] . '][image]'  );
 				$btn_name = esc_attr( 'upload[' . $value['id'] . '][image]' );
-
 				ob_start();?>
 				<div class="clear"></div>
 				<div class="upload-wrap" >
@@ -530,40 +413,32 @@ function optionsframework_fields() {
 					<script type="text/javascript">
 						jQuery(document).ready(function($){
 							var image;
-
 							$('#btn-<?php echo esc_attr( $value['id']  ) . '_image'; ?>').click(function(e) {
 								e.preventDefault();
 								if(!image){
-									image = wp.media({ 
+									image = wp.media({
 										title: 'Upload Image',
 										multiple: false
 									}).on('select', function(e){
-
 										var uploaded_image = image.state().get('selection').first(),
 											image_id = uploaded_image.toJSON().id;
-										
 										$('#<?php echo esc_attr( $value['id'] . '_image' ); ?>').val(image_id).change();
-
 										image.close();
 									});
 								}
 								image.open();
 							});
-
 							$('#btn-<?php echo esc_attr( $value['id'] ); ?>_image-remove').click(function(e){
 								e.preventDefault();
 								$('#<?php echo esc_attr( $value['id'] ); ?>_image').val('').change();
 								$('figure#<?php echo esc_attr( $value['id'] ); ?>-preview').html('')
 							});
-
 							$('#<?php echo esc_attr( $value['id'] ) . '_image'; ?>').on('change', function(e){
-
 								if( '' == $(this).val() ){
 									$(this).closest('controls').find('.of-background-properties').addClass('hide');
 								}else{
 									$(this).closest('controls').find('.of-background-properties').removeClass('hide');
 								}
-
 								$.post(
 									ajaxurl,
 									{
@@ -571,9 +446,7 @@ function optionsframework_fields() {
 										'attachment': $(this).val(),
 									},
 									function( data, status, jqXHR ){
-										
 										var holder = $('figure#<?php echo esc_attr( $value['id'] ); ?>-preview');
-
 										if(data){
 											holder.html(data);
 										}else{
@@ -583,47 +456,37 @@ function optionsframework_fields() {
 								);
 							}).change();
 						});
-						
 					</script>
 				</div>
 				<?php $output .= ob_get_clean();
-
 				$class = 'of-background-properties';
 				if ( '' == $background['image'] ) {
 					$class .= ' hide';
 				}
 				$output .= '<div class="' . esc_attr( $class ) . '">';
-
 				// Background Repeat
 				$output .= '<select class="of-background of-background-repeat" name="' . esc_attr( $option_name . '[' . $value['id'] . '][repeat]'  ) . '" id="' . esc_attr( $value['id'] . '_repeat' ) . '">';
 				$repeats = of_recognized_background_repeat();
-
 				foreach ($repeats as $key => $repeat) {
 					$output .= '<option value="' . esc_attr( $key ) . '" ' . selected( $background['repeat'], $key, false ) . '>'. esc_html( $repeat ) . '</option>';
 				}
 				$output .= '</select>';
-
 				// Background Position
 				$output .= '<select class="of-background of-background-position" name="' . esc_attr( $option_name . '[' . $value['id'] . '][position]' ) . '" id="' . esc_attr( $value['id'] . '_position' ) . '">';
 				$positions = of_recognized_background_position();
-
 				foreach ($positions as $key=>$position) {
 					$output .= '<option value="' . esc_attr( $key ) . '" ' . selected( $background['position'], $key, false ) . '>'. esc_html( $position ) . '</option>';
 				}
 				$output .= '</select>';
-
 				// Background Attachment
 				$output .= '<select class="of-background of-background-attachment" name="' . esc_attr( $option_name . '[' . $value['id'] . '][attachment]' ) . '" id="' . esc_attr( $value['id'] . '_attachment' ) . '">';
 				$attachments = of_recognized_background_attachment();
-
 				foreach ($attachments as $key => $attachment) {
 					$output .= '<option value="' . esc_attr( $key ) . '" ' . selected( $background['attachment'], $key, false ) . '>' . esc_html( $attachment ) . '</option>';
 				}
 				$output .= '</select>';
 				$output .= '</div>';
-
 				break;
-
 			// Editor
 			case 'editor':
 				$output .= '<div class="explain">' . wp_kses( $explain_value, $allowedtags) . '</div>'."\n";
@@ -642,7 +505,6 @@ function optionsframework_fields() {
 				wp_editor( $val, $value['id'], $editor_settings );
 				$output = '';
 				break;
-
 			// Info
 			case "info":
 				$id = '';
@@ -656,7 +518,6 @@ function optionsframework_fields() {
 				if ( isset( $value['class'] ) ) {
 					$class .= ' ' . $value['class'];
 				}
-
 				$output .= '<div ' . $id . 'class="' . esc_attr( $class ) . '">' . "\n";
 				if ( isset($value['name']) ) {
 					$output .= '<h4 class="heading">' . esc_html( $value['name'] ) . '</h4>' . "\n";
@@ -666,7 +527,6 @@ function optionsframework_fields() {
 				}
 				$output .= '</div>' . "\n";
 				break;
-
 			// Heading for Navigation
 			case "heading":
 				if ($counter >= 2) {
@@ -679,7 +539,6 @@ function optionsframework_fields() {
 				$output .= '<h3>' . esc_html( $value['name'] ) . '</h3>' . "\n";
 				break;
 		}
-
 		if ( ( $value['type'] != "heading" ) && ( $value['type'] != "info" ) ) {
 			$output .= '</div>';
 			if ( ( $value['type'] != "checkbox" ) && ( $value['type'] != "editor" ) ) {
@@ -687,7 +546,6 @@ function optionsframework_fields() {
 			}
 			$output .= '</div></div>'."\n";
 		}
-
 		echo $output;
 	}
 	echo '</div>';

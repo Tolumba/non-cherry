@@ -1,34 +1,73 @@
 <?php
 // register plugin for TGM activator
 require_once( PARENT_DIR . '/includes/classes/class-tgm-plugin-activation.php' );
-
 add_action( 'tgmpa_register', 'cherryone_register_plugins' );
 function cherryone_register_plugins() {
-
 	/**
 	 * Array of plugin arrays. Required keys are name and slug.
 	 */
 	$plugins = array(
+		/*Uncomment if need PB*/
+		/*array(
+			'name'         => 'Power Builder',
+			'slug'         => 'power-builder',
+			'required'     => true,
+			'source'       => 'https://github.com/templatemonster/power-builder-upd/zipball/master/',
+		),
+		array(
+			'name'         => 'Power Builder Integrator',
+			'slug'         => 'power-builder-integrator',
+			'required'     => true,
+			'source'       => 'https://github.com/templatemonster/power-builder-integrator/zipball/master/',
+		),*/
+		/*array(
+			'name'         => 'Mailchimp For WordPress',
+			'slug'         => 'mailchimp-for-wp',
+			'required'     => true,
+		),*/
+		/*array(
+			'name'         => 'Cherry Testimonials',
+			'slug'         => 'cherry-testi',
+			'required'     => true,
+		),*/
+		/*array(
+			'name'         => 'Cherry Team Members',
+			'slug'         => 'cherry-team-members',
+			'required'     => true,
+		),*/
+		/*array(
+			'name'         => 'Cherry Sidebars',
+			'slug'         => 'cherry-sidebars',
+			'required'     => true,
+		),*/
+		/*array(
+			'name'         => 'Cherry Services List',
+			'slug'         => 'cherry-services-list',
+			'required'     => true,
+		),*/
+		/*array(
+			'name'         => 'Cherry Projects',
+			'slug'         => 'cherry-projects',
+			'required'     => true,
+		),*/
+		/*End*/
 		array(
 			'name'         => 'Cherry Shortcodes Templater',
 			'slug'         => 'cherry-shortcodes-templater',
-			'source'       => 'cherry-free',
 			'required'     => true,
-			'external_url' => 'https://github.com/CherryFramework/cherry-shortcodes-templater',
+			'source' => 'https://github.com/CherryFramework/cherry-shortcodes-templater/zipball/master/',
 		),
 		array(
 			'name'         => 'Cherry Shortcodes',
 			'slug'         => 'cherry-shortcodes',
-			'source'       => 'cherry-free',
 			'required'     => true,
-			'external_url' => 'https://github.com/CherryFramework/cherry-shortcodes',
+			'source' => 'https://github.com/CherryFramework/cherry-shortcodes/zipball/master/',
 		),
 		array(
 			'name'         => 'Cherry Data Manager',
 			'slug'         => 'cherry-data-manager',
-			'source'       => 'cherry-free',
 			'required'     => true,
-			'external_url' => 'https://github.com/CherryFramework/cherry-data-manager',
+			'source' => 'https://github.com/CherryFramework/cherry-data-manager/zipball/master/',
 		),
 		array(
 			'name'     => 'Contact Form 7',
@@ -49,61 +88,46 @@ function cherryone_register_plugins() {
 		/*array(
 			'name'         => 'Cherry Testimonials',
 			'slug'         => 'cherry-testimonials',
-			'source'       => 'cherry-free',
 			'required'     => true,
-			'external_url' => 'https://github.com/CherryFramework/cherry-testimonials',
-		),*/
-		/*array(
-			'name'         => 'Cherry Team',
-			'slug'         => 'cherry-team',
-			'source'       => 'cherry-free',
-			'required'     => true,
-			'external_url' => 'https://github.com/CherryFramework/cherry-team',
+			'external_url' => 'https://github.com/CherryFramework/cherry-testimonials/zipball/master/',
 		),*/
 		/*array(
 			'name'         => 'Cherry Social',
 			'slug'         => 'cherry-social',
-			'source'       => 'cherry-free',
 			'required'     => true,
-			'external_url' => 'https://github.com/CherryFramework/cherry-social',
+			'external_url' => 'https://github.com/CherryFramework/cherry-social/zipball/master/',
 		),*/
 		/*array(
 			'name'         => 'Cherry Simple Slider',
 			'slug'         => 'cherry-simple-slider',
-			'source'       => 'cherry-free',
 			'required'     => true,
-			'external_url' => 'https://github.com/CherryFramework/cherry-simple-slider',
+			'external_url' => 'https://github.com/CherryFramework/cherry-simple-slider/zipball/master/',
 		),*/
 		/*array(
 			'name'         => 'Cherry Portfolio',
 			'slug'         => 'cherry-portfolio',
-			'source'       => 'cherry-free',
 			'required'     => true,
-			'external_url' => 'https://github.com/CherryFramework/cherry-portfolio',
+			'external_url' => 'https://github.com/CherryFramework/cherry-portfolio/zipball/master/',
 		),*/
 		/*array(
 			'name'         => 'Cherry grid',
 			'slug'         => 'cherry-grid',
-			'source'       => 'cherry-free',
 			'required'     => true,
-			'external_url' => 'https://github.com/CherryFramework/cherry-grid',
+			'external_url' => 'https://github.com/CherryFramework/cherry-grid/zipball/master/',
 		),*/
 		/*array(
 			'name'         => 'Cherry Charts',
 			'slug'         => 'cherry-charts',
-			'source'       => 'cherry-free',
 			'required'     => true,
-			'external_url' => 'https://github.com/CherryFramework/cherry-charts',
+			'external_url' => 'https://github.com/CherryFramework/cherry-charts/zipball/master/',
 		),*/
 		/*array(
 			'name'         => 'Cherry Services',
 			'slug'         => 'cherry-services',
-			'source'       => 'cherry-free',
 			'required'     => true,
-			'external_url' => 'https://github.com/CherryFramework/cherry-services',
+			'external_url' => 'https://github.com/CherryFramework/cherry-services/zipball/master/',
 		),*/
 	);
-
 	/**
 	 * Array of configuration settings. Amend each line as needed.
 	 */
@@ -136,7 +160,5 @@ function cherryone_register_plugins() {
 			'nag_type'                        => 'updated'
 		)
 	);
-
 	tgmpa( $plugins, $config );
-
 }

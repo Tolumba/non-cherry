@@ -1,162 +1,99 @@
 <?php
-
 /* Text */
 add_filter( 'of_sanitize_text', 'sanitize_text_field' );
-
 /* Textarea */
 add_filter( 'of_sanitize_textarea', 'of_sanitize_textarea' );
 function of_sanitize_textarea( $input ) {
-
 	global $allowedposttags;
-
 	$output = wp_kses( $input, $allowedposttags );
-
 	return $output;
 }
-
 /* Select */
 add_filter( 'of_sanitize_select', 'of_sanitize_select', 10, 2 );
 add_filter( 'of_sanitize_multiselect', 'of_sanitize_select', 10, 2 );
-
 function of_sanitize_select( $input, $option ){
-
 	if( is_array( $input ) )
 		$input = implode( ", ", $input );
-
 	$output = esc_attr( $input );
-
 	return $output;
-
 }
-
 /* Radio */
 add_filter( 'of_sanitize_radio', 'of_sanitize_enum', 10, 2);
-
 /* Images */
 add_filter( 'of_sanitize_images', 'of_sanitize_enum', 10, 2);
-
 /* Check that the key value sent is valid */
 function of_sanitize_enum( $input, $option ) {
-
 	$output = '';
-
 	if ( array_key_exists( $input, $option['options'] ) ) {
-
 		$output = $input;
-
 	}
-
 	return $output;
 }
-
 /* Checkbox */
 add_filter( 'of_sanitize_checkbox', 'of_sanitize_checkbox' );
 function of_sanitize_checkbox( $input ) {
-
 	if ( $input ) {
-
 		$output = '1';
-
 	} else {
-
 		$output = false;
-
 	}
-
 	return $output;
 }
-
 /* Multicheck */
 add_filter( 'of_sanitize_multicheck', 'of_sanitize_multicheck', 10, 2 );
 function of_sanitize_multicheck( $input, $option ) {
-
 	$output = '';
-
 	if ( is_array( $input ) ) {
-
 		foreach( $option['options'] as $key => $value ) {
-
 			$output[$key] = "0";
-
 		}
-
 		foreach( $input as $key => $value ) {
-
 			if ( array_key_exists( $key, $option['options'] ) && $value ) {
-
 				$output[$key] = "1";
-
 			}
 		}
 	}
-
 	return $output;
 }
-
 /* Color Picker */
-
 add_filter( 'of_sanitize_color', 'sanitize_hex_color' );
-
 /* Uploader */
 add_filter( 'of_sanitize_upload', 'of_sanitize_upload' );
 function of_sanitize_upload( $input ) {
-
 	$output = '';
-
 	$filetype = wp_check_filetype($input);
-
 	if ( is_numeric( $input ) ) {
-
 		$output = $input;
-
 	}
-
 	return $output;
 }
-
 /* Editor */
 add_filter( 'of_sanitize_editor', 'of_sanitize_editor' );
 function of_sanitize_editor($input) {
-
 	if ( current_user_can( 'unfiltered_html' ) ) {
-
 		$output = $input;
-
 	} else {
-
 		global $allowedtags;
 		$output = wpautop( wp_kses( $input, $allowedtags ) );
-
 	}
-
 	return $output;
 }
-
 /* Allowed Tags */
 function of_sanitize_allowedtags($input) {
-
 	global $allowedtags;
-
 	$output = wpautop(wp_kses( $input, $allowedtags));
-
 	return $output;
 }
-
 /* Allowed Post Tags */
 add_filter( 'of_sanitize_info', 'of_sanitize_allowedposttags' );
 function of_sanitize_allowedposttags($input) {
-
 	global $allowedposttags;
-
 	$output = wpautop( wp_kses( $input, $allowedposttags ) );
-
 	return $output;
 }
-
 /* Background */
 add_filter( 'of_sanitize_background', 'of_sanitize_background' );
 function of_sanitize_background( $input ) {
-
 	$output = wp_parse_args( $input, array(
 		'color' => '',
 		'image'  => '',
@@ -164,64 +101,40 @@ function of_sanitize_background( $input ) {
 		'position' => 'top center',
 		'attachment' => 'scroll'
 	) );
-
 	$output['color'] = apply_filters( 'of_validate_hex', $input['color'] );
 	$output['image'] = apply_filters( 'of_sanitize_upload', $input['image'] );
 	$output['repeat'] = apply_filters( 'of_background_repeat', $input['repeat'] );
 	$output['position'] = apply_filters( 'of_background_position', $input['position'] );
 	$output['attachment'] = apply_filters( 'of_background_attachment', $input['attachment'] );
-
 	return $output;
 }
-
 add_filter( 'of_background_repeat', 'of_sanitize_background_repeat' );
 function of_sanitize_background_repeat( $value ) {
-
 	$recognized = of_recognized_background_repeat();
-
 	if ( array_key_exists( $value, $recognized ) ) {
-
 		return $value;
-
 	}
-
 	return apply_filters( 'of_default_background_repeat', current( $recognized ) );
 }
-
-
 add_filter( 'of_background_position', 'of_sanitize_background_position' );
 function of_sanitize_background_position( $value ) {
-
 	$recognized = of_recognized_background_position();
-
 	if ( array_key_exists( $value, $recognized ) ) {
-
 		return $value;
-
 	}
-
 	return apply_filters( 'of_default_background_position', current( $recognized ) );
 }
-
 add_filter( 'of_background_attachment', 'of_sanitize_background_attachment' );
 function of_sanitize_background_attachment( $value ) {
-
 	$recognized = of_recognized_background_attachment();
-
 	if ( array_key_exists( $value, $recognized ) ) {
-
 		return $value;
-
 	}
-
 	return apply_filters( 'of_default_background_attachment', current( $recognized ) );
 }
-
-
 /* Typography */
 add_filter( 'of_sanitize_typography', 'of_sanitize_typography', 10, 2 );
 function of_sanitize_typography( $input, $option ) {
-
 	$output = wp_parse_args( $input, array(
 		'size'  => 'inherit',
 		'face'  => 'inherit',
@@ -230,104 +143,60 @@ function of_sanitize_typography( $input, $option ) {
 		'lineheight' => 'inherit',
 		'color' => 'inherit'
 	));
-
 	if ( isset( $option['options']['faces'] ) && isset( $input['face'] ) ) {
-
 		if ( ! ( array_key_exists( $input['face'], $option['options']['faces'] ) ) ) {
-
 			$output['face'] = 'inherit';
-
 		}
-
 	} else {
-
 		$output['face']  = apply_filters( 'of_font_face', $output['face'] );
-
 	}
-
 	$output['size']  = apply_filters( 'of_font_size', $output['size'] );
 	$output['style'] = apply_filters( 'of_font_style', $output['style'] );
 	$output['color'] = apply_filters( 'of_sanitize_color', $output['color'] );
 	$output['lineheight'] = apply_filters( 'of_sanitize_lineheight', $output['lineheight'] );
-
 	return $output;
 }
-
 add_filter( 'of_font_size', 'of_sanitize_font_size' );
 function of_sanitize_font_size( $value ) {
-
 	$recognized = of_recognized_font_sizes();
 	$value_check = preg_replace('/px/','', $value);
-
 	if ( in_array( (int) $value_check, $recognized ) ) {
-
 		return $value;
-
 	}
-
 	return apply_filters( 'of_default_font_size', $recognized );
 }
-
-
 add_filter( 'of_font_style', 'of_sanitize_font_style' );
 function of_sanitize_font_style( $value ) {
-
 	$recognized = of_recognized_font_styles();
-
 	if ( array_key_exists( $value, $recognized ) ) {
-
 		return $value;
-
 	}
-
 	return apply_filters( 'of_default_font_style', current( $recognized ) );
 }
-
-
 add_filter( 'of_font_weight', 'of_sanitize_font_weight' );
 function of_sanitize_font_weight( $value ) {
-
 	$recognized = of_recognized_font_weights();
-
 	if ( array_key_exists( $value, $recognized ) ) {
-
 		return $value;
-
 	}
-
 	return apply_filters( 'of_default_font_weight', current( $recognized ) );
 }
-
-
 add_filter( 'of_font_lineheight', 'of_sanitize_font_lineheight' );
 function of_sanitize_font_lineheight( $value ) {
-
 	$recognized = of_recognized_font_lineheight();
-
 	if ( array_key_exists( $value, $recognized ) ) {
-
 		return $value;
-
 	}
-
 	return apply_filters( 'of_default_font_lineheight', current( $recognized ) );
 }
-
-
 add_filter( 'of_font_face', 'of_sanitize_font_face' );
 function of_sanitize_font_face( $value ) {
-	
 	$recognized = of_recognized_font_faces();
-
 	if ( array_key_exists( $value, $recognized ) ) {
-
 		return $value;
-
 	}
-
 	return apply_filters( 'of_default_font_face', current( $recognized ) );
 }
-
 /**
  * Get recognized background repeat settings
  *
@@ -341,10 +210,8 @@ function of_recognized_background_repeat() {
 		'repeat-y'  => __('Repeat Vertically', 'non-cherry'),
 		'repeat'    => __('Repeat All', 'non-cherry'),
 	);
-
 	return apply_filters( 'of_recognized_background_repeat', $default );
 }
-
 /**
  * Get recognized background positions
  *
@@ -363,10 +230,8 @@ function of_recognized_background_position() {
 		'bottom center' => __('Bottom Center', 'non-cherry'),
 		'bottom right'  => __('Bottom Right', 'non-cherry')
 	);
-
 	return apply_filters( 'of_recognized_background_position', $default );
 }
-
 /**
  * Get recognized background attachment
  *
@@ -378,10 +243,8 @@ function of_recognized_background_attachment() {
 		'scroll' => __('Scroll Normally', 'non-cherry'),
 		'fixed'  => __('Fixed in Place', 'non-cherry')
 	);
-
 	return apply_filters( 'of_recognized_background_attachment', $default );
 }
-
 /**
  * Sanitize a color represented in hexidecimal notation.
  *
@@ -394,10 +257,8 @@ function of_sanitize_hex( $hex, $default = '' ) {
 	if ( of_validate_hex( $hex ) ) {
 		return $hex;
 	}
-
 	return $default;
 }
-
 /**
  * Get recognized font sizes.
  *
@@ -408,14 +269,11 @@ function of_sanitize_hex( $hex, $default = '' ) {
  * @return   array
  */
 function of_recognized_font_sizes() {
-
 	$sizes = range( 9, 71 );
 	$sizes = apply_filters( 'of_recognized_font_sizes', $sizes );
 	$sizes = array_map( 'absint', $sizes );
-
 	return $sizes;
 }
-
 /**
  * Get recognized font faces.
  *
@@ -427,7 +285,6 @@ function of_recognized_font_sizes() {
  *
  */
 function of_recognized_font_faces() {
-
 	$default = array(
 		'arial'     => 'Arial',
 		'verdana'   => 'Verdana, Geneva',
@@ -438,10 +295,8 @@ function of_recognized_font_faces() {
 		'palatino'  => 'Palatino',
 		'helvetica' => 'Helvetica*'
 	);
-
 	return apply_filters( 'of_recognized_font_faces', $default );
 }
-
 /**
  * Get recognized font styles.
  *
@@ -453,17 +308,14 @@ function of_recognized_font_faces() {
  *
  */
 function of_recognized_font_styles() {
-
 	$default = array(
 		'inherit' 		=> __('Inherit', 'non-cherry'),
 		'normal' 		=> __('Normal', 'non-cherry'),
 		'italic' 		=> __('Italic', 'non-cherry'),
 		'oblique' 		=> __('Oblique', 'non-cherry'),
 	);
-
 	return apply_filters( 'of_recognized_font_styles', $default );
 }
-
 /**
  * Get recognized font styles.
  *
@@ -475,7 +327,6 @@ function of_recognized_font_styles() {
  *
  */
 function of_recognized_font_weights() {
-
 	$default = array(
 		'inherit' 		=> __('Inherit', 'non-cherry'),
 		'normal' 		=> __('Normal', 'non-cherry'),
@@ -484,10 +335,8 @@ function of_recognized_font_weights() {
 		'light' 		=> __('Light', 'non-cherry'),
 		'lighter' 	    => __('Lighter', 'non-cherry'),
 	);
-
 	return apply_filters( 'of_recognized_font_weights', $default );
 }
-
 /**
  * Get lineheights.
  *
@@ -499,7 +348,6 @@ function of_recognized_font_weights() {
  *
  */
 function of_recognized_font_lineheight() {
-
 	$default = array(
 		'inherit' 	=> __('inherit', 'non-cherry'),
 		'1' 		=> __('1', 'non-cherry'),
@@ -507,16 +355,13 @@ function of_recognized_font_lineheight() {
 		'1.5' 		=> __('1.5', 'non-cherry'),
 		'2' 		=> __('2', 'non-cherry'),
 	);
-
 	return apply_filters( 'of_recognized_font_lineheight', $default );
 }
-
 /**
  * Returns an array of system fonts
  * Feel free to edit this, update the font fallbacks, etc.
  */
 function options_typography_get_os_fonts() {
-
     // OS Font Defaults
     $os_faces = array(
         'inherit' 												=> 'inherit',
@@ -529,16 +374,13 @@ function options_typography_get_os_fonts() {
 		'"Palatino Linotype", "Book Antiqua", Palatino, serif'  => 'Palatino',
 		'Helvetica*' 											=> 'Helvetica',
     );
-
     return $os_faces;
 }
-
 /**
  * Returns a select list of Google fonts
  * Feel free to edit this, update the fallbacks, etc.
  */
 function options_typography_get_google_fonts() {
-
     // Google Font Defaults
     $google_faces = array(
         'Arvo, serif' 						=> 'Arvo *',
@@ -558,24 +400,17 @@ function options_typography_get_google_fonts() {
         'Ubuntu, sans-serif' 				=> 'Ubuntu *',
         'Yanone Kaffeesatz, sans-serif' 	=> 'Yanone Kaffeesatz *',
     );
-
     return apply_filters( 'of_google_fonts_list', $google_faces );
-
 }
-
-
 /**
  * Checks font options to see if a Google font is selected.
  * If so, options_typography_enqueue_google_font is called to enqueue the font.
  * Ensures that each Google font is only enqueued once.
  */
 if ( !function_exists( 'options_typography_google_fonts' ) ) {
-
     function options_typography_google_fonts() {
-
         $fonts_list = options_typography_get_google_fonts();
         $fonts = array();
-
         // Collect fonts from typography settings
         $fonts[] = of_get_option('h1_heading', 'inherit');
 		$fonts[] = of_get_option('h2_heading', 'inherit');
@@ -584,7 +419,6 @@ if ( !function_exists( 'options_typography_google_fonts' ) ) {
 		$fonts[] = of_get_option('h5_heading', 'inherit');
 		$fonts[] = of_get_option('h6_heading', 'inherit');
 		$fonts[] = of_get_option('google_mixed_3', 'inherit');
-
         // Enqueue requested fonts
 		foreach ($fonts as $index => $font) {
 			if( is_array( $font )
@@ -594,27 +428,21 @@ if ( !function_exists( 'options_typography_google_fonts' ) ) {
 		}
     }
 }
-
 /**
  * Enqueues the Google $font that is passed
  */
 add_action( 'wp_enqueue_scripts', 'options_typography_google_fonts' );
 function options_typography_enqueue_google_font($font) {
-
     $font = explode(',', $font);
     $font = $font[0];
     // Certain Google fonts need slight tweaks in order to load properly
     // Like our friend "Raleway"
-
     if ( $font == 'Raleway' ){
     	$font = 'Raleway:100';
     }
-
     $font = str_replace(" ", "+", $font);
-
     wp_enqueue_style( "options_typography_$font", "//fonts.googleapis.com/css?family=$font", false, null, 'all' );
 }
-
 /**
  * Is a given string a color formatted in hexidecimal notation?
  *
@@ -622,43 +450,28 @@ function options_typography_enqueue_google_font($font) {
  * @return   bool
  *
  */
-
 function of_validate_hex( $hex ) {
-
 	$hex = trim( $hex );
-
 	/* Strip recognized prefixes. */
 	if ( 0 === strpos( $hex, '#' ) ) {
-
 		$hex = substr( $hex, 1 );
-
 	} elseif ( 0 === strpos( $hex, '%23' ) ) {
-
 		$hex = substr( $hex, 3 );
-
 	}
-
 	/* Regex match. */
 	if ( 0 === preg_match( '/^[0-9a-fA-F]{6}$/', $hex ) ) {
-
 		return false;
-
 	} else {
-
 		return true;
-
 	}
 }
-
 if ( ! function_exists( 'sanitize_hex_color' ) ) {
     function sanitize_hex_color( $color ) {
         if ( '' === $color )
             return '';
-
         // 3 or 6 hex digits, or the empty string.
         if ( preg_match('|^#([A-Fa-f0-9]{3}){1,2}$|', $color ) )
             return $color;
-
         return null;
     }
 }

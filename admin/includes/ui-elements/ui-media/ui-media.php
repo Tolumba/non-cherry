@@ -9,15 +9,12 @@
  * @link       http://www.cherryframework.com/
  * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
-
 // If this file is called directly, abort.
 if ( !defined( 'WPINC' ) ) {
 	die;
 }
-
 if ( ! class_exists( 'UI_Media' ) ) {
 	class UI_Media {
-
 		private $settings = array();
 		private $defaults_settings = array(
 			'id'					=> 'cherry-ui-media-id',
@@ -28,22 +25,17 @@ if ( ! class_exists( 'UI_Media' ) ) {
 			'upload_button_text'	=> 'Choose Media',
 			'class'					=> '',
 		);
-
 		/**
 		 * Constructor method for the UI_Media class.
 		 *
 		 * @since  4.0.0
 		 */
 		function __construct( $args = array() ) {
-
 			$this->defaults_settings['id'] = 'cherry-ui-media-'.uniqid();
 			$this->settings = wp_parse_args( $args, $this->defaults_settings );
-
 			add_action( 'admin_enqueue_scripts', array( __CLASS__, 'enqueue_assets' ) );
-
 			self::enqueue_assets();
 		}
-
 		/**
 		 * Render html UI_Media.
 		 *
@@ -51,7 +43,6 @@ if ( ! class_exists( 'UI_Media' ) ) {
 		 */
 		public function render() {
 			$html = '';
-
 			if ( $this->settings['value'] != '') {
 				$this->settings['value'] = str_replace(' ', '', $this->settings['value']);
 				$medias = explode(',', $this->settings['value']);
@@ -59,7 +50,6 @@ if ( ! class_exists( 'UI_Media' ) ) {
 				$this->settings['value'] = '';
 				$medias = array();
 			}
-
 			$img_style = ! $this->settings['value'] ? 'style="display:none;"' : '' ;
 				$html .= '<div class="cherry-ui-media-wrap">';
 					$html .= '<div  class="cherry-upload-preview" >';
@@ -71,7 +61,6 @@ if ( ! class_exists( 'UI_Media' ) ) {
 								$tmp = wp_get_attachment_metadata( $medias_value );
 								$img_src = '';
 								$thumb = '';
-
 								switch ($mime_type) {
 									case 'image/jpeg':
 									case 'image/png':
@@ -117,10 +106,8 @@ if ( ! class_exists( 'UI_Media' ) ) {
 					$html .= '<div class="clear"></div>';
 				$html .= '</div>';
 			$html .= '</div>';
-
 			return $html;
 		}
-
 		/**
 		 * Get current file URL
 		 *
@@ -131,10 +118,8 @@ if ( ! class_exists( 'UI_Media' ) ) {
 			$site_url = site_url();
 			$assets_url = str_replace( untrailingslashit( ABSPATH ), $site_url, $assets_url );
 			$assets_url = str_replace( '\\', '/', $assets_url );
-
 			return $assets_url;
 		}
-
 		/**
 		 * Enqueue javascript and stylesheet UI_Media
 		 *
@@ -142,7 +127,6 @@ if ( ! class_exists( 'UI_Media' ) ) {
 		 */
 		public static function enqueue_assets(){
 			wp_enqueue_media();
-
 			wp_enqueue_script(
 				'ui-media-min',
 				self::get_current_file_url() . '/assets/min/ui-media.min.js',
@@ -150,7 +134,6 @@ if ( ! class_exists( 'UI_Media' ) ) {
 				'1.0.0',
 				true
 			);
-
 			wp_enqueue_style(
 				'ui-media-min',
 				self::get_current_file_url() . '/assets/min/ui-media.min.css',

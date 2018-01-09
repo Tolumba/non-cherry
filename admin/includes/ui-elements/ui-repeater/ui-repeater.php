@@ -9,15 +9,12 @@
  * @link       http://www.cherryframework.com/
  * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
-
 // If this file is called directly, abort.
 if ( !defined( 'WPINC' ) ) {
 	die;
 }
-
 if ( ! class_exists( 'UI_Repeater' ) ) {
 	class UI_Repeater {
-
 		private $name              = '';
 		private $settings          = array();
 		private $defaults_settings = array(
@@ -42,7 +39,6 @@ if ( ! class_exists( 'UI_Repeater' ) ) {
 				),
 			'class'		=> '',
 		);
-
 		/**
 		 * Constructor method for the UI_Repeater class.
 		 *
@@ -52,12 +48,9 @@ if ( ! class_exists( 'UI_Repeater' ) ) {
 			$this->defaults_settings['id'] = 'cherry-ui-repeater-'.uniqid();
 			$this->settings                = wp_parse_args( $args, $this->defaults_settings );
 			$this->name                    = $this->get_option_name();
-
 			add_action( 'admin_enqueue_scripts', array( __CLASS__, 'enqueue_assets' ) );
-
 			self::enqueue_assets();
 		}
-
 		/**
 		 * Render html UI_Repeater.
 		 *
@@ -65,7 +58,6 @@ if ( ! class_exists( 'UI_Repeater' ) ) {
 		 */
 		public function render() {
 			$html = '';
-
 			$html .= '<div class="cherry-repeater-wrap" data-name="' . $this->settings['name'] . '">';
 				$html .= '<div class="cherry-repeater-item-list">';
 					$html .= '<div class="cherry-repeater-dublicate-item">';
@@ -79,10 +71,8 @@ if ( ! class_exists( 'UI_Repeater' ) ) {
 							$html .= '<input class="' . $this->settings['class'] . 'link-label" name="" type="text" placeholder="' . __( 'Link label', 'non-cherry' ) . '" value="">';
 						$html .= '</div>';
 						$html .= '<input class="' . $this->settings['class'] . 'network-id" name="" type="hidden" value="">';
-
 						$html .= '<div class="repeater-delete-button-holder"><a class="repeater-delete-button" href="javascript:void(0);"><i class="dashicons dashicons-trash"></i></a></div>';
 					$html .= '</div>';
-
 					if( is_array( $this->settings['value'] ) ){
 						$count = 0;
 						foreach ( $this->settings['value']  as $handle => $handleArray ) {
@@ -96,10 +86,8 @@ if ( ! class_exists( 'UI_Repeater' ) ) {
 								$html .= '<div class="col">';
 									$html .= '<input class="' . $this->settings['class'] . 'link-label" name="' . $this->settings['name'] . '[' . $handle. '][link-label]" type="text" placeholder="' . __( 'Link label', 'non-cherry' ) . '" value="' . esc_html( $handleArray['link-label'] ) . '">';
 								$html .= '</div>';
-
 								$value = ! empty( $handleArray['network-id'] ) ? $handleArray['network-id'] : 'network-' . $count;
 								$html .= '<input name="' . $this->settings['name'] . '[' . $count . '][network-id]" type="hidden" value="' . $value . '">';
-
 								$html .= '<div class="repeater-delete-button-holder"><a class="repeater-delete-button" href="javascript:void(0);"><i class="dashicons dashicons-trash"></i></a></div>';
 							$html .= '</div>';
 							$count++;
@@ -110,22 +98,16 @@ if ( ! class_exists( 'UI_Repeater' ) ) {
 					$html .= '<a class="repeater-add-button" href="javascript:void(0);"><i class="dashicons dashicons-plus"></i></a>';
 				$html .= '</div>';
 			$html .= '</div>';
-
 			return $html;
 		}
-
 		public function get_option_name() {
-
 			if ( empty( $this->settings['name'] ) ) {
 				return;
 			}
-
 			$option_name = explode( '[', $this->settings['name'] );
 			$option_name = empty( $option_name[1] ) ? trim( $option_name[0], ']' ) : trim( $option_name[1], ']' );
-
 			return $option_name;
 		}
-
 		/**
 		 * Get current file URL
 		 *
@@ -136,7 +118,6 @@ if ( ! class_exists( 'UI_Repeater' ) ) {
 			$site_url = site_url();
 			$assets_url = str_replace( untrailingslashit( ABSPATH ), $site_url, $assets_url );
 			$assets_url = str_replace( '\\', '/', $assets_url );
-
 			return $assets_url;
 		}
 		/**
@@ -152,7 +133,6 @@ if ( ! class_exists( 'UI_Repeater' ) ) {
 				'1.0.0',
 				true
 			);
-
 			wp_enqueue_script(
 				'ui-repeater-min',
 				self::get_current_file_url() . '/assets/min/ui-repeater.min.js',
@@ -160,7 +140,6 @@ if ( ! class_exists( 'UI_Repeater' ) ) {
 				'1.0.0',
 				true
 			);
-
 			wp_enqueue_style(
 				'ui-repeater-min',
 				self::get_current_file_url() . '/assets/min/ui-repeater.min.css',

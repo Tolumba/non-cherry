@@ -1,6 +1,6 @@
 <?php
 /**
- * 
+ *
  * The template for displaying CPT Team.
  *
  * @package   Cherry_Team
