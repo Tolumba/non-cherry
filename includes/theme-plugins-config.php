@@ -12,13 +12,15 @@ function cherryone_register_plugins() {
 			'name'         => 'Power Builder',
 			'slug'         => 'power-builder',
 			'required'     => true,
-			'source'       => 'https://github.com/templatemonster/power-builder-upd/zipball/master/',
+			'source'       => 'https://github.com/templatemonster/power-builder-upd/archive/master.zip',
+			'external_url'       => 'https://github.com/templatemonster/power-builder-upd/'
 		),
 		array(
 			'name'         => 'Power Builder Integrator',
 			'slug'         => 'power-builder-integrator',
 			'required'     => true,
-			'source'       => 'https://github.com/templatemonster/power-builder-integrator/zipball/master/',
+			'source'       => 'https://github.com/templatemonster/power-builder-integrator/archive/master.zip',
+			'external_url'       => 'https://github.com/templatemonster/power-builder-integrator/'
 		),*/
 		/*array(
 			'name'         => 'Mailchimp For WordPress',
@@ -55,19 +57,22 @@ function cherryone_register_plugins() {
 			'name'         => 'Cherry Shortcodes Templater',
 			'slug'         => 'cherry-shortcodes-templater',
 			'required'     => true,
-			'source' => 'https://github.com/CherryFramework/cherry-shortcodes-templater/zipball/master/',
+			'source' => 'https://github.com/CherryFramework/cherry-shortcodes-templater/archive/master.zip',
+			'external_url' => 'https://github.com/CherryFramework/cherry-shortcodes-templater/'
 		),
 		array(
 			'name'         => 'Cherry Shortcodes',
 			'slug'         => 'cherry-shortcodes',
 			'required'     => true,
-			'source' => 'https://github.com/CherryFramework/cherry-shortcodes/zipball/master/',
+			'source' => 'https://github.com/CherryFramework/cherry-shortcodes/archive/master.zip',
+			'external_url' => 'https://github.com/CherryFramework/cherry-shortcodes/archive/master.zip'
 		),
 		array(
 			'name'         => 'Cherry Data Manager',
 			'slug'         => 'cherry-data-manager',
 			'required'     => true,
-			'source' => 'https://github.com/CherryFramework/cherry-data-manager/zipball/master/',
+			'source' => 'https://github.com/CherryFramework/cherry-data-manager/archive/master.zip',
+			'external_url' => 'https://github.com/CherryFramework/cherry-data-manager/'
 		),
 		array(
 			'name'     => 'Contact Form 7',
@@ -83,49 +88,55 @@ function cherryone_register_plugins() {
 			'name'         => 'Advanced Custom Fields',
 			'slug'         => 'advanced-custom-fields',
 			'required'     => true,
-			'external_url' => 'https://wordpress.org/plugins/advanced-custom-fields/',
 		),*/
 		/*array(
 			'name'         => 'Cherry Testimonials',
 			'slug'         => 'cherry-testimonials',
 			'required'     => true,
-			'external_url' => 'https://github.com/CherryFramework/cherry-testimonials/zipball/master/',
+			'source' => 'https://github.com/CherryFramework/cherry-testimonials/archive/master.zip',
+			'external_url' => 'https://github.com/CherryFramework/cherry-testimonials/'
 		),*/
 		/*array(
 			'name'         => 'Cherry Social',
 			'slug'         => 'cherry-social',
 			'required'     => true,
-			'external_url' => 'https://github.com/CherryFramework/cherry-social/zipball/master/',
+			'source' => 'https://github.com/CherryFramework/cherry-social/archive/master.zip',
+			'external_url' => 'https://github.com/CherryFramework/cherry-social/'
 		),*/
 		/*array(
 			'name'         => 'Cherry Simple Slider',
 			'slug'         => 'cherry-simple-slider',
 			'required'     => true,
-			'external_url' => 'https://github.com/CherryFramework/cherry-simple-slider/zipball/master/',
+			'source' => 'https://github.com/CherryFramework/cherry-simple-slider/archive/master.zip',
+			'external_url' => 'https://github.com/CherryFramework/cherry-simple-slider/'
 		),*/
 		/*array(
 			'name'         => 'Cherry Portfolio',
 			'slug'         => 'cherry-portfolio',
 			'required'     => true,
-			'external_url' => 'https://github.com/CherryFramework/cherry-portfolio/zipball/master/',
+			'source' => 'https://github.com/CherryFramework/cherry-portfolio/archive/master.zip',
+			'external_url' => 'https://github.com/CherryFramework/cherry-portfolio/'
 		),*/
 		/*array(
 			'name'         => 'Cherry grid',
 			'slug'         => 'cherry-grid',
 			'required'     => true,
-			'external_url' => 'https://github.com/CherryFramework/cherry-grid/zipball/master/',
+			'source' => 'https://github.com/CherryFramework/cherry-grid/archive/master.zip',
+			'external_url' => 'https://github.com/CherryFramework/cherry-grid/'
 		),*/
 		/*array(
 			'name'         => 'Cherry Charts',
 			'slug'         => 'cherry-charts',
 			'required'     => true,
-			'external_url' => 'https://github.com/CherryFramework/cherry-charts/zipball/master/',
+			'source' => 'https://github.com/CherryFramework/cherry-charts/archive/master.zip',
+			'external_url' => 'https://github.com/CherryFramework/cherry-charts/'
 		),*/
 		/*array(
 			'name'         => 'Cherry Services',
 			'slug'         => 'cherry-services',
 			'required'     => true,
-			'external_url' => 'https://github.com/CherryFramework/cherry-services/zipball/master/',
+			'source' => 'https://github.com/CherryFramework/cherry-services/archive/master.zip',
+			'external_url' => 'https://github.com/CherryFramework/cherry-services/'
 		),*/
 	);
 	/**
