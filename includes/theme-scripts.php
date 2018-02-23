@@ -92,10 +92,14 @@ function non_cherry_main_style(){
 }
 /*	Register and load admin styles & javascript
 /*-----------------------------------------------------------------------------------*/
-if( !class_exists('Tm_Builder_Plugin')){
-	add_action('admin_enqueue_scripts', 'non_cherry_admin_assets');
-	function non_cherry_admin_assets( $hook ) {
-		wp_enqueue_style( 'theme-admin-styles',  CHILD_URL.'/admin/css/admin-styles.css' );
+add_action('admin_enqueue_scripts', 'non_cherry_admin_assets');
+function non_cherry_admin_assets( $hook ) {
+	wp_enqueue_style( 'theme-admin-styles',  CHILD_URL.'/admin/css/admin-styles.css' );
+
+	// Determine whenever CherryFramework5 exists
+	if( ! class_exists( 'Cherry_Core' ) ){
+		
+		// Use CherryFramework4 classes only om "edit post/page" admin pages
 		if('post.php' === $hook || 'post-new.php' === $hook ){
 			UI_Text::enqueue_assets();
 			UI_Textarea::enqueue_assets();

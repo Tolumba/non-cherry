@@ -2,6 +2,35 @@
 if ( !function_exists( 'non_cherry_setup' ) ):
 	add_action( 'after_setup_theme', 'non_cherry_setup' );
 	function non_cherry_setup() {
+		
+		// Determine whenever CherryFramework5 exists
+		if( ! class_exists( 'Cherry_Core' ) ){
+			// Required for CherryFramework4 components
+			@define( 'CHERRY_URI', PARENT_URL );
+			@define( 'CHERRY_VERSION', '1.0' );
+			require_once( PARENT_DIR . '/admin/includes/ui-elements/ui-webfont/ui-webfont.php' );
+			require_once( PARENT_DIR . '/admin/includes/class-cherry-interface-builder.php' );
+			require_once( PARENT_DIR . '/admin/includes/class-cherry-api-js.php' );
+			// CherryFramework4 interface builder
+			require_once( PARENT_DIR . '/admin/includes/ui-elements/ui-text/ui-text.php' );
+			require_once( PARENT_DIR . '/admin/includes/ui-elements/ui-radio/ui-radio.php' );
+			require_once( PARENT_DIR . '/admin/includes/ui-elements/ui-media/ui-media.php' );
+			require_once( PARENT_DIR . '/admin/includes/ui-elements/ui-slider/ui-slider.php' );
+			require_once( PARENT_DIR . '/admin/includes/ui-elements/ui-select/ui-select.php' );
+			require_once( PARENT_DIR . '/admin/includes/ui-elements/ui-stepper/ui-stepper.php' );
+			require_once( PARENT_DIR . '/admin/includes/ui-elements/ui-tooltip/ui-tooltip.php' );
+			require_once( PARENT_DIR . '/admin/includes/ui-elements/ui-repeater/ui-repeater.php' );
+			require_once( PARENT_DIR . '/admin/includes/ui-elements/ui-switcher/ui-switcher.php' );
+			require_once( PARENT_DIR . '/admin/includes/ui-elements/ui-checkbox/ui-checkbox.php' );
+			require_once( PARENT_DIR . '/admin/includes/ui-elements/ui-textarea/ui-textarea.php' );
+			require_once( PARENT_DIR . '/admin/includes/ui-elements/ui-background/ui-background.php' );
+			require_once( PARENT_DIR . '/admin/includes/ui-elements/ui-typography/ui-typography.php' );
+			require_once( PARENT_DIR . '/admin/includes/ui-elements/ui-ace-editor/ui-ace-editor.php' );
+			require_once( PARENT_DIR . '/admin/includes/ui-elements/ui-colorpicker/ui-colorpicker.php' );
+			require_once( PARENT_DIR . '/admin/includes/ui-elements/ui-range-slider/ui-range-slider.php' );
+			require_once( PARENT_DIR . '/admin/includes/ui-elements/ui-layout-editor/ui-layout-editor.php' );
+		}
+
 		// Parsing themes options into theme's scripts
 		add_action( 'wp_enqueue_scripts', 'localize_theme_scripts' );
 		function localize_theme_scripts(){
