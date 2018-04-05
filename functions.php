@@ -28,6 +28,12 @@
 	include_once(PARENT_DIR . '/options.php');
 	// Required plugins
 	require_once( PARENT_DIR . '/includes/theme-plugins-config.php' );
+	// Customizer Utils
+	require_once( PARENT_DIR . '/includes/classes/customizer/utils.php' );
+
+	global $theme_CU;
+	var_dump($theme_CU);
+
 	/*
 	* Loads the Options Panel
 	*
@@ -61,6 +67,7 @@
 		'gallery',
 		'caption',
 	);
+	add_theme_support( 'custom-logo' );
 	add_theme_support( 'html5', $modules );
 	// Adding Post Formats support
 	$formats = array(
@@ -72,12 +79,15 @@
 		'audio',
 		'video',
 	);
+
 	add_theme_support( 'post-formats', $formats );
 	add_post_type_support( 'post', 'post-formats' );
+
+	add_action( 'after_setup_theme', 'theme_slug_setup' );
 	function theme_slug_setup() {
 	   add_theme_support( 'title-tag' );
 	}
-	add_action( 'after_setup_theme', 'theme_slug_setup' );
+
 	if ( ! function_exists( '_wp_render_title_tag' ) ) :
 		function theme_slug_render_title() { ?>
 			<title><?php wp_title( '|', true, 'right' ); ?></title>
