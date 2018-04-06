@@ -286,6 +286,44 @@ function my_restrict_manage_posts() {
 		}
 	}
 }
+// Autoload customized and theme-specific Power Builder modules
+add_action( 'tm_builder_load_user_modules', 'theme_load_user_modules' );
+function theme_load_user_modules( $loader ){
+	
+	if ( ! class_exists( 'Tm_Builder_Module' ) ) {
+		return;
+	}
+
+	$dir = $loader->theme_dir;
+	$modules_dir = get_stylesheet_directory() . '/' . $dir;
+	$handle = opendir( $modules_dir );
+
+	if ( ! $handle ) {
+		return false;
+	}
+
+	while ( ( false !== $module_file = readdir( $handle ) ) ) {
+
+		if ( $module_file != "."
+			&& $module_file != ".."
+			&& is_file( $modules_dir . "/" . $module_file ) ) {
+
+			$class_name = $loader->get_class_name( $module_file );
+
+			if ( ! class_exists( $class_name ) ) {
+
+				if( $path = locate_template( array( $dir . $module_file ) ) ){
+
+					load_template( $path, true );
+					$loader->add_module( $path, $class_name );
+				}
+			}
+		}
+	}
+
+	closedir( $handle );
+}
+
 // Getting post meta info output
 if(! function_exists('get_post_meta_info')){
 	function get_post_meta_info( $meta_type='author', $format=false, $anchors=true, $echo=true ){
