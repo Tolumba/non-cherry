@@ -99,6 +99,7 @@ function non_cherry_shortcode_postdata( $data, $post_id=null, $atts=array() ){
 	if( is_a( $instance, 'Cherry_Shortcodes_Template_Callbacks' ) ){
 		$adapter = new Cherry_Shortcodes_Template_Callbacks_Adapter( $instance );
 		$data['button'] = array( $adapter, 'button' );
+		$data['date'] = array( $adapter, 'date' );
 	}
 	$data['imageurl'] = 'non_cherry_imageurl_callback';
 	$data['custommeta'] = 'non_cherry_custom_meta_callback';
@@ -301,7 +302,7 @@ class Cherry_Shortcodes_Template_Callbacks_Adapter{
 		$this->content = $instance->content;
 	}
 	public function button( $params=null ) {
-		$classes_pattern = '#^=[\'\"]([a-z_\- ]+)[\'\"][,;]?#';
+		$classes_pattern = '#^=[\'\"]((([a-zA-Z][a-zA-Z0-9_\-]+) ?)+)[\'\"][ ,;]?#';
 		preg_match( $classes_pattern, $params, $maches );
 		$classes = count($maches)? $maches[1]: '';
 		$shortcode   = Cherry_Shortcodes_Handler::get_shortcode_name();
@@ -326,7 +327,7 @@ class Cherry_Shortcodes_Template_Callbacks_Adapter{
 		return apply_filters( 'cherry_shortcodes_button_template_callbacks', $button, $this->atts, $shortcode );
 	}
 	public function date( $params=null ) {
-		$format_pattern = '#^=[\'\"]([a-z_\-]+)[\'\"][,;]?#';
+		$format_pattern = '#^=[\'\"]([dDjlNSwzWFmMntLoYyaABgGhHisuveIOPTZcrU [:punct:]]+)[\'\"][ ,;]?#';
 		preg_match( $format_pattern, $params, $maches );
 		$format = count($maches)? $maches[1]: '';
 		$shortcode = Cherry_Shortcodes_Handler::get_shortcode_name();
