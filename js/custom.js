@@ -98,6 +98,10 @@ var localize_data = localize_data||{};
 			
 			RDMobilemenu_autoinit('#primary.sf-menu');
 
+			deepLinking.init({
+				menuSelector : '#primary.sf-menu'
+			});
+
 			$(window).on( 'load resize', function(e){
 				var _mobile_menu = $('.rd-mobilemenu, .rd-mobilepanel'),
 				    _ww = $(window).width(),

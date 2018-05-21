@@ -117,3 +117,5 @@
 	}
 	// enable shortcodes in sidebar
 	add_filter('widget_text', 'do_shortcode');
+
+	locate_template( 'extensions/wp-deep-linking/main.php', true );
