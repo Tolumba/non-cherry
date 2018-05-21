@@ -1,0 +1,3 @@
+[submodule "extensions/wp-deep-linking"]
+	path = extensions/wp-deep-linking
+	url = https://github.com/Tolumba/wp-deep-linking.git
