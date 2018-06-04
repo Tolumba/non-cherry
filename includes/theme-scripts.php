@@ -42,7 +42,7 @@ add_action( 'wp_enqueue_scripts', 'framework_dynamic_styles', 1 );
 function framework_dynamic_styles(){
 	$css_file = CHILD_DIR . '/css/dynamic-styles.css';
 	if( file_exists( $css_file ) ){
-		if( !class_exists( 'WP_Filesyste' ) ){
+		if( !class_exists( 'WP_Filesystem' ) ){
 			require_once( ABSPATH . 'wp-admin/includes/file.php' );
 		}
 		global $wp_filesystem;

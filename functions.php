@@ -31,9 +31,6 @@
 	// Customizer Utils
 	require_once( PARENT_DIR . '/includes/classes/customizer/utils.php' );
 
-	global $theme_CU;
-	var_dump($theme_CU);
-
 	/*
 	* Loads the Options Panel
 	*
