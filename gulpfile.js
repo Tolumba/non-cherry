@@ -25,7 +25,7 @@ function css() {
 
 //watch
 function watch(){
-	gulp.watch('./scss/**', ['css']);
+	gulp.watch('./scss/**', css);
 };
 
 gulp.task('default', watch);
