@@ -1,6 +1,7 @@
 'use strict';
 
-let gulp         = require('gulp'),
+const
+	gulp         = require('gulp'),
 	rename       = require('gulp-rename'),
 	notify       = require('gulp-notify'),
 	autoprefixer = require('gulp-autoprefixer'),
@@ -8,7 +9,7 @@ let gulp         = require('gulp'),
 	sass         = require('gulp-sass');
 
 //css
-gulp.task('css', () => {
+function css() {
 	return gulp.src('./scss/main.scss')
 		.pipe(sourcemaps.init())
 		.pipe(sass().on('error', sass.logError))
@@ -20,11 +21,11 @@ gulp.task('css', () => {
 		.pipe(sourcemaps.write())
 		.pipe(gulp.dest('./css'))
 		.pipe(notify('Compile Sass Done!'));
-});
+};
 
 //watch
-gulp.task('watch', () => {
+function watch(){
 	gulp.watch('./scss/**', ['css']);
-});
+};
 
-gulp.task('default', ['watch']);
+gulp.task('default', watch);
