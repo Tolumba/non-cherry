@@ -1,6 +1,8 @@
 {
-  "name": "gulp-project",
+  "name": "non-cherry",
   "version": "0.1.0",
+  "description": "",
+  "private": true,
   "devDependencies": {
     "browser-sync": "^2.24.6",
     "gulp": "^4.0.0",
@@ -10,5 +12,12 @@
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^2.3.2",
     "gulp-sourcemaps": "^2.6.4"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tolumba/non-cherry.git"
+  },
+  "athor": "Tolumba",
+  "license": "MIT",
+  "homepage": "https://github.com/Tolumba/non-cherry"
 }
