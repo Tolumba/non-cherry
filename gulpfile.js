@@ -10,7 +10,7 @@ const
 
 //css
 function css() {
-	return gulp.src('./scss/main.scss')
+	return gulp.src('./scss/**/*.scss')
 		.pipe(sourcemaps.init())
 		.pipe(sass().on('error', sass.logError))
 		.pipe(sass( { outputStyle: 'expanded' } ))
@@ -25,7 +25,7 @@ function css() {
 
 //watch
 function watch(){
-	gulp.watch('./scss/**', css);
+	gulp.watch('./scss/**/*.scss', css);
 };
 
 gulp.task('default', watch);
