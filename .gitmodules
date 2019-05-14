@@ -1,0 +1,4 @@
+[submodule "woocommerce"]
+	path = extensions/woocommerce
+	url = https://github.com/Tolumba/woocommerce.git
+	branch = non-cherry
