@@ -42,7 +42,7 @@ function of_sanitize_checkbox( $input ) {
 /* Multicheck */
 add_filter( 'of_sanitize_multicheck', 'of_sanitize_multicheck', 10, 2 );
 function of_sanitize_multicheck( $input, $option ) {
-	$output = '';
+	$output = array();
 	if ( is_array( $input ) ) {
 		foreach( $option['options'] as $key => $value ) {
 			$output[$key] = "0";
